@@ -149,19 +149,31 @@ class WpTwigStartSite extends Timber\Site {
     add_action( 'wp_enqueue_scripts', array($this,  'blocks_dequeue_styles'));
 
     $WP_INCLUDE_DIR = preg_replace('/wp-content$/', 'wp-includes', WP_CONTENT_DIR);
-    $this->global_styles = array(
-      $WP_INCLUDE_DIR . '/css/dist/block-library/style.min.css',
-      get_stylesheet_directory() .'/css/vendor/bootstrap.css',
-      get_stylesheet_directory() .'/css/main.css',
-    );
-    if ( ! function_exists( 'is_woocommerce_activated' ) ) {
-      if ( class_exists( 'woocommerce' ) ) {
-        array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/assets/css/woocommerce.css');
-        array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/assets/css/woocommerce-layout.css');
-        array_push($this->global_styles, get_template_directory() . '/css/vendor/woocommerce-smallscreen.css');
-        array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/packages/woocommerce-blocks/build/style.css');
+    if (is_css_optimized()) {
+      $this->global_styles = array(
+        $WP_INCLUDE_DIR . '/css/dist/block-library/style.min.css',
+        get_stylesheet_directory() .'/css/vendor/bootstrap.css',
+        get_stylesheet_directory() .'/css/main.css',
+      );
+
+      if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+        if ( class_exists( 'woocommerce' ) ) {
+          array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/assets/css/woocommerce.css');
+          array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/assets/css/woocommerce-layout.css');
+          array_push($this->global_styles, get_template_directory() . '/css/vendor/woocommerce-smallscreen.css');
+          array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/packages/woocommerce-blocks/build/style.css');
+        }
       }
+    } else {
+      $this->global_styles = array(
+        get_stylesheet_directory_uri() .'/css/vendor/bootstrap.css',
+        get_stylesheet_directory_uri() .'/css/main.css',
+      );
     }
+
+
+
+
     // echo '<pre>';
     // print_r($this->global_styles);
     // echo '</pre>';
