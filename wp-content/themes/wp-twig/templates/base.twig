@@ -1,0 +1,66 @@
+{% block html_head_container %}
+
+	{% include 'html-header.twig' %}
+	{% block head %}{% endblock %}
+
+	<script id="loadcss">
+	</script
+</head>
+{% endblock %}
+
+<body class="{{body_class}}" data-template="base.twig">
+<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
+
+<div class="site-wrapper {{site_wrapper_class}}">
+
+	{% block header %}
+		{% include "./components/nav/nav.twig" %}
+	{% endblock %}
+
+{% block content %}
+	Sorry, no content
+{% endblock %}
+
+
+
+{% block footer %}
+	<footer id="footer">
+		{% include './components/footer/footer.twig' %}
+	</footer>
+
+	{% if js_optimize %}
+      <script src="{{ global_js }}"></script>
+    {% else %}
+
+    {% for item in global_js_list %}
+        <script src="{{site.theme.link}}{{item}}"></script>
+    {% endfor %}
+  {% endif %}
+
+
+    <!--  page_specific_scripts  -->
+    {% if js_optimize %}
+      {% for item in page_specific_scripts %}
+        <script src="{{item}}"></script>
+      {% endfor %}
+    {% else %}
+      {% for item in page_specific_scripts %}
+          <script src="{{site.theme.link}}{{item}}"></script>
+      {% endfor %}
+    {% endif %}
+    <!-- //  page_specific_scripts  -->
+
+    <!--  block_scripts  -->
+    {% for item in block_scripts %}
+      <script src="{{item}}"></script>
+    {% endfor %}
+    <!-- //  block_scripts  -->
+
+	{{ function('wp_footer') }}
+{% endblock %}
+
+</div>
+
+</body>
+</html>
+

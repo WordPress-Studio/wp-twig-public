@@ -1,0 +1,10 @@
+{% if menu %}
+	<ul class="navbar-nav ml-auto">
+	{% for item in items %}
+		<li class="{{ item.classes | join(' ') }} nav-item">
+			<a target="{{ item.target }}" href="{{ item.link }}" class="nav-link">{{ item.title }}</a>
+			{% include "./nav/menu.twig" with {'items': item.children} %}
+		</li>
+	{% endfor %}
+	</ul>
+{% endif %}

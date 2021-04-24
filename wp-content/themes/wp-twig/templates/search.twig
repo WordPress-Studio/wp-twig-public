@@ -1,0 +1,35 @@
+{# see `archive.twig` for an alternative strategy of extending templates #}
+{% extends "base.twig" %}
+
+{% block content %}
+  {# see `base.twig:27` for where this block's content will be inserted #}
+  <div class="content-wrapper">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1>{{title}}</h1>
+    {% if posts | length != 0 %}
+      <div>
+        <button class="btn btn-primary" onclick="goBack()">Go Back</button>
+      </div>
+    {% endif %}
+  </div>
+
+
+    {% for post in posts %}
+      {% include ['components/tease-'~post.post_type~'.twig', 'components/tease.twig'] %}
+    {% endfor %}
+
+    {% include 'components/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+
+    {% if posts | length == 0 %}
+      <h3>Not result found</h3>
+      <button class="btn btn-primary" onclick="goBack()">Go Back</button>
+    {% endif %}
+
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1594,
+        "title": "Banner Slider",
+        "icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z\" \/><\/svg>",
+        "keywords": [
+            "Banner Slider 1"
+        ],
+        "slug": "lazyblock\/banner-slider",
+        "description": "Banner slider with Swiper",
+        "category": "wptwigblocks",
+        "category_label": "wp_twig_blocks",
+        "supports": {
+            "customClassName": true,
+            "anchor": false,
+            "align": [
+                "wide",
+                "full"
+            ],
+            "html": false,
+            "multiple": true,
+            "inserter": true
+        },
+        "ghostkit": {
+            "supports": {
+                "spacings": false,
+                "display": false,
+                "scrollReveal": false
+            }
+        },
+        "controls": {
+            "control_7ed85c42ce": {
+                "type": "repeater",
+                "name": "slider",
+                "default": "",
+                "label": "Slider",
+                "help": "",
+                "child_of": "",
+                "placement": "content",
+                "width": "100",
+                "hide_if_not_selected": "false",
+                "save_in_meta": "false",
+                "save_in_meta_name": "",
+                "required": "false",
+                "placeholder": "",
+                "characters_limit": "",
+                "rows_add_button_label": "Add slider",
+                "rows_label": "Slider {{#}}"
+            },
+            "control_d6797e4133": {
+                "type": "image",
+                "name": "image",
+                "default": "",
+                "label": "image",
+                "help": "",
+                "child_of": "control_7ed85c42ce",
+                "placement": "content",
+                "width": "100",
+                "hide_if_not_selected": "false",
+                "save_in_meta": "false",
+                "save_in_meta_name": "",
+                "required": "false",
+                "placeholder": "",
+                "characters_limit": ""
+            }
+        },
+        "code": {
+            "editor_html": "",
+            "editor_callback": "",
+            "editor_css": "",
+            "frontend_html": "<div class=\"swiper-container\">\n  <div class=\"swiper-wrapper\">\n    {{#each slider}}\n      <div class=\"swiper-slide\">\n        <img data-src=\"{{image.url}}\"  class=\"swiper-lazy\">\n        <div class=\"swiper-lazy-preloader\"><\/div>\n      <\/div>\n    {{\/each}}\n  <\/div>\n    <!-- If we need navigation buttons -->\n    <div class=\"swiper-button-prev\"><\/div>\n    <div class=\"swiper-button-next\"><\/div>\n<\/div>",
+            "frontend_callback": "",
+            "frontend_css": "",
+            "show_preview": "always",
+            "single_output": false,
+            "use_php": false
+        },
+        "condition": []
+    }
+]

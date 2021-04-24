@@ -1,0 +1,344 @@
+[
+  {
+      "id": 1707,
+      "title": "Title",
+      "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<rect opacity=\"0.25\" width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 22 7)\" fill=\"currentColor\" \/>\n<rect width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 17 2)\" fill=\"currentColor\" \/>\n<\/svg>\n",
+      "keywords": [],
+      "slug": "lazyblock\/title",
+      "description": "",
+      "category": "text",
+      "category_label": "text",
+      "supports": {
+          "customClassName": true,
+          "anchor": false,
+          "align": [
+              "wide",
+              "full"
+          ],
+          "html": false,
+          "multiple": true,
+          "inserter": true
+      },
+      "ghostkit": {
+          "supports": {
+              "spacings": false,
+              "display": false,
+              "scrollReveal": false,
+              "frame": false,
+              "customCSS": false
+          }
+      },
+      "controls": {
+          "control_9c18934e6f": {
+              "type": "text",
+              "name": "title",
+              "default": "Add title text",
+              "label": "Title",
+              "help": "",
+              "child_of": "",
+              "placement": "content",
+              "width": "100",
+              "hide_if_not_selected": "false",
+              "save_in_meta": "false",
+              "save_in_meta_name": "",
+              "required": "false",
+              "placeholder": "",
+              "characters_limit": ""
+          },
+          "control_d139f246e5": {
+              "type": "select",
+              "name": "heading-type",
+              "default": "h2",
+              "label": "Heading Type",
+              "help": "",
+              "child_of": "",
+              "placement": "inspector",
+              "width": "100",
+              "hide_if_not_selected": "false",
+              "save_in_meta": "false",
+              "save_in_meta_name": "",
+              "required": "false",
+              "choices": [
+                  {
+                      "label": "H1",
+                      "value": "h1"
+                  },
+                  {
+                      "label": "H2",
+                      "value": "h2"
+                  },
+                  {
+                      "label": "H3",
+                      "value": "h3"
+                  }
+              ],
+              "allow_null": "false",
+              "multiple": "false",
+              "output_format": "",
+              "placeholder": "",
+              "characters_limit": ""
+          }
+      },
+      "code": {
+          "output_method": "template",
+          "editor_html": "",
+          "editor_callback": "",
+          "editor_css": "",
+          "frontend_html": "",
+          "frontend_callback": "",
+          "frontend_css": "",
+          "show_preview": "never",
+          "single_output": false
+      },
+      "condition": []
+  },
+  {
+      "id": 1696,
+      "title": "Column",
+      "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<rect opacity=\"0.25\" width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 22 7)\" fill=\"currentColor\" \/>\n<rect width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 17 2)\" fill=\"currentColor\" \/>\n<\/svg>\n",
+      "keywords": [],
+      "slug": "lazyblock\/column",
+      "description": "",
+      "category": "wptwigblocks",
+      "category_label": "wp_twig_blocks",
+      "supports": {
+          "customClassName": true,
+          "anchor": false,
+          "align": [
+              "wide",
+              "full"
+          ],
+          "html": false,
+          "multiple": true,
+          "inserter": true
+      },
+      "ghostkit": {
+          "supports": {
+              "spacings": false,
+              "display": false,
+              "scrollReveal": false,
+              "frame": false,
+              "customCSS": false
+          }
+      },
+      "controls": {
+          "control_fab8f24d52": {
+              "type": "inner_blocks",
+              "name": "column-content",
+              "default": "",
+              "label": "Column Content",
+              "help": "",
+              "child_of": "",
+              "placement": "content",
+              "width": "100",
+              "hide_if_not_selected": "false",
+              "save_in_meta": "false",
+              "save_in_meta_name": "",
+              "required": "false",
+              "placeholder": "",
+              "characters_limit": ""
+          }
+      },
+      "code": {
+          "output_method": "template",
+          "editor_html": "",
+          "editor_callback": "",
+          "editor_css": "",
+          "frontend_html": "",
+          "frontend_callback": "",
+          "frontend_css": "",
+          "show_preview": "always",
+          "single_output": false
+      },
+      "condition": []
+  },
+  {
+      "id": 1689,
+      "title": "Row",
+      "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<rect opacity=\"0.25\" width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 22 7)\" fill=\"currentColor\" \/>\n<rect width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 17 2)\" fill=\"currentColor\" \/>\n<\/svg>\n",
+      "keywords": [],
+      "slug": "lazyblock\/row",
+      "description": "",
+      "category": "wptwigblocks",
+      "category_label": "wptwigblocks",
+      "supports": {
+          "customClassName": true,
+          "anchor": false,
+          "align": [
+              "wide",
+              "full"
+          ],
+          "html": false,
+          "multiple": true,
+          "inserter": true
+      },
+      "ghostkit": {
+          "supports": {
+              "spacings": false,
+              "display": false,
+              "scrollReveal": false,
+              "frame": false,
+              "customCSS": false
+          }
+      },
+      "controls": {
+          "control_43f93a4a1d": {
+              "type": "inner_blocks",
+              "name": "content",
+              "default": "",
+              "label": "Row Content",
+              "help": "",
+              "child_of": "",
+              "placement": "content",
+              "width": "100",
+              "hide_if_not_selected": "false",
+              "save_in_meta": "false",
+              "save_in_meta_name": "",
+              "required": "false",
+              "placeholder": "",
+              "characters_limit": ""
+          }
+      },
+      "code": {
+          "output_method": "template",
+          "editor_html": "",
+          "editor_callback": "",
+          "editor_css": "",
+          "frontend_html": "",
+          "frontend_callback": "",
+          "frontend_css": "",
+          "show_preview": "never",
+          "single_output": false
+      },
+      "condition": []
+  },
+  {
+      "id": 1677,
+      "title": "Button",
+      "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<rect opacity=\"0.25\" width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 22 7)\" fill=\"currentColor\" \/>\n<rect width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 17 2)\" fill=\"currentColor\" \/>\n<\/svg>\n",
+      "keywords": [],
+      "slug": "lazyblock\/button",
+      "description": "",
+      "category": "wptwigblocks",
+      "category_label": "wp_twig_blocks",
+      "supports": {
+          "customClassName": true,
+          "anchor": false,
+          "align": [
+              "wide",
+              "full"
+          ],
+          "html": false,
+          "multiple": true,
+          "inserter": true
+      },
+      "ghostkit": {
+          "supports": {
+              "spacings": false,
+              "display": false,
+              "scrollReveal": false,
+              "frame": false,
+              "customCSS": false
+          }
+      },
+      "controls": {
+          "control_6fb88e4a2c": {
+              "type": "text",
+              "name": "button-text",
+              "default": "Hello World!",
+              "label": "Button Text",
+              "help": "",
+              "child_of": "",
+              "placement": "content",
+              "width": "100",
+              "hide_if_not_selected": "false",
+              "save_in_meta": "false",
+              "save_in_meta_name": "",
+              "required": "false",
+              "placeholder": "",
+              "characters_limit": ""
+          },
+          "control_9cfb234e2f": {
+              "type": "url",
+              "name": "button-link",
+              "default": "#",
+              "label": "Button LInk",
+              "help": "",
+              "child_of": "",
+              "placement": "content",
+              "width": "100",
+              "hide_if_not_selected": "false",
+              "save_in_meta": "false",
+              "save_in_meta_name": "",
+              "required": "false",
+              "placeholder": "",
+              "characters_limit": ""
+          },
+          "control_160b1747cd": {
+              "type": "select",
+              "name": "button-style",
+              "default": "btn btn-primary",
+              "label": "Button Style",
+              "help": "",
+              "child_of": "",
+              "placement": "inspector",
+              "width": "100",
+              "hide_if_not_selected": "false",
+              "save_in_meta": "false",
+              "save_in_meta_name": "",
+              "required": "false",
+              "choices": [
+                  {
+                      "label": "Primary",
+                      "value": "btn btn-primary"
+                  },
+                  {
+                      "label": "Secondary",
+                      "value": "btn btn-secondary"
+                  },
+                  {
+                      "label": "Success",
+                      "value": "btn btn-success"
+                  },
+                  {
+                      "label": "Danger",
+                      "value": "btn btn-danger"
+                  },
+                  {
+                      "label": "Warning",
+                      "value": "btn btn-warning"
+                  },
+                  {
+                      "label": "Info",
+                      "value": "btn btn-info"
+                  },
+                  {
+                      "label": "Light",
+                      "value": "btn btn-light"
+                  },
+                  {
+                      "label": "Dark",
+                      "value": "btn btn-dark"
+                  }
+              ],
+              "allow_null": "false",
+              "multiple": "false",
+              "output_format": "",
+              "placeholder": "",
+              "characters_limit": ""
+          }
+      },
+      "code": {
+          "output_method": "template",
+          "editor_html": "",
+          "editor_callback": "",
+          "editor_css": "",
+          "frontend_html": "",
+          "frontend_callback": "",
+          "frontend_css": "",
+          "show_preview": "never",
+          "single_output": false
+      },
+      "condition": []
+  }
+]

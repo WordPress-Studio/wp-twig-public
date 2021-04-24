@@ -1,0 +1,28 @@
+node_modules
+
+#Wordpress
+/*.html
+/*.php
+/*.txt
+.htaccess
+wp-admin/
+wp-includes
+*.log
+*.sql
+
+/wp-content/uploads/wc-logs
+
+# ignore everything in the "wp-content" directory, except:
+wp-content/*/*
+
+## Include uploads
+# !wp-content/uploads/*
+
+# Include theme
+!wp-content/themes/wp-twig
+
+# Include plugins
+!wp-content/plugins/wp_twig_lazy_blocks
+
+## Wocoomerce
+wp-content/uploads

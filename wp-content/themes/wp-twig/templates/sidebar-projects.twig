@@ -1,0 +1,18 @@
+<div class="col-md-4">
+  <h3>Search Projects</h3>
+  <form role="search" action="{{site.link}}" method="get" id="searchform">
+    <input type="text" name="s" placeholder="Search Projects"/>
+    <input
+    type="hidden" name="post_type" value="projects"/>
+    <!-- // hidden 'Projects' value -->
+    <input type="submit" alt="Search" value="Search"/>
+  </form>
+
+  {% for tag in projects_tag %}
+    {% if tag.count >= 1 %}
+      <li>
+        <a href="{{site.url}}/projects_tag/{{ tag.slug }}">{{ tag.title }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</div>

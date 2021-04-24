@@ -1,0 +1,29 @@
+{% extends "components/tease.twig" %}
+
+{% block content %}
+	<div class="item mb-5">
+		<div class="media">
+			{% if post.thumbnail.width > 500 %}
+				<img class="lazy" width="{{500}}" src="{{ post.thumbnail.src|resize(100, 0) }}" data-src="{{ post.thumbnail.src|resize(1200, 0) }}">
+				{% else %}
+					<img class="lazy" width="{{post.thumbnail.width}}"  src="{{ post.thumbnail.src|resize(100, 0) }}" data-src="{{ post.thumbnail.src }}">
+			{% endif %}
+
+			<div class="media-body">
+				<h2 class="title mb-1">
+					<a href="{{post.link}}">{{post.title}}</a>
+				</h2>
+				<div class="meta mb-1">
+					<span class="date">Published {{post.post_date_gmt|time_ago}}</span>
+					<span class="comment">
+						<a href="{{post.link}}#comments">{{post.comment_count}} comments</a>
+					</span>
+				</div>
+				<div class="intro">{{post.preview.length(25)}}</div>
+
+			</div>
+			<!--//media-body-->
+		</div>
+		<!--//media-->
+	</div>
+{% endblock %}

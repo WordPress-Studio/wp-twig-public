@@ -1,0 +1,10 @@
+<div class="blog-comment media mb-4 {{comment.comment_type}}" id="blog-comment-{{comment.ID}}">
+	<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+	<div class="media-body">
+		<h5 class="mt-0 comment-author">
+			{{comment.author.name}}
+			says
+		</h5>
+		{{comment.comment_content|wpautop}}
+	</div>
+</div>

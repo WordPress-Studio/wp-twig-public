@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% do action('woocommerce_before_single_product') %}
+
+    <article itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="entry-images">
+                    <img src="{{ post.thumbnail.src }}" alt="{{ post.title}}" />
+                    <div class="d-flex">
+                        {% do action('woocommerce_product_thumbnails') %}
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="summary entry-summary">
+                    {% do action('woocommerce_single_product_summary') %}
+                </div>
+            </div>
+        </div>
+
+
+       <div class="mt-5">
+        {% do action('woocommerce_after_single_product_summary') %}
+       </div>
+
+        <meta itemprop="url" content="{{ post.link }}" />
+
+    </article>
+
+
+    {% do action('woocommerce_after_single_product') %}
+
+{% endblock  %}

@@ -1,0 +1,93 @@
+/*!
+* Theme Name: Wp Twig
+* Description: Bootstrap 5 WP theme
+* Author: Itobuz Technologies Private Limited
+*/
+
+.screen-reader-text {
+  display: none;
+}
+
+body {
+  background: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.pagination {
+  flex-wrap: wrap;
+}
+
+.before-shop-loop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.before-shop-loop .woocommerce-notices-wrapper {
+  width: 100%;
+}
+
+.woocommerce .col2-set .col-2,
+.woocommerce-page .col2-set .col-2 {
+  max-width: 100%;
+}
+
+.woocommerce-tabs ul {
+  list-style: none;
+  padding: 0;
+}
+
+.woocommerce-tabs ul li {
+  display: inline-block;
+}
+
+.woocommerce-checkout .woocommerce .col2-set .col-1,
+.woocommerce-checkout .woocommerce-page .col2-set .col-1 {
+  max-width: 50%;
+}
+
+/* Wp gallery */
+.gallery {
+  margin: 0 auto 18px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.gallery .gallery-item {
+	margin-top: 0;
+	text-align: center;
+	width: 33%;
+}
+.gallery-columns-2 .gallery-item { width: 50%; }
+.gallery-columns-4 .gallery-item { width: 25%; }
+.gallery img {
+	box-shadow: 0px 0px 4px #999;
+	border: 1px solid white;
+	padding: 8px;
+	background: #f2f2f2;
+}
+.gallery img:hover {
+	background: white;
+}
+.gallery-columns-2 .attachment-medium {
+	max-width: 92%;
+	height: auto;
+}
+.gallery-columns-4 .attachment-thumbnail {
+	max-width: 84%;
+	height: auto;
+}
+.gallery .gallery-caption {
+	color: rgb(12, 5, 5);
+	font-size: 12px;
+	margin: 0 0 12px;
+}
+.gallery dl, .gallery dt { margin: 0; }
+.gallery br+br { display: none; }
+
+img.lazy {
+  background-color: #ddd;
+}
