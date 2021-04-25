@@ -21,7 +21,7 @@ function wp_twig_image($options)
   );
 
   $image = wp_get_attachment_image_src( $options['id'], 'large');
-  $image_small = wp_get_attachment_image_src( $options['id'], 'thumbnail');
+  $image_small = aq_resize($image[0], 100);
   $image_alt = get_post_meta( $options['id'], '_wp_attachment_image_alt', TRUE);
 
   $width = $image[1] > 1 ? $image[1] : $options['width'];

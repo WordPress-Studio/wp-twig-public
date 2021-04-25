@@ -45,6 +45,8 @@ if ( file_exists( $composer_autoload ) ) {
 	require_once __DIR__ . '/inc/post-type/project-post-taxonomy.php';
 	require_once __DIR__ . '/inc/blocks.php';
 	require_once __DIR__ . '/inc/render-assets.php';
+	require_once __DIR__ . '/inc/image-resize.php';
+
 
   $admin_path = str_replace( get_bloginfo( 'url' ) . '/', ABSPATH, get_admin_url() );
   require_once ( $admin_path . '/includes/class-wp-filesystem-base.php' );
