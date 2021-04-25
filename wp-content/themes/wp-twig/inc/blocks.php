@@ -35,7 +35,7 @@ function wp_twig_image($options)
 
   $src = '';
   if ($options['lazy'] && $options['disable_small_image'] == 0) {
-    $src = '" src="' . esc_url($image_small[0]) . '"';
+    $src = '" src="' . $image_small . '"';
   }
 
   echo '<img class="' . $options['lazy_class'] . $lazy_attribute . '"'.  $src . ' width="' . $width . '" height="' . $height . '" alt="' .$image_alt . '">';
