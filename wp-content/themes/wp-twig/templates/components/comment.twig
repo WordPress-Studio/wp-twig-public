@@ -1,10 +1,33 @@
-<div class="blog-comment media mb-4 {{comment.comment_type}}" id="blog-comment-{{comment.ID}}">
-	<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-	<div class="media-body">
+<li class="blog-comment media mb-4 d-flex {{comment.comment_type}}" id="blog-comment-{{comment.ID}}">
+	<div class="author-image">
+		<img class="rounded-circle" src="{{comment.author.avatar}}" alt="">
+	</div>
+
+	<div class="media-body px-3">
 		<h5 class="mt-0 comment-author">
-			{{comment.author.name}}
+			{% if comment.author.first_name %}
+        {{comment.author.first_name}} {{comment.author.last_name}}
+      {% else %}
+        {{comment.author.name}}
+      {% endif %}
 			says
 		</h5>
 		{{comment.comment_content|wpautop}}
+
+		{% if comment.depth < comment_depth %}
+      <button class="btn btn-warning reply-button">
+        Reply
+      </button>
+
+      {% include "comment-form.twig" %}
+
+      {% if comment.children|length > 0 %}
+        <ul class="child-comments">
+            {% for cmt in comment.children %}
+              {% include "comment.twig" with {comment:cmt} %}
+            {% endfor %}
+        </ul>
+      {% endif %}
+    {% endif %}
 	</div>
-</div>
+</li>

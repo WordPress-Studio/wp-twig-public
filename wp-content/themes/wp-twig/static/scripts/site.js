@@ -19,11 +19,18 @@ var site = {
       var className = name + ' ' + nameWithVersion;
       jQuery('body').addClass( className );
     });
+  },
+  commentForm: function() {
+    if (jQuery('.reply-button').length) {
+      jQuery('.reply-button').on('click', function() {
+        jQuery(this).next('.comment-form-wrapper').slideToggle();
+      });
+    }
   }
 }
 
 jQuery(document).ready(function ($) {
-  console.log('jQuery Ready!');
+  site.commentForm();
 });
 
 jQuery(window).load(function () {

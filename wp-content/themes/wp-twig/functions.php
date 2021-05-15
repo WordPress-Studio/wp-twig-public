@@ -254,9 +254,9 @@ public function wp_twig_widgets_init() {
 			'id'            => 'blog_sidebar',
 			'description'   => __( 'Add widgets here to appear in your footer.', 'wp_twig' ),
 			'before_widget' => '<div id="%1$s"  class="widget %2$s card my-4">',
-			'after_widget'  => '</div></div>',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h5 class="widget-title card-header">',
-			'after_title'   => '</h5><div class="card-body">',
+			'after_title'   => '</h5>',
 		));
 
 	register_sidebar(
@@ -265,9 +265,9 @@ public function wp_twig_widgets_init() {
 			'id'            => 'page_sidebar',
 			'description'   => __( 'Add widgets here to appear in your footer.', 'wp_twig' ),
 			'before_widget' => '<div id="%1$s"  class="widget %2$s card my-4">',
-			'after_widget'  => '</div></div>',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h5 class="widget-title card-header">',
-			'after_title'   => '</h5><div class="card-body">',
+			'after_title'   => '</h5>',
 		));
 
 		register_sidebar(
@@ -303,6 +303,8 @@ public function wp_twig_widgets_init() {
     $context['global_js_list'] =  $this->getGlobalJS();
 		$context['css_optimize'] = is_css_optimized('css-optimize');
     $context['js_optimize'] = is_js_optimized();
+    $context['comment_depth'] = get_option( 'thread_comments_depth' );
+
 
 		$context['site']  = $this;
 		return $context;

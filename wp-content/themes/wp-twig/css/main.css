@@ -91,3 +91,8 @@ img {
 img.lazy {
   background-color: #ddd;
 }
+
+/* Comment form */
+.comments .comment-form-wrapper {
+  display: none;
+}
