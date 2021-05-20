@@ -73,7 +73,7 @@ function wp_twig_page_metabox() {
 	$page_meta_assets->add_field( array(
 		'name'             => 'Page Specific stylesheet',
 		'id'               => 'page_meta_stylesheets',
-		'description' => 'Example: css/main.css',
+		'description' => 'Example: /css/main.css',
 		'type'             => 'text',
 		'show_option_none' => true,
 		'repeatable' => true,
