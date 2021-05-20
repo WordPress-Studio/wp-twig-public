@@ -1,3 +1,17 @@
 .wp-block {
   max-width: 100%;
+
+}
+.wp-block-lazyblock-row  .block-editor-block-list__layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+.wp-block-lazyblock-row  .block-editor-block-list__layout .wp-block {
+  flex: auto;
+}
+.wp-block-lazyblock-row  .block-list-appender {
+  width: 100%;
+}
+.wp-block-lazyblock-column .block-editor-block-list__layout {
+  display: block;
 }
