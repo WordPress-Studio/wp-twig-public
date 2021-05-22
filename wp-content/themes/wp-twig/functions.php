@@ -437,12 +437,6 @@ function timber_set_product( $post ) {
 	}
 }
 
-function preview_image_lazyblock_handlebars_helper ( $handlebars ) {
-	$handlebars->registerHelper( 'preview_image_helper', function( $val ) {
-		return wp_get_attachment_image($val, 'full');
-	} );
-}
-add_action( 'lzb/handlebars/object', 'preview_image_lazyblock_handlebars_helper' );
 
 function minifyCSS($stylesheets, $file_name) {
   $minifier = new Minify\CSS();

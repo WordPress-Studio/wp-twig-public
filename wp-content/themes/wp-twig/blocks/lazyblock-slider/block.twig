@@ -1,0 +1,18 @@
+<!-- Slider main container -->
+<div class="swiper-container" data-auto-slide="{{attributes['auto-slide'] ? 1 : 0}}" data-slide-change-interval="{{attributes['slider-change-interval']}}">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {% for inner in attributes['images'] %}
+         <div class="swiper-slide">
+          <img src="{{inner['image']['url']}}" class="'d-block lazy m-auto'" alt="">
+        </div>
+    {% endfor %}
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>

@@ -1,0 +1,5 @@
+@import 'swiper.css';
+
+.swiper-slide img {
+  max-width: 100%;
+}
