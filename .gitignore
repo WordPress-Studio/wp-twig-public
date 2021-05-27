@@ -22,7 +22,7 @@ wp-content/*/*
 !wp-content/themes/wp-twig
 
 # Include plugins
-!wp-content/plugins/wp_twig_lazy_blocks
+#!wp-content/plugins/wp_twig_lazy_blocks
 
 ## Wocoomerce
 wp-content/uploads
