@@ -26,7 +26,9 @@ use MatthiasMullie\Minify;
 
 if ( file_exists( $composer_autoload ) ) {
 	require_once $composer_autoload;
-	$timber = new Timber\Timber();
+	$timber = new Timber\Timber([
+    'debug' => true,
+  ]);
 
 
   // TODO: Set redux URL
