@@ -1,3 +1,0 @@
-<% _.each(glyphs, function(glyph) { %>
-  $<%= fontName%>-<%= glyph.fileName %>: "\<%= glyph.codePoint %>";
-<% }); %>
