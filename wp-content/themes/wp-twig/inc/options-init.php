@@ -108,7 +108,7 @@
     }
 
     Redux::setArgs( $opt_name, $args );
-    Redux::set_extensions( $opt_name, __DIR__ . '/extension-boilerplate/clear_cache/extension_clear_cache.php' );
+    Redux::set_extensions( $opt_name, __DIR__ . '/redux-extensions/clear_cache/extension_clear_cache.php' );
 
     /*
      * ---> END ARGUMENTS
