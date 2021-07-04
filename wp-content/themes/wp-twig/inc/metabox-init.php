@@ -13,7 +13,7 @@ function wp_twig_page_metabox() {
 	$page_meta = new_cmb2_box( array(
 		'id'            => 'page_metabox',
 		'title'         => __( 'Page Options', 'wp_twig' ),
-		'object_types'  => array( 'page', ), // Post type
+		'object_types'  => array( 'page', 'post' ), // Post type
 		'context'       => 'normal',
 		'priority'      => 'high',
 		'show_names'    => true, // Show field names on the left
@@ -63,7 +63,7 @@ function wp_twig_page_metabox() {
 	$page_meta_assets = new_cmb2_box( array(
 		'id'            => 'page_assets',
 		'title'         => __( 'Page Styles and Scripts', 'wp_twig' ),
-		'object_types'  => array( 'page', ), // Post type
+		'object_types'  => array( 'page', 'post' ), // Post type
 		'context'       => 'normal',
 		'priority'      => 'high',
 		'show_names'    => true, // Show field names on the left

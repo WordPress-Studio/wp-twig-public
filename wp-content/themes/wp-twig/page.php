@@ -31,7 +31,8 @@ $project_args = array(
 	'posts_per_page'         => '4',
 );
 $post_id = get_the_ID();
-$context['projects'] = new Timber\PostQuery($project_args);;
+$context['projects'] = new Timber\PostQuery($project_args);
+
 $context['display_sidebar'] = get_post_meta( $post_id, 'page_meta_display_sidebar', true );
 $sidebar_name = get_post_meta( $post_id, 'page_meta_sidebar', true );
 $context['sidebar'] = Timber::get_widgets($sidebar_name);
