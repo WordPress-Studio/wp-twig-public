@@ -91,3 +91,34 @@ function wp_twig_page_metabox() {
 
 
 }
+
+add_action( 'cmb2_admin_init', 'wp_twig_post_metabox' );
+
+/**
+ * Define the metabox and field configurations.
+ */
+function wp_twig_post_metabox() {
+
+	/**
+	 * Initiate the metabox
+	 */
+	$page_meta = new_cmb2_box( array(
+		'id'            => 'post_metabox',
+		'title'         => __( 'Post Options', 'wp_twig' ),
+		'object_types'  => array( 'post', ), // Post type
+		'context'       => 'normal',
+		'priority'      => 'high',
+		'show_names'    => true, // Show field names on the left
+		'closed'     => false, // Keep the metabox closed by default
+	) );
+
+
+	$page_meta->add_field( array(
+		'name'             => 'Display Sidebar',
+		'id'               => 'page_meta_display_sidebar',
+		'type'             => 'text',
+		'show_option_none' => true,
+		'default'          => '0',
+	) );
+
+}
