@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'ff5909ed44ffdc0201cdcda4cb07d702' => __DIR__ . '/..' . '/djboris88/timber-commented-include/functions.php',
         'bb1236b11a3fdef821ef68d2884617ee' => __DIR__ . '/..' . '/cmb2/init.php',
         '0ebae987fe8c1accebbe3bd4db2e8072' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Minify.php',

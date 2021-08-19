@@ -7,11 +7,10 @@
   "require": {
     "timber/timber": "1.18.2",
     "cmb2/cmb2": "2.9.0",
-    "wpackagist-plugin/lazy-blocks": "2.3.1",
+    "wpackagist-plugin/lazy-blocks": "^2.3.1",
     "matthiasmullie/minify": "1.3.66",
     "wpackagist-plugin/redux-framework": "4.1.24",
-    "djboris88/timber-commented-include": "1.1.0",
-    "wpackagist-plugin/wp-limit-login-attempts": "^2.6.3"
+    "djboris88/timber-commented-include": "1.1.0"
   },
   "repositories":[
         {

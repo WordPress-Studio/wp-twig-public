@@ -7,6 +7,7 @@ add_filter( 'lazyblock/row/allow_wrapper', 'disable_lazy_block_wrapper', 10, 3 )
 add_filter( 'lazyblock/column/allow_wrapper', 'disable_lazy_block_wrapper', 10, 3 );
 add_filter( 'lazyblock/image/allow_wrapper', 'disable_lazy_block_wrapper', 10, 3 );
 add_filter( 'lazyblock/button/allow_wrapper', 'disable_lazy_block_wrapper', 10, 3 );
+add_filter( 'lazyblock/animation/allow_wrapper', 'disable_lazy_block_wrapper', 10, 3 );
 
 
 function wp_twig_image($options)
@@ -39,4 +40,24 @@ function wp_twig_image($options)
   }
 
   echo '<img class="' . $options['lazy_class'] . $lazy_attribute . '"'.  $src . ' width="' . $width . '" height="' . $height . '" alt="' .$image_alt . '">';
+}
+
+
+add_filter( 'timber/twig', 'add_to_twig' );
+
+function jsonDecode($obj) {
+  echo json_encode($obj);
+}
+
+/**
+ * My custom Twig functionality.
+ *
+ * @param \Twig\Environment $twig
+ * @return \Twig\Environment
+ */
+function add_to_twig( $twig ) {
+    // Adding a function.
+    $twig->addFunction( new Timber\Twig_Function( 'jsonDecode', 'jsonDecode' ) );
+    
+    return $twig;
 }

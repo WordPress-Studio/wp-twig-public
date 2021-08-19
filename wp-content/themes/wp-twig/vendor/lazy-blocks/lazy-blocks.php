@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  Lazy Blocks
  * Description:  Gutenberg blocks visual constructor. Custom meta fields or blocks with output without hard coding.
- * Version:      2.3.1
+ * Version:      2.4.0
  * Author:       nK
  * Author URI:   https://nkdev.info/
  * License:      GPLv2 or later
@@ -209,8 +209,8 @@ if ( ! class_exists( 'LazyBlocks' ) ) :
     lazyblocks();
 
     // Activation / Deactivation hooks.
-    register_deactivation_hook( __FILE__, array( lazyblocks(), 'activation_hook' ) );
-    register_activation_hook( __FILE__, array( lazyblocks(), 'deactivation_hook' ) );
+    register_activation_hook( __FILE__, array( lazyblocks(), 'activation_hook' ) );
+    register_deactivation_hook( __FILE__, array( lazyblocks(), 'deactivation_hook' ) );
 
     /**
      * Function to get meta value with some improvements for Lazyblocks metas.
@@ -261,15 +261,15 @@ if ( ! class_exists( 'LazyBlocks' ) ) :
 
         $result = null;
 
-        if ( $id ) {
-            $result = get_post_meta( $id, $name, true );
-        } elseif (
+        if (
             isset( $lzb_preview_block_data ) &&
             is_array( $lzb_preview_block_data ) &&
             isset( $control_data['name'] ) &&
             isset( $lzb_preview_block_data['block_attributes'][ $control_data['name'] ] )
         ) {
             $result = $lzb_preview_block_data['block_attributes'][ $control_data['name'] ];
+        } elseif ( $id ) {
+            $result = get_post_meta( $id, $name, true );
         }
 
         return apply_filters( 'lzb/get_meta', $result, $name, $id, $control_data );

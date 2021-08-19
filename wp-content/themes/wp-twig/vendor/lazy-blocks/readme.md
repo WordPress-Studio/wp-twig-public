@@ -3,9 +3,9 @@
 * Contributors: nko
 * Tags: gutenberg, blocks, custom, meta, fields
 * Requires at least: 5.5
-* Tested up to: 5.7
+* Tested up to: 5.8
 * Requires PHP: 5.5.9
-* Stable tag: 2.3.1
+* Stable tag: 2.4.0
 * License: GPLv2 or later
 * License URI: <http://www.gnu.org/licenses/gpl-2.0.html>
 
@@ -101,6 +101,21 @@ The manual installation method involves downloading our Lazy Blocks plugin and u
 3. Posts Templates
 
 ## Changelog
+
+= 2.4.0 =
+
+* added support for WordPress 5.8
+* added a lot of UI improvements
+* added slug check in the block name before register block (fixes possible errors)
+* added placeholder color in image and gallery controls if images no more exist in media library
+* added control names autocompletion to code editor in the blocks constructor
+* fixed multiple select control wrong height and styles
+* fixed displaying control post meta using function `get_lzb_meta` when live reload preview
+* fixed Classic Control toolbar sticky
+* fixed Date Control JS error
+* fixed long words render in control labels and descriptions
+* fixed PHP 8 deprecated error
+* fixed wrong activation hook call
 
 = 2.3.1 =
 

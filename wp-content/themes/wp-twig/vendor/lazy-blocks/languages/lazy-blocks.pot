@@ -2,16 +2,16 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Lazy Blocks 2.3.1\n"
+"Project-Id-Version: Lazy Blocks 2.4.0\n"
 "Report-Msgid-Bugs-To: https://github.com/nk-o/lazyblocks/issues\n"
 "Last-Translator: nK\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-03-19T09:05:28+00:00\n"
+"POT-Creation-Date: 2021-08-18T08:35:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: lazy-blocks\n"
 
 #. Plugin Name of the plugin
@@ -64,7 +64,7 @@ msgid "Duplicate “%1$s”"
 msgstr ""
 
 #: classes/class-blocks.php:453
-#: assets/admin/constructor/blocks/controls/control.js:136
+#: assets/admin/constructor/blocks/controls/control.js:140
 msgid "Duplicate"
 msgstr ""
 
@@ -79,18 +79,18 @@ msgid "Export"
 msgstr ""
 
 #: classes/class-blocks.php:520
-#: assets/admin/constructor/blocks/general/index.js:132
+#: assets/admin/constructor/blocks/general/index.js:91
 msgid "Icon"
 msgstr ""
 
 #: classes/class-blocks.php:522
-#: assets/admin/constructor/blocks/general/index.js:139
-#: assets/admin/templates/templates.js:555
+#: assets/admin/constructor/blocks/general/index.js:98
+#: assets/admin/templates/templates.js:558
 msgid "Category"
 msgstr ""
 
 #: classes/class-blocks.php:523
-#: assets/admin/constructor/blocks/general/index.js:194
+#: assets/admin/constructor/blocks/general/index.js:153
 msgid "Description"
 msgstr ""
 
@@ -99,7 +99,6 @@ msgid "Basic"
 msgstr ""
 
 #: classes/class-controls.php:42
-#: assets/admin/constructor/blocks/controls/index.js:184
 #: assets/admin/constructor/blocks/selected-control-settings/settings-rows/placement.js:66
 msgid "Content"
 msgstr ""
@@ -341,55 +340,54 @@ msgstr ""
 msgid "(copy)"
 msgstr ""
 
-#: assets/admin/constructor/blocks/controls/control.js:147
+#: assets/admin/constructor/blocks/controls/control.js:151
 msgid "Do you really want to remove control?"
 msgstr ""
 
-#: assets/admin/constructor/blocks/controls/control.js:152
-#: assets/admin/templates/templates.js:584
-#: assets/admin/templates/templates.js:662
+#: assets/admin/constructor/blocks/controls/control.js:161
+#: assets/admin/templates/templates.js:587
+#: assets/admin/templates/templates.js:665
 msgid "Remove"
 msgstr ""
 
-#: assets/admin/constructor/blocks/controls/index.js:153
+#: assets/admin/constructor/blocks/controls/index.js:157
 msgid "Add Child Control"
 msgstr ""
 
-#: assets/admin/constructor/blocks/controls/index.js:153
+#: assets/admin/constructor/blocks/controls/index.js:157
 msgid "Add Control"
 msgstr ""
 
-#: assets/admin/constructor/blocks/controls/index.js:188
-#: assets/admin/constructor/blocks/selected-control-settings/settings-rows/placement.js:89
-msgid "Inspector"
+#: assets/admin/constructor/blocks/controls/index.js:194
+msgid "Content Controls"
 msgstr ""
 
 #: assets/admin/constructor/blocks/controls/index.js:206
+msgid "Inspector Controls"
+msgstr ""
+
+#: assets/admin/constructor/blocks/controls/index.js:226
 msgid "Hidden"
 msgstr ""
 
-#: assets/admin/constructor/blocks/general/index.js:108
-msgid "Title"
-msgstr ""
-
-#: assets/admin/constructor/blocks/general/index.js:116
-#: assets/admin/templates/templates.js:554
+#: assets/admin/constructor/blocks/general/index.js:75
+#: assets/admin/templates/templates.js:557
 msgid "Slug"
 msgstr ""
 
-#: assets/admin/constructor/blocks/general/index.js:126
+#: assets/admin/constructor/blocks/general/index.js:85
 msgid "Block slug must include only lowercase alphanumeric characters or dashes, and start with a letter. Example: lazyblock/my-custom-block"
 msgstr ""
 
-#: assets/admin/constructor/blocks/general/index.js:143
+#: assets/admin/constructor/blocks/general/index.js:102
 msgid "Select category"
 msgstr ""
 
-#: assets/admin/constructor/blocks/general/index.js:152
+#: assets/admin/constructor/blocks/general/index.js:111
 msgid "Keywords"
 msgstr ""
 
-#: assets/admin/constructor/blocks/general/index.js:157
+#: assets/admin/constructor/blocks/general/index.js:116
 msgid "Enter up to 3 keywords"
 msgstr ""
 
@@ -426,13 +424,13 @@ msgstr ""
 #: controls/repeater/script.js:236
 #: controls/select/script.js:82
 #: controls/select/script.js:94
-#: controls/toggle/script.js:55
+#: controls/toggle/script.js:54
 msgid "Yes"
 msgstr ""
 
 #: assets/admin/constructor/blocks/selected-control-settings/settings-rows/label.js:61
 #: controls/radio/script.js:79
-#: controls/select/component-choices.js:21
+#: controls/select/component-choices.js:28
 #: controls/select/script.js:111
 msgid "Label"
 msgstr ""
@@ -451,6 +449,10 @@ msgstr ""
 
 #: assets/admin/constructor/blocks/selected-control-settings/settings-rows/placement.js:41
 msgid "Placement"
+msgstr ""
+
+#: assets/admin/constructor/blocks/selected-control-settings/settings-rows/placement.js:89
+msgid "Inspector"
 msgstr ""
 
 #: assets/admin/constructor/blocks/selected-control-settings/settings-rows/required.js:21
@@ -602,23 +604,20 @@ msgstr ""
 msgid "Write custom CSS on each inserted blocks."
 msgstr ""
 
-#: assets/admin/constructor/index.js:93
+#: assets/admin/constructor/blocks/title/index.js:67
+#: assets/admin/templates/templates.js:556
+msgid "Block Name"
+msgstr ""
+
+#: assets/admin/constructor/index.js:94
 msgid "Supports"
 msgstr ""
 
-#: assets/admin/constructor/index.js:99
+#: assets/admin/constructor/index.js:100
 msgid "Condition"
 msgstr ""
 
-#: assets/admin/constructor/index.js:111
-msgid "Controls"
-msgstr ""
-
-#: assets/admin/constructor/index.js:116
-msgid "Code"
-msgstr ""
-
-#: assets/admin/constructor/index.js:145
+#: assets/admin/constructor/index.js:148
 msgid "Blocks Constructor"
 msgstr ""
 
@@ -626,39 +625,35 @@ msgstr ""
 msgid "Undefined Block"
 msgstr ""
 
-#: assets/admin/templates/templates.js:487
+#: assets/admin/templates/templates.js:490
 msgid "None"
 msgstr ""
 
-#: assets/admin/templates/templates.js:490
+#: assets/admin/templates/templates.js:493
 msgid "Prevent all operations"
 msgstr ""
 
-#: assets/admin/templates/templates.js:493
+#: assets/admin/templates/templates.js:496
 msgid "Prevent inserting new blocks, but allows moving existing ones"
 msgstr ""
 
-#: assets/admin/templates/templates.js:503
+#: assets/admin/templates/templates.js:506
 msgid "Select post type:"
 msgstr ""
 
-#: assets/admin/templates/templates.js:553
-msgid "Block Name"
-msgstr ""
-
-#: assets/admin/templates/templates.js:597
+#: assets/admin/templates/templates.js:600
 msgid "+ Add Block"
 msgstr ""
 
-#: assets/admin/templates/templates.js:614
+#: assets/admin/templates/templates.js:617
 msgid "Template Lock"
 msgstr ""
 
-#: assets/admin/templates/templates.js:647
+#: assets/admin/templates/templates.js:650
 msgid "Save Template"
 msgstr ""
 
-#: assets/admin/templates/templates.js:657
+#: assets/admin/templates/templates.js:660
 msgid "Do you really want to remove template for \"%s\"?"
 msgstr ""
 
@@ -713,7 +708,7 @@ msgid "Edit Block"
 msgstr ""
 
 #: controls/checkbox/script.js:43
-#: controls/toggle/script.js:44
+#: controls/toggle/script.js:43
 msgid "Alongside Text"
 msgstr ""
 
@@ -722,7 +717,7 @@ msgid "Displays text alongside the checkbox"
 msgstr ""
 
 #: controls/checkbox/script.js:51
-#: controls/toggle/script.js:52
+#: controls/toggle/script.js:51
 msgid "Checked"
 msgstr ""
 
@@ -775,11 +770,11 @@ msgstr ""
 msgid "Select Time"
 msgstr ""
 
-#: controls/date_time/script.js:184
+#: controls/date_time/script.js:185
 msgid "Date"
 msgstr ""
 
-#: controls/date_time/script.js:206
+#: controls/date_time/script.js:207
 msgid "Time"
 msgstr ""
 
@@ -883,7 +878,7 @@ msgid "Allows you to change attribute output format"
 msgstr ""
 
 #: controls/radio/script.js:76
-#: controls/select/component-choices.js:26
+#: controls/select/component-choices.js:33
 #: controls/select/script.js:108
 msgid "Value"
 msgstr ""
@@ -893,17 +888,17 @@ msgstr ""
 msgid "Both (Array)"
 msgstr ""
 
-#: controls/repeater/repeater-control.js:108
+#: controls/repeater/repeater-control.js:110
 #: controls/repeater/script.js:197
 msgid "Row {{#}}"
 msgstr ""
 
-#: controls/repeater/repeater-control.js:202
+#: controls/repeater/repeater-control.js:204
 #: controls/repeater/script.js:206
 msgid "+ Add Row"
 msgstr ""
 
-#: controls/repeater/repeater-control.js:205
+#: controls/repeater/repeater-control.js:207
 msgid "Toggle all rows"
 msgstr ""
 
@@ -947,11 +942,11 @@ msgstr ""
 msgid "Multiline"
 msgstr ""
 
-#: controls/select/component-choices.js:154
+#: controls/select/component-choices.js:165
 msgid "Choices"
 msgstr ""
 
-#: controls/select/component-choices.js:180
+#: controls/select/component-choices.js:191
 msgid "+ Add Choice"
 msgstr ""
 
@@ -963,7 +958,7 @@ msgstr ""
 msgid "Allows you to select multiple values"
 msgstr ""
 
-#: controls/toggle/script.js:45
+#: controls/toggle/script.js:44
 msgid "Displays text alongside the toggle"
 msgstr ""
 

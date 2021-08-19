@@ -238,13 +238,13 @@
          "Add Control": [
             ""
          ],
-         "Inspector": [
+         "Content Controls": [
+            ""
+         ],
+         "Inspector Controls": [
             ""
          ],
          "Hidden": [
-            ""
-         ],
-         "Title": [
             ""
          ],
          "Slug": [
@@ -296,6 +296,9 @@
             ""
          ],
          "Placement": [
+            ""
+         ],
+         "Inspector": [
             ""
          ],
          "Required": [
@@ -409,16 +412,13 @@
          "Write custom CSS on each inserted blocks.": [
             ""
          ],
+         "Block Name": [
+            ""
+         ],
          "Supports": [
             ""
          ],
          "Condition": [
-            ""
-         ],
-         "Controls": [
-            ""
-         ],
-         "Code": [
             ""
          ],
          "Blocks Constructor": [
@@ -437,9 +437,6 @@
             ""
          ],
          "Select post type:": [
-            ""
-         ],
-         "Block Name": [
             ""
          ],
          "+ Add Block": [

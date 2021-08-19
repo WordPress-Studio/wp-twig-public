@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '14ff026db6b02ac1a0586efb380ca17a123d668f',
+    'reference' => 'a0805b7f8f7b5ca1f57653f69a2cb76c4205a6c8',
     'name' => 'itobuz/wp-twig',
   ),
   'versions' => 
@@ -63,12 +63,12 @@ private static $installed = array (
     ),
     'composer/installers' => 
     array (
-      'pretty_version' => 'v1.10.0',
-      'version' => '1.10.0.0',
+      'pretty_version' => 'v1.11.0',
+      'version' => '1.11.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1a0357fccad9d1cc1ea0c9a05b8847fbccccb78d',
+      'reference' => 'ae03311f45dfe194412081526be2e003960df74b',
     ),
     'djboris88/timber-commented-include' => 
     array (
@@ -95,7 +95,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '14ff026db6b02ac1a0586efb380ca17a123d668f',
+      'reference' => 'a0805b7f8f7b5ca1f57653f69a2cb76c4205a6c8',
     ),
     'matthiasmullie/minify' => 
     array (
@@ -131,21 +131,21 @@ private static $installed = array (
     ),
     'symfony/polyfill-ctype' => 
     array (
-      'pretty_version' => 'v1.22.1',
-      'version' => '1.22.1.0',
+      'pretty_version' => 'v1.23.0',
+      'version' => '1.23.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c6c942b1ac76c82448322025e084cadc56048b4e',
+      'reference' => '46cd95797e9df938fdd2b03693b5fca5e64b01ce',
     ),
     'symfony/polyfill-mbstring' => 
     array (
-      'pretty_version' => 'v1.22.1',
-      'version' => '1.22.1.0',
+      'pretty_version' => 'v1.23.1',
+      'version' => '1.23.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5232de97ee3b75b0360528dae24e73db49566ab1',
+      'reference' => '9174a3d80210dca8daa7f31fec659150bbeabfc6',
     ),
     'timber/timber' => 
     array (
@@ -158,12 +158,12 @@ private static $installed = array (
     ),
     'twig/twig' => 
     array (
-      'pretty_version' => 'v2.14.4',
-      'version' => '2.14.4.0',
+      'pretty_version' => 'v2.14.6',
+      'version' => '2.14.6.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0b4ba691fb99ec7952d25deb36c0a83061b93bbf',
+      'reference' => '27e5cf2b05e3744accf39d4c68a3235d9966d260',
     ),
     'upstatement/routes' => 
     array (
@@ -176,12 +176,12 @@ private static $installed = array (
     ),
     'wpackagist-plugin/lazy-blocks' => 
     array (
-      'pretty_version' => '2.3.1',
-      'version' => '2.3.1.0',
+      'pretty_version' => '2.4.0',
+      'version' => '2.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'tags/2.3.1',
+      'reference' => 'tags/2.4.0',
     ),
     'wpackagist-plugin/redux-framework' => 
     array (
@@ -191,15 +191,6 @@ private static $installed = array (
       array (
       ),
       'reference' => 'tags/4.1.24',
-    ),
-    'wpackagist-plugin/wp-limit-login-attempts' => 
-    array (
-      'pretty_version' => '2.6.3',
-      'version' => '2.6.3.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'trunk',
     ),
   ),
 );

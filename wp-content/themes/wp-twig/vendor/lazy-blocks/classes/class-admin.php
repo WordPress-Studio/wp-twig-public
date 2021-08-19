@@ -86,7 +86,7 @@ class LazyBlocks_Admin {
             )
         );
 
-        wp_enqueue_style( 'lazyblocks-admin', lazyblocks()->plugin_url() . 'assets/admin/css/style.min.css', '', '2.3.1' );
+        wp_enqueue_style( 'lazyblocks-admin', lazyblocks()->plugin_url() . 'assets/admin/css/style.min.css', '', '2.4.0' );
         wp_style_add_data( 'lazyblocks-admin', 'rtl', 'replace' );
         wp_style_add_data( 'lazyblocks-admin', 'suffix', '.min' );
     }
@@ -100,7 +100,7 @@ class LazyBlocks_Admin {
                 'lazyblocks-constructor',
                 lazyblocks()->plugin_url() . 'assets/admin/constructor/index.min.js',
                 array( 'wp-blocks', 'wp-editor', 'wp-block-editor', 'wp-i18n', 'wp-element', 'wp-components', 'lodash', 'jquery' ),
-                '2.3.1',
+                '2.4.0',
                 true
             );
             wp_localize_script(
@@ -115,7 +115,7 @@ class LazyBlocks_Admin {
                 )
             );
 
-            wp_enqueue_style( 'lazyblocks-constructor', lazyblocks()->plugin_url() . 'assets/admin/constructor/style.min.css', array(), '2.3.1' );
+            wp_enqueue_style( 'lazyblocks-constructor', lazyblocks()->plugin_url() . 'assets/admin/constructor/style.min.css', array(), '2.4.0' );
             wp_style_add_data( 'lazyblocks-constructor', 'rtl', 'replace' );
             wp_style_add_data( 'lazyblocks-constructor', 'suffix', '.min' );
         }
@@ -129,7 +129,7 @@ class LazyBlocks_Admin {
             return;
         }
 
-        wp_enqueue_script( 'lazyblocks-translation', lazyblocks()->plugin_url() . 'assets/js/translation.min.js', array(), '2.3.1', false );
+        wp_enqueue_script( 'lazyblocks-translation', lazyblocks()->plugin_url() . 'assets/js/translation.min.js', array(), '2.4.0', false );
         wp_set_script_translations( 'lazyblocks-translation', 'lazy-blocks', lazyblocks()->plugin_path() . 'languages' );
     }
 

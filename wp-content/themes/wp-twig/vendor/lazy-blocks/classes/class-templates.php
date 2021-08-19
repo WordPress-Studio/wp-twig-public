@@ -274,7 +274,7 @@ class LazyBlocks_Templates {
             'lazyblocks-templates',
             lazyblocks()->plugin_url() . 'assets/admin/templates/index.min.js',
             array( 'wp-blocks', 'wp-block-library', 'wp-data', 'wp-element', 'wp-components', 'wp-api', 'wp-i18n' ),
-            '2.3.1',
+            '2.4.0',
             true
         );
     }

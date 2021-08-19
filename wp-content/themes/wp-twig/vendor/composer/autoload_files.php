@@ -6,8 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     '320cde22f66dd4f5d3fd621d3e88b98f' => $vendorDir . '/symfony/polyfill-ctype/bootstrap.php',
+    '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     'ff5909ed44ffdc0201cdcda4cb07d702' => $vendorDir . '/djboris88/timber-commented-include/functions.php',
     'bb1236b11a3fdef821ef68d2884617ee' => $vendorDir . '/cmb2/init.php',
     '0ebae987fe8c1accebbe3bd4db2e8072' => $vendorDir . '/matthiasmullie/minify/src/Minify.php',
