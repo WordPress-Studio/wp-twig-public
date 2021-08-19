@@ -284,6 +284,13 @@ public function wp_twig_widgets_init() {
     $context['js_optimize'] = is_js_optimized();
     $context['comment_depth'] = get_option( 'thread_comments_depth' );
 
+    $post_id = get_the_ID();
+    $context['page_meta_hide_page_title'] = get_post_meta($post_id, 'page_meta_hide_page_title', true);
+    $context['site_wrapper_class'] = get_post_meta($post_id, 'page_meta_wrapper_class', true);
+    $context['display_sidebar'] = get_post_meta( $post_id, 'page_meta_display_sidebar', true );
+    $sidebar_name = get_post_meta( $post_id, 'page_meta_sidebar', true );
+    $context['sidebar'] = Timber::get_widgets($sidebar_name);
+
 
 		$context['site']  = $this;
 		return $context;
@@ -470,4 +477,37 @@ function is_css_optimized() {
 
 function isDebugModeEnabled() {
   return WP_DEBUG;
+}
+
+
+function getScriptsAndStyles($timber_post, $context) {
+
+  $post_id = get_the_ID();
+
+  $js_optimized = is_js_optimized();
+  $css_optimized = is_css_optimized();
+
+  $sheets = renderStyleSheets($timber_post);
+
+  if (isset($sheets['block_style_sheets'])) {
+    $context['block_style_sheets'] = $sheets['block_style_sheets'];
+  }
+  if ($css_optimized && isset($sheets['page_specific_style_sheets'])) {
+    $context['page_specific_style_sheets'] = $sheets['page_specific_style_sheets'];
+  }
+
+  $scripts = renderScripts($timber_post);
+
+  if (isset($scripts['block_scripts'])) {
+    $context['block_scripts'] = $scripts['block_scripts'];
+  }
+
+  if ($js_optimized ) {
+    $context['page_specific_scripts'] = $scripts['page_specific_scripts'];
+  } else {
+    $context['page_specific_scripts'] = get_post_meta($post_id, 'page_meta_scripts', true);
+  }
+
+  return $context;
+
 }

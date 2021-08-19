@@ -13,7 +13,9 @@
 
 
     <section class="article-content">
-      <h1 class="article-h1">{{ post.title }}</h1>
+      {% if page_meta_hide_page_title != 'on' %}
+          <h1 class="article-h1">{{post.title}}</h1>
+        {% endif %}
 
       <p class="blog-author">
         <span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> <time
