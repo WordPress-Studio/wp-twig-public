@@ -155,6 +155,14 @@ function renderScripts($timber_post) {
 
   }
 
+  $post_id = $timber_post->id;
+
+
+  if (get_post_meta( $post_id, 'animation_support', true ) === 'on') {
+    array_push($block_scripts, '/static/scripts/vendor/gsap.min.js');
+    array_push($block_scripts, '/static/scripts/vendor/scroll-trigger.min.js');
+  }
+  
   if ($js_optimized) {
       $file_name = $timber_post->post_name . '-block';
       $jsURL = minifyJS($block_scripts, $file_name);
@@ -167,7 +175,6 @@ function renderScripts($timber_post) {
     $data['block_scripts'] =  $block_scripts;
   }
 
-  $post_id = $timber_post->id;
 
   if ($js_optimized) {
       $scripts = get_post_meta($post_id, 'page_meta_scripts', true) ? get_post_meta($post_id, 'page_meta_scripts', true) : array();

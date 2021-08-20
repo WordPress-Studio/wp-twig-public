@@ -39,6 +39,12 @@ function wp_twig_page_metabox() {
 		'type'             => 'checkbox',
 	) );
 
+  $page_meta->add_field( array(
+		'name'             => 'Add Animation Support',
+		'id'               => 'animation_support',
+		'type'             => 'checkbox',
+	) );
+
 	$page_meta->add_field( array(
 		'name'             => 'Choose sidebar',
 		'id'               => 'page_meta_sidebar',

@@ -284,12 +284,14 @@ public function wp_twig_widgets_init() {
     $context['js_optimize'] = is_js_optimized();
     $context['comment_depth'] = get_option( 'thread_comments_depth' );
 
+    // Page or post meta
     $post_id = get_the_ID();
     $context['page_meta_hide_page_title'] = get_post_meta($post_id, 'page_meta_hide_page_title', true);
     $context['site_wrapper_class'] = get_post_meta($post_id, 'page_meta_wrapper_class', true);
     $context['display_sidebar'] = get_post_meta( $post_id, 'page_meta_display_sidebar', true );
     $sidebar_name = get_post_meta( $post_id, 'page_meta_sidebar', true );
     $context['sidebar'] = Timber::get_widgets($sidebar_name);
+    $context['animation_support'] = get_post_meta( $post_id, 'animation_support', true );
 
 
 		$context['site']  = $this;
