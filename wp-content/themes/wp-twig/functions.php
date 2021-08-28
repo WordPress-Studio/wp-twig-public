@@ -507,7 +507,18 @@ function getScriptsAndStyles($timber_post, $context) {
   if ($js_optimized ) {
     $context['page_specific_scripts'] = $scripts['page_specific_scripts'];
   } else {
-    $context['page_specific_scripts'] = get_post_meta($post_id, 'page_meta_scripts', true);
+    $scripts = get_post_meta($post_id, 'page_meta_scripts', true);
+    if (!$scripts) {
+      $scripts = array();
+    }
+
+    
+     if (get_post_meta( $post_id, 'animation_support', true ) === 'on') {
+      array_push($scripts, '/static/scripts/vendor/gsap.min.js');
+      array_push($scripts, '/static/scripts/vendor/scroll-trigger.min.js');
+      array_push($scripts, '/static/scripts/anim-lib.js');
+    }
+    $context['page_specific_scripts'] = $scripts;
   }
 
   return $context;

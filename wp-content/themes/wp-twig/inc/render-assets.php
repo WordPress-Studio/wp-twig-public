@@ -158,10 +158,6 @@ function renderScripts($timber_post) {
   $post_id = $timber_post->id;
 
 
-  if (get_post_meta( $post_id, 'animation_support', true ) === 'on') {
-    array_push($block_scripts, '/static/scripts/vendor/gsap.min.js');
-    array_push($block_scripts, '/static/scripts/vendor/scroll-trigger.min.js');
-  }
   
   if ($js_optimized) {
       $file_name = $timber_post->post_name . '-block';
@@ -177,14 +173,26 @@ function renderScripts($timber_post) {
 
 
   if ($js_optimized) {
-      $scripts = get_post_meta($post_id, 'page_meta_scripts', true) ? get_post_meta($post_id, 'page_meta_scripts', true) : array();
+      $scripts = get_post_meta($post_id, 'page_meta_scripts', true);
+
+      if (!$scripts) {
+        $scripts = array();
+      }
+  
+      
+       if (get_post_meta( $post_id, 'animation_support', true ) === 'on') {
+        array_push($scripts, '/static/scripts/vendor/gsap.min.js');
+        array_push($scripts, '/static/scripts/vendor/scroll-trigger.min.js');
+        array_push($scripts, '/static/scripts/anim-lib.js');
+      }
+
       $file_name = $timber_post->post_name . '-page';
 
       $jsURL = minifyJS($scripts, $file_name);
       if (strpos($jsURL, '.js') !== false) {
           $data['page_specific_scripts'] = array($jsURL);
       }
-  }
+  } 
 
   return $data;
 }

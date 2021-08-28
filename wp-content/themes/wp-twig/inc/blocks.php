@@ -21,7 +21,7 @@ function wp_twig_image($options)
     'disable_small_image' => isset($options['disable_small_image']) ? $options['disable_small_image'] : 0,
   );
 
-  $image = wp_get_attachment_image_src( $options['id'], 'large');
+  $image = wp_get_attachment_image_src( $options['id'], 'full');
   $image_small = aq_resize($image[0], 100);
   $image_alt = get_post_meta( $options['id'], '_wp_attachment_image_alt', TRUE);
 
