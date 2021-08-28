@@ -37,7 +37,7 @@ class LazyBlocks_Control_CodeEditor extends LazyBlocks_Control {
             'lazyblocks-control-code-editor',
             lazyblocks()->plugin_url() . 'controls/code_editor/script.min.js',
             array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components' ),
-            '2.4.0',
+            '2.4.1',
             true
         );
     }

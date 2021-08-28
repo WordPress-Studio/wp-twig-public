@@ -370,7 +370,7 @@ class LazyBlocks_Blocks {
      * @return array
      */
     public function allowed_block_types_all( $allowed_block_types, $editor_context ) {
-        if ( ! empty( $editor_context->post ) && 'lazyblocks' !== $editor_context->post->post_type ) {
+        if ( empty( $editor_context->post ) || 'lazyblocks' !== $editor_context->post->post_type ) {
             return $allowed_block_types;
         }
         return array( 'lzb-constructor/main' );
@@ -1068,7 +1068,7 @@ class LazyBlocks_Blocks {
             'lazyblocks-gutenberg',
             lazyblocks()->plugin_url() . 'assets/css/style.min.css',
             array(),
-            '2.4.0'
+            '2.4.1'
         );
         wp_style_add_data( 'lazyblocks-gutenberg', 'rtl', 'replace' );
         wp_style_add_data( 'lazyblocks-gutenberg', 'suffix', '.min' );
@@ -1077,8 +1077,8 @@ class LazyBlocks_Blocks {
         wp_enqueue_script(
             'lazyblocks-gutenberg',
             lazyblocks()->plugin_url() . 'assets/js/index.min.js',
-            array( 'wp-blocks', 'wp-editor', 'wp-block-editor', 'wp-i18n', 'wp-element', 'wp-components' ),
-            '2.4.0',
+            array( 'wp-blocks', 'wp-block-editor', 'wp-i18n', 'wp-element', 'wp-components' ),
+            '2.4.1',
             true
         );
 

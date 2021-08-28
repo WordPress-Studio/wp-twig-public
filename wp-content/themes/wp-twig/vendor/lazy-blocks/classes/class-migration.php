@@ -18,7 +18,7 @@ class LazyBlocks_Migration {
      *
      * @var string
      */
-    protected $version = '2.4.0';
+    protected $version = '2.4.1';
 
     /**
      * Initial version.

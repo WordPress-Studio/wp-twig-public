@@ -39,7 +39,7 @@ class LazyBlocks_Control_Number extends LazyBlocks_Control {
             'lazyblocks-control-number',
             lazyblocks()->plugin_url() . 'controls/number/script.min.js',
             array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components' ),
-            '2.4.0',
+            '2.4.1',
             true
         );
     }

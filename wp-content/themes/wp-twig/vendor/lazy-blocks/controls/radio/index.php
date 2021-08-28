@@ -44,7 +44,7 @@ class LazyBlocks_Control_Radio extends LazyBlocks_Control {
             'lazyblocks-control-radio',
             lazyblocks()->plugin_url() . 'controls/radio/script.min.js',
             array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components' ),
-            '2.4.0',
+            '2.4.1',
             true
         );
     }

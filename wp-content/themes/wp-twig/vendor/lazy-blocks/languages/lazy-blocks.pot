@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Lazy Blocks 2.4.0\n"
+"Project-Id-Version: Lazy Blocks 2.4.1\n"
 "Report-Msgid-Bugs-To: https://github.com/nk-o/lazyblocks/issues\n"
 "Last-Translator: nK\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-18T08:35:50+00:00\n"
+"POT-Creation-Date: 2021-08-27T12:44:14+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: lazy-blocks\n"
@@ -800,11 +800,11 @@ msgstr ""
 msgid "Maximum number of characters allowed. Leave blank to no limit."
 msgstr ""
 
-#: controls/file/file-control.js:85
+#: controls/file/file-control.js:86
 msgid "file"
 msgstr ""
 
-#: controls/file/file-control.js:134
+#: controls/file/file-control.js:137
 msgid "Remove File"
 msgstr ""
 
@@ -816,11 +816,11 @@ msgstr ""
 msgid "If nothing selected, all file types will be allowed to use."
 msgstr ""
 
-#: controls/gallery/gallery-control.js:71
+#: controls/gallery/gallery-control.js:68
 msgid "images"
 msgstr ""
 
-#: controls/gallery/gallery-control.js:123
+#: controls/gallery/gallery-control.js:120
 msgid "Edit Gallery"
 msgstr ""
 
@@ -834,11 +834,11 @@ msgstr ""
 msgid "Medium"
 msgstr ""
 
-#: controls/image/image-control.js:70
+#: controls/image/image-control.js:67
 msgid "image"
 msgstr ""
 
-#: controls/image/image-control.js:110
+#: controls/image/image-control.js:107
 msgid "Remove Image"
 msgstr ""
 

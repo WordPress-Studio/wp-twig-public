@@ -44,7 +44,7 @@ class LazyBlocks_Control_File extends LazyBlocks_Control {
             'lazyblocks-control-file',
             lazyblocks()->plugin_url() . 'controls/file/script.min.js',
             array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components' ),
-            '2.4.0',
+            '2.4.1',
             true
         );
     }

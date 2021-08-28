@@ -37,7 +37,7 @@ class LazyBlocks_Control_TextArea extends LazyBlocks_Control {
             'lazyblocks-control-textarea',
             lazyblocks()->plugin_url() . 'controls/textarea/script.min.js',
             array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components' ),
-            '2.4.0',
+            '2.4.1',
             true
         );
     }

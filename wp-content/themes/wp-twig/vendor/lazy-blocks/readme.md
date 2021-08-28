@@ -5,7 +5,7 @@
 * Requires at least: 5.5
 * Tested up to: 5.8
 * Requires PHP: 5.5.9
-* Stable tag: 2.4.0
+* Stable tag: 2.4.1
 * License: GPLv2 or later
 * License URI: <http://www.gnu.org/licenses/gpl-2.0.html>
 
@@ -101,6 +101,13 @@ The manual installation method involves downloading our Lazy Blocks plugin and u
 3. Posts Templates
 
 ## Changelog
+
+= 2.4.1 =
+
+* fixed 'wp-editor' deprecated error
+* fixed conflict with Widgets Gutenberg editor
+* fixed repeater sorting error
+* removed accepted list for file control Upload button since it is not working correctly in some cases
 
 = 2.4.0 =
 

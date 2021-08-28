@@ -1,0 +1,7 @@
+{{attributes.image.url| towebp }}
+
+<picture>
+  <source srcset="{{attributes.image.url| towebp }}" type="image/webp">
+  <source srcset="{{attributes.image.url|tojpg }}" type="image/jpeg">
+  <img src="{{attributes.image.url|tojpg }}">
+</picture>

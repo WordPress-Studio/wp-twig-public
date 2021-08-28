@@ -59,10 +59,6 @@
                 "router",
                 "routing"
             ],
-            "support": {
-                "issues": "https://github.com/dannyvankooten/AltoRouter/issues",
-                "source": "https://github.com/dannyvankooten/AltoRouter/tree/master"
-            },
             "time": "2015-11-30T00:47:43+00:00"
         },
         {
@@ -118,10 +114,6 @@
                 "extension",
                 "twig"
             ],
-            "support": {
-                "issues": "https://github.com/asm89/twig-cache-extension/issues",
-                "source": "https://github.com/asm89/twig-cache-extension/tree/1.4.0"
-            },
             "abandoned": "twig/cache-extension",
             "time": "2020-01-01T20:47:37+00:00"
         },
@@ -795,11 +787,6 @@
                 "timber",
                 "twig"
             ],
-            "support": {
-                "docs": "https://timber.github.io/docs/",
-                "issues": "https://github.com/timber/timber/issues",
-                "source": "https://github.com/timber/timber"
-            },
             "time": "2020-10-11T15:08:40+00:00"
         },
         {
@@ -930,24 +917,19 @@
                 "routes",
                 "routing"
             ],
-            "support": {
-                "issues": "https://github.com/jarednova/routes/issues",
-                "source": "https://github.com/jarednova/routes",
-                "wiki": "https://github.com/jarednova/routes/wiki"
-            },
             "time": "2018-12-04T01:13:41+00:00"
         },
         {
             "name": "wpackagist-plugin/lazy-blocks",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/lazy-blocks/",
-                "reference": "tags/2.4.0"
+                "reference": "tags/2.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/lazy-blocks.2.4.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/lazy-blocks.2.4.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -982,5 +964,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
