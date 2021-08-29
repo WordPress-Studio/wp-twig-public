@@ -120,7 +120,7 @@ class WpTwigStartSite extends Timber\Site {
 		add_action( 'init', array( $this, 'create_optimize_dir' ) );
 		add_action( 'wp_enqueue_scripts', 'twig_scripts' );
 		add_action( 'widgets_init', array( $this, 'wp_twig_widgets_init' ) );
-		add_filter( 'block_categories', 'wp_twig_block_category', 10, 2);
+		add_filter( 'block_categories_all', 'wp_twig_block_category', 10, 2);
 		add_action('admin_enqueue_scripts', array( $this, 'admin_style' ));
 		add_action( 'init', array( $this, 'register_menus' ) );
 		add_action( 'template_redirect', array( $this, 'minify_global_js' )  );

@@ -1,6 +1,6 @@
 [
     {
-        "id": 117,
+        "id": 119,
         "title": "Image",
         "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<rect opacity=\"0.25\" width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 22 7)\" fill=\"currentColor\" \/>\n<rect width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 17 2)\" fill=\"currentColor\" \/>\n<\/svg>\n",
         "keywords": [],
@@ -29,7 +29,7 @@
             }
         },
         "controls": {
-            "control_439b7d405e": {
+            "control_1fca214d5b": {
                 "type": "image",
                 "name": "image",
                 "default": "",
@@ -43,6 +43,132 @@
                 "save_in_meta_name": "",
                 "required": "false",
                 "preview_size": "medium",
+                "placeholder": "",
+                "characters_limit": ""
+            },
+            "control_fde84340aa": {
+                "type": "checkbox",
+                "name": "webp_support",
+                "default": "",
+                "label": "Webp support",
+                "help": "",
+                "child_of": "",
+                "placement": "inspector",
+                "width": "100",
+                "hide_if_not_selected": "false",
+                "save_in_meta": "false",
+                "save_in_meta_name": "",
+                "required": "false",
+                "checked": "true",
+                "alongside_text": "",
+                "placeholder": "",
+                "characters_limit": ""
+            }
+        },
+        "code": {
+            "output_method": "template",
+            "editor_html": "",
+            "editor_callback": "",
+            "editor_css": "",
+            "frontend_html": "",
+            "frontend_callback": "",
+            "frontend_css": "",
+            "show_preview": "never",
+            "single_output": false
+        },
+        "condition": []
+    },
+    {
+        "id": 93,
+        "title": "Animation Wrapper",
+        "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<rect opacity=\"0.25\" width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 22 7)\" fill=\"currentColor\" \/>\n<rect width=\"15\" height=\"15\" rx=\"4\" transform=\"matrix(-1 0 0 1 17 2)\" fill=\"currentColor\" \/>\n<\/svg>\n",
+        "keywords": [],
+        "slug": "lazyblock\/animation",
+        "description": "",
+        "category": "text",
+        "category_label": "text",
+        "supports": {
+            "customClassName": true,
+            "anchor": false,
+            "align": [
+                "wide",
+                "full"
+            ],
+            "html": false,
+            "multiple": true,
+            "inserter": true
+        },
+        "ghostkit": {
+            "supports": {
+                "spacings": false,
+                "display": false,
+                "scrollReveal": false,
+                "frame": false,
+                "customCSS": false
+            }
+        },
+        "controls": {
+            "control_7869cd4b15": {
+                "type": "inner_blocks",
+                "name": "content",
+                "default": "",
+                "label": "Content",
+                "help": "",
+                "child_of": "",
+                "placement": "content",
+                "width": "100",
+                "hide_if_not_selected": "false",
+                "save_in_meta": "false",
+                "save_in_meta_name": "",
+                "required": "false",
+                "placeholder": "",
+                "characters_limit": ""
+            },
+            "control_3e2943419b": {
+                "type": "text",
+                "name": "target",
+                "default": "",
+                "label": "Target",
+                "help": "",
+                "child_of": "",
+                "placement": "inspector",
+                "width": "100",
+                "hide_if_not_selected": "false",
+                "save_in_meta": "false",
+                "save_in_meta_name": "",
+                "required": "true",
+                "placeholder": "",
+                "characters_limit": ""
+            },
+            "control_2368814e2f": {
+                "type": "text",
+                "name": "trigger",
+                "default": "",
+                "label": "Trigger",
+                "help": "",
+                "child_of": "",
+                "placement": "inspector",
+                "width": "100",
+                "hide_if_not_selected": "false",
+                "save_in_meta": "false",
+                "save_in_meta_name": "",
+                "required": "false",
+                "placeholder": "",
+                "characters_limit": ""
+            },
+            "control_0ef8534188": {
+                "type": "textarea",
+                "name": "animation-object",
+                "default": "{rotation: 27, x: 100, duration: 1}",
+                "label": "Animation Object",
+                "help": "https:\/\/greensock.com\/docs\/v3\/GSAP",
+                "child_of": "",
+                "placement": "inspector",
+                "width": "100",
+                "hide_if_not_selected": "false",
+                "save_in_meta": "false",
+                "save_in_meta_name": "",
+                "required": "false",
                 "placeholder": "",
                 "characters_limit": ""
             }

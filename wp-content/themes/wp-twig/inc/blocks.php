@@ -38,6 +38,7 @@ function wp_twig_image($options)
     'lazy_class' => isset($options['lazy_class']) ? $options['lazy_class'] : 'lazy',
     'lazy' => isset($options['lazy']) ? $options['lazy'] : true,
     'disable_small_image' => isset($options['disable_small_image']) ? $options['disable_small_image'] : 0,
+    'webp' => isset($options['webp']) ? $options['webp'] : false, 
   );
 
   $image = wp_get_attachment_image_src($options['id'], 'full');
@@ -61,18 +62,23 @@ function wp_twig_image($options)
   $img =  '<img class="' . $options['lazy_class'] . $lazy_attribute . '"' .  $src . ' width="' . $width . '" height="' . $height . '" alt="' . $image_alt . '">';
 
 
-  $source = get_attached_file($options['id']);
-  $destination = $source . '.webp';
-  $img_options = [];
+  if ($options['webp']) {
+    $source = get_attached_file($options['id']);
+    $destination = $source . '.webp';
+    $img_options = [];
 
-  if (!file_exists($destination)) {
-    WebPConvert::convert($source, $destination, $img_options);
+    if (!file_exists($destination)) {
+      WebPConvert::convert($source, $destination, $img_options);
+    }
+
+    echo '<picture>
+      <source data-srcset="'. getWebpURL($options['id']) . '" srcset="'. $image_small . '" type="image/webp">
+      ' . $img . '
+    </picture>';
+  } else {
+    echo $img;
   }
-
-  echo '<picture>
-    <source data-srcset="'. getWebpURL($options['id']) . '" srcset="'. $image_small . '" type="image/webp">
-    ' . $img . '
-  </picture>';
+  
 }
 
 
