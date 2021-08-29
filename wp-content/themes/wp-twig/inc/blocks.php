@@ -2,7 +2,7 @@
 // Webp 
 use WebPConvert\WebPConvert;
 
-function disable_lazy_block_wrapper($allow_wrapper, $attributes, $context)
+function disable_lazy_block_wrapper()
 {
   return false;
 }
@@ -71,8 +71,9 @@ function wp_twig_image($options)
       WebPConvert::convert($source, $destination, $img_options);
     }
 
-    echo '<picture>
-      <source data-srcset="'. getWebpURL($options['id']) . '" srcset="'. $image_small . '" type="image/webp">
+    echo '
+    <picture>
+      <source " data-srcset="'. getWebpURL($options['id']) . '">
       ' . $img . '
     </picture>';
   } else {
