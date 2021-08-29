@@ -37,5 +37,5 @@ jQuery(window).load(function () {
   site.addBrowserClass();
   setTimeout(function () {
     site.lazyload();
-  }, 3000);
+  }, 1000);
 });
