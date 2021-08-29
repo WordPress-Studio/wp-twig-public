@@ -25,6 +25,12 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
+
 # Enter in docker image
 # docker exec -it wp-twig_wp-dev_1 /bin/bash 
+
+# Install Latest Wordpress
+# cd /var/www/html && wp core download --allow-root
+
+# Import DB
 # cd /var/www/html && wp db import db.sql --allow-root
