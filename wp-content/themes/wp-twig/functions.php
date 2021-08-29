@@ -47,7 +47,6 @@ if ( file_exists( $composer_autoload ) ) {
 	require_once __DIR__ . '/inc/metabox-init.php';
 	require_once __DIR__ . '/inc/post-type/project-post-type.php';
 	require_once __DIR__ . '/inc/post-type/project-post-taxonomy.php';
-	require_once __DIR__ . '/inc/blocks.php';
 	require_once __DIR__ . '/inc/render-assets.php';
 	require_once __DIR__ . '/inc/image-resize.php';
 
@@ -62,6 +61,9 @@ if ( file_exists( $composer_autoload ) ) {
 
 	// Include the LZB plugin.
 	require_once WP_TWIG_LZB_PATH . 'lazy-blocks.php';
+
+	require_once __DIR__ . '/inc/blocks.php';
+
 
 	// Customize the url setting to fix incorrect asset URLs.
 	add_filter( 'lzb/plugin_url', 'wp_twig_lzb_url' );

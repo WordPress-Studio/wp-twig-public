@@ -209,6 +209,12 @@ Redux::setSection($opt_name, array(
               'default' => 75,
               'validate' => array('numeric', 'not_empty')
             ),
+            array(
+              'id'       => 'image_debug_mode',
+              'type'     => 'checkbox',
+              'title'    => esc_html__('Image optimization debug mode', 'redux-framework-demo'),
+              'default' => false
+            ),
             
             // array(
               //     'id'       => 'rocket-loader',

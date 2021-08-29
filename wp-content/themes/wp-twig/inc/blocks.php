@@ -85,7 +85,8 @@ function wp_twig_image($options)
       ]
     ];
 
-    if (!file_exists($destination) || isDebugModeEnabled()) {
+    print_r(get_theme_opt('image_debug_mode'));
+    if (!file_exists($destination) || get_theme_opt('image_debug_mode')) {
       WebPConvert::convert($source, $destination, $img_options);
     }
 
