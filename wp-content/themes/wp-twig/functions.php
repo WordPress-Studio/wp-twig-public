@@ -289,7 +289,11 @@ public function wp_twig_widgets_init() {
     // Page or post meta
     $post_id = get_the_ID();
     $context['page_meta_hide_page_title'] = get_post_meta($post_id, 'page_meta_hide_page_title', true);
-    $context['site_wrapper_class'] = get_post_meta($post_id, 'page_meta_wrapper_class', true);
+    $wrapper_class = get_post_meta($post_id, 'page_meta_wrapper_class', true);
+    if ($wrapper_class !== '') {
+      $context['site_wrapper_class'] = $wrapper_class;
+    }
+    
     $context['display_sidebar'] = get_post_meta( $post_id, 'page_meta_display_sidebar', true );
     $sidebar_name = get_post_meta( $post_id, 'page_meta_sidebar', true );
     $context['sidebar'] = Timber::get_widgets($sidebar_name);
