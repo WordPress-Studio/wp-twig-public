@@ -13,16 +13,17 @@ add_filter('lazyblock/image/allow_wrapper', 'disable_lazy_block_wrapper', 10, 3)
 add_filter('lazyblock/button/allow_wrapper', 'disable_lazy_block_wrapper', 10, 3);
 add_filter('lazyblock/animation/allow_wrapper', 'disable_lazy_block_wrapper', 10, 3);
 
-function getWebpURL($id) {
-  $file = get_post_meta( $id, '_wp_attached_file', true );
+function getWebpURL($id)
+{
+  $file = get_post_meta($id, '_wp_attached_file', true);
   $file = $file . '.webp';
 
   // If the file is relative, prepend upload dir.
-  if ( $file && 0 !== strpos( $file, '/' ) && ! preg_match( '|^.:\\\|', $file ) ) {
+  if ($file && 0 !== strpos($file, '/') && !preg_match('|^.:\\\|', $file)) {
     $uploads = wp_get_upload_dir();
 
-    if ( false === $uploads['error'] ) {
-        $file = $uploads['baseurl'] . "/$file";
+    if (false === $uploads['error']) {
+      $file = $uploads['baseurl'] . "/$file";
     }
   }
 
@@ -38,7 +39,7 @@ function wp_twig_image($options)
     'lazy_class' => isset($options['lazy_class']) ? $options['lazy_class'] : 'lazy',
     'lazy' => isset($options['lazy']) ? $options['lazy'] : true,
     'disable_small_image' => isset($options['disable_small_image']) ? $options['disable_small_image'] : 0,
-    'webp' => isset($options['webp']) ? $options['webp'] : false, 
+    'webp' => isset($options['webp']) ? $options['webp'] : false,
   );
 
   $image = wp_get_attachment_image_src($options['id'], 'full');
@@ -46,7 +47,7 @@ function wp_twig_image($options)
   $image_alt = get_post_meta($options['id'], '_wp_attachment_image_alt', TRUE);
 
   $width = $image[1] > 1 ? $image[1] : $options['width'];
-  $height = $image[1] > 1 ? $image[1] : $options['height'];
+  $height = $image[1] > 1 ? $image[2] : $options['height'];
 
   $lazy_attribute = '" data-src="' . esc_url($image[0]);
 
@@ -65,21 +66,42 @@ function wp_twig_image($options)
   if ($options['webp']) {
     $source = get_attached_file($options['id']);
     $destination = $source . '.webp';
-    $img_options = [];
+    $img_options = [
+      'converters' => [
+        'cwebp', 'vips', 'imagick', 'gmagick', 'imagemagick', 'graphicsmagick', 'wpc', 'ewww', 'gd'
+      ],
+      'png' => [
+        'encoding' => 'auto', 
+        'near-lossless' => get_theme_opt('image_png_max_quality') + 0,
+        'quality' => get_theme_opt('image_png_max_quality') + 0,
+        'sharp-yuv' => true,
+      ],
+      'jpeg' => [
+        'encoding' => 'auto',
+        'quality' => 'auto',
+        'max-quality' => get_theme_opt('image_jpeg_max_quality') + 0, 
+        'default-quality' => get_theme_opt('image_jpeg_default_quality') + 0, 
+        'sharp-yuv' => true,
+      ]
+    ];
 
-    if (!file_exists($destination)) {
+    if (!file_exists($destination) || isDebugModeEnabled()) {
       WebPConvert::convert($source, $destination, $img_options);
     }
 
+    $webpImage = '';
+    if (file_exists($destination)) {
+      $webpImage = '<source " data-srcset="' . getWebpURL($options['id']) . '">';
+    }
+    
+
     echo '
     <picture>
-      <source " data-srcset="'. getWebpURL($options['id']) . '">
-      ' . $img . '
+      '. $webpImage .'' . $img . '
     </picture>';
   } else {
     echo $img;
   }
-  
 }
 
 
