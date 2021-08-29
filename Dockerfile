@@ -17,6 +17,7 @@ RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 RUN apt-get install -y mysql-client
 RUN apt-get install -y webp
+RUN apt-get install -y webp
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Enter in docker image

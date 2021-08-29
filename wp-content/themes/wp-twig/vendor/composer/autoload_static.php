@@ -22,6 +22,10 @@ class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'WebPConvert\\' => 12,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -37,6 +41,10 @@ class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
             'MatthiasMullie\\PathConverter\\' => 29,
             'MatthiasMullie\\Minify\\' => 22,
         ),
+        'I' => 
+        array (
+            'ImageMimeTypeGuesser\\' => 21,
+        ),
         'D' => 
         array (
             'Djboris88\\Twig\\' => 15,
@@ -49,6 +57,10 @@ class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
     );
 
     public static $prefixDirsPsr4 = array (
+        'WebPConvert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/webp-convert/src',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -72,6 +84,10 @@ class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
         'MatthiasMullie\\Minify\\' => 
         array (
             0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
+        ),
+        'ImageMimeTypeGuesser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/image-mime-type-guesser/src',
         ),
         'Djboris88\\Twig\\' => 
         array (

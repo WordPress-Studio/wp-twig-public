@@ -6,12 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'WebPConvert\\' => array($vendorDir . '/rosell-dk/webp-convert/src'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Timber\\' => array($vendorDir . '/timber/timber/lib'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
     'MatthiasMullie\\Minify\\' => array($vendorDir . '/matthiasmullie/minify/src'),
+    'ImageMimeTypeGuesser\\' => array($vendorDir . '/rosell-dk/image-mime-type-guesser/src'),
     'Djboris88\\Twig\\' => array($vendorDir . '/djboris88/twig-commented-include/src'),
     'Djboris88\\Timber\\' => array($vendorDir . '/djboris88/timber-commented-include/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),

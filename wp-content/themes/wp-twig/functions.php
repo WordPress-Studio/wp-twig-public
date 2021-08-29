@@ -24,6 +24,8 @@ $composer_autoload = __DIR__ . '/vendor/autoload.php';
 // Minify library added
 use MatthiasMullie\Minify;
 
+
+
 if ( file_exists( $composer_autoload ) ) {
 	require_once $composer_autoload;
 	$timber = new Timber\Timber([
