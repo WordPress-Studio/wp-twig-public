@@ -20,6 +20,7 @@ wp-content/*/*
 
 # Include theme
 !wp-content/themes/wp-twig
+!wp-content/themes/wp-twig-child
 
 # Include plugins
 #!wp-content/plugins/wp_twig_lazy_blocks
