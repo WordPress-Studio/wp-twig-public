@@ -33,21 +33,31 @@ class Templates {
 	 */
 	public function __construct() {
 		global $pagenow;
+
+		if ( 'widgets.php' === $pagenow ) {
+			return;
+		}
+
 		if ( ( 'post.php' === $pagenow || 'post-new.php' === $pagenow ) && \Redux_Enable_Gutenberg::$is_disabled ) {
+
 				// We don't want to add templates unless it's a gutenberg page.
 				return;
 		}
 
 		// Include ReduxTemplates default template without wrapper.
 		add_filter( 'template_include', array( $this, 'template_include' ) );
+
 		// Override the default content-width when using Redux templates so the template doesn't look like crao.
 		add_action( 'wp', array( $this, 'modify_template_content_width' ) );
 
-		// Add ReduxTemplates supported Post type in page template.
-		$post_types = get_post_types();
+		// Add ReduxTemplates supported Post types in page template.
+		$post_types = get_post_types( array(), 'object' );
+
 		if ( ! empty( $post_types ) ) {
 			foreach ( $post_types as $post_type ) {
-				add_filter( "theme_{$post_type}_templates", array( $this, 'add_templates' ) );
+				if ( isset( $post_type->name ) && isset( $post_type->show_in_rest ) && true === $post_type->show_in_rest ) {
+					add_filter( "theme_{$post_type->name}_templates", array( $this, 'add_templates' ) );
+				}
 			}
 		}
 
@@ -58,14 +68,16 @@ class Templates {
 	/**
 	 * Add the redux-template class to the admin body if a redux-templates page type is selected.
 	 *
-	 * @param string $classes Classes string for admin panel.
+	 * @param string|null $classes Classes string for admin panel.
 	 *
+	 * @return string|null
 	 * @since 4.1.19
-	 * @return string
 	 */
-	public function add_body_class( $classes ) {
+	public function add_body_class( ?string $classes ): ?string {
 		global $post;
+
 		$screen = get_current_screen();
+
 		if ( 'post' === $screen->base && get_current_screen()->is_block_editor() ) {
 			$check = get_post_meta( $post->ID, '_wp_page_template', true );
 			if ( strpos( $check, 'redux-templates_' ) !== false ) {

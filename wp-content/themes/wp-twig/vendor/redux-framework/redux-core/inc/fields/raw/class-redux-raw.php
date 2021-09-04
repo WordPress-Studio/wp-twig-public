@@ -17,6 +17,18 @@ if ( ! class_exists( 'Redux_Raw', false ) ) {
 	class Redux_Raw extends Redux_Field {
 
 		/**
+		 * Set field defaults.
+		 */
+		public function set_defaults() {
+			$defaults = array(
+				'full_width' => true,
+				'markdown'   => false,
+			);
+
+			$this->field = wp_parse_args( $this->field, $defaults );
+		}
+
+		/**
 		 * Field Render Function.
 		 * Takes the vars and outputs the HTML for the field in the settings
 		 *
@@ -34,7 +46,7 @@ if ( ! class_exists( 'Redux_Raw', false ) ) {
 			if ( ! empty( $this->field['content'] ) && isset( $this->field['content'] ) ) {
 				if ( isset( $this->field['markdown'] ) && true === $this->field['markdown'] && ! empty( $this->field['content'] ) ) {
 					require_once dirname( __FILE__ ) . '/parsedown.php';
-					$parsedown = new Parsedown();
+					$parsedown = new Redux_Parsedown();
 
 					echo( $parsedown->text( $this->field['content'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 				} else {

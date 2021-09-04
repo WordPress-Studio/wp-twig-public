@@ -1,4 +1,4 @@
-/*global redux_change, redux*/
+/*global redux_change, redux, jQuery */
 
 (function( $ ) {
 	'use strict';
@@ -58,13 +58,14 @@
 						} else {
 							contentNewTitle = $( this ).parent( '.redux-slides-accordion' ).data( 'new-content-title' );
 
-							$( this ).parents( '.redux-slides-accordion-group:first' ).find( '.remove-image' ).click();
+							$( this ).parents( '.redux-slides-accordion-group:first' ).find( '.remove-image' ).trigger( 'click' );
 							$( this ).parents( '.redux-container-slides:first' ).find( '.redux-slides-accordion-group:last' ).find( '.redux-slides-header' ).text( contentNewTitle );
 						}
 					}
 				);
 
-				el.find( '.redux-slides-add' ).off( 'click' ).click(
+				el.find( '.redux-slides-add' ).off( 'click' ).on(
+					'click',
 					function() {
 						var contentNewTitle;
 
@@ -74,7 +75,7 @@
 
 						$( newSlide ).find( 'input[type="text"], input[type="hidden"], textarea' ).each(
 							function() {
-								$( this ).attr( 'name', jQuery( this ).attr( 'name' ).replace( /[0-9]+(?!.*[0-9])/, slideCount1 ) ).attr( 'id', $( this ).attr( 'id' ).replace( /[0-9]+(?!.*[0-9])/, slideCount1 ) );
+								$( this ).attr( 'name', $( this ).attr( 'name' ).replace( /[0-9]+(?!.*[0-9])/, slideCount1 ) ).attr( 'id', $( this ).attr( 'id' ).replace( /[0-9]+(?!.*[0-9])/, slideCount1 ) );
 
 								$( this ).val( '' );
 
@@ -96,7 +97,8 @@
 					}
 				);
 
-				el.find( '.slide-title' ).keyup(
+				el.find( '.slide-title' ).on(
+					'keyup',
 					function( event ) {
 						var newTitle = event.target.value;
 						$( this ).parents().eq( 3 ).find( '.redux-slides-header' ).text( newTitle );

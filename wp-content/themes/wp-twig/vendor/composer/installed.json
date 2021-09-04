@@ -1115,19 +1115,19 @@
     },
     {
         "name": "wpackagist-plugin/redux-framework",
-        "version": "4.1.24",
-        "version_normalized": "4.1.24.0",
+        "version": "4.2.14",
+        "version_normalized": "4.2.14.0",
         "source": {
             "type": "svn",
             "url": "https://plugins.svn.wordpress.org/redux-framework/",
-            "reference": "tags/4.1.24"
+            "reference": "tags/4.2.14"
         },
         "dist": {
             "type": "zip",
-            "url": "https://downloads.wordpress.org/plugin/redux-framework.4.1.24.zip"
+            "url": "https://downloads.wordpress.org/plugin/redux-framework.4.2.14.zip"
         },
         "require": {
-            "composer/installers": "~1.0"
+            "composer/installers": "~1.0 || ~2.0"
         },
         "type": "wordpress-plugin",
         "installation-source": "dist",

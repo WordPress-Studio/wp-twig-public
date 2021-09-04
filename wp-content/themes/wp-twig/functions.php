@@ -27,12 +27,11 @@ if ( file_exists( $composer_autoload ) ) {
 
 
   // TODO: Set redux URL
-  // wp-twig/vendor/redux-framework/redux-core/class-redux-core.php | line 234
-  // self::$url       = get_template_directory_uri() . '/vendor/redux-framework/redux-core/';
+  // wp-content/themes/wp-twig/vendor/redux-framework/redux-core/class-redux-core.php
+  // 235 , 243
 
-  // Update scripts and styles path
-  // wp-twig/vendor/redux-framework/redux-core/inc/extensions/import_export/import_export/class-redux-import-export.php | line 189
-  // Redux_Core::$url . '/inc/extensions/import_export/import_export/' . 'redux-import-export' . Redux_Functions::is_min() . '.js',
+  // wp-twig/vendor/redux-framework/redux-core/inc/extensions/import_export/import_export/class-redux-import-export.php
+
 
 	require_once __DIR__ . '/vendor/redux-framework/redux-core/framework.php';
 
@@ -50,7 +49,8 @@ if ( file_exists( $composer_autoload ) ) {
 
 	// Define path and URL to the LZB plugin.
 	define( 'WP_TWIG_LZB_PATH', get_template_directory() . '/vendor/lazy-blocks/' );
-	define( 'WP_TWIG_LZB_URL', get_stylesheet_directory_uri() . '/vendor/lazy-blocks/' );
+	define( 'WP_TWIG_LZB_URL', get_template_directory_uri() . '/vendor/lazy-blocks/' );
+
 
 	// Include the LZB plugin.
 	require_once WP_TWIG_LZB_PATH . 'lazy-blocks.php';

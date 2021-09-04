@@ -5,7 +5,7 @@
  * Date                : 07 Jan 2014
  */
 
-/*global redux_change, wp, redux, colorValidate */
+/*global redux_change, wp, redux, colorValidate, jQuery */
 
 (function( $ ) {
 	'use strict';
@@ -36,18 +36,18 @@
 				}
 
 				// Remove the image button.
-				el.find( '.redux-remove-background' ).unbind( 'click' ).on(
+				el.find( '.redux-remove-background' ).off( 'click' ).on(
 					'click',
 					function( e ) {
 						e.preventDefault();
 						redux.field_objects.background.removeImage( $( this ).parents( '.redux-container-background:first' ) );
-
+						redux.field_objects.background.preview( $( this ) );
 						return false;
 					}
 				);
 
 				// Upload media button.
-				el.find( '.redux-background-upload' ).unbind().on(
+				el.find( '.redux-background-upload' ).off().on(
 					'click',
 					function( event ) {
 						redux.field_objects.background.addImage( event, $( this ).parents( '.redux-container-background:first' ) );
@@ -139,7 +139,7 @@
 							el.find( '#' + $( this ).data( 'id' ) ).val( 'transparent' );
 							el.find( '#' + $( this ).data( 'id' ) ).parents( '.redux-field-container' ).find( '.wp-color-result' ).css( 'background-color', 'transparent' );
 						} else {
-							prevColor =  $( this ).parents( '.redux-field-container' ).find( '.redux-saved-color' ).val();
+							prevColor = $( this ).parents( '.redux-field-container' ).find( '.redux-saved-color' ).val();
 							if ( '' === prevColor ) {
 								prevColor = $( '#' + $( this ).data( 'id' ) ).data( 'default-color' );
 							}
@@ -312,7 +312,7 @@
 		// Hide the screenshot.
 		screenshot.slideUp();
 
-		selector.find( '.remove-file' ).unbind();
+		selector.find( '.remove-file' ).off();
 
 		// We don't display the upload button if .upload-notice is present
 		// This means the user doesn't have the WordPress 3.5 Media Library Support.

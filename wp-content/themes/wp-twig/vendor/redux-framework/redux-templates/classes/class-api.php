@@ -872,9 +872,9 @@ class Api {
 					'callback' => array( $this, $data['callback'] ),
 					'args'     => array(),
 				);
-				if ( ! $fs->file_exists( trailingslashit( dirname( REDUX_PLUGIN_FILE ) ) . 'local_developer.txt' ) ) {
+				if ( defined( 'REDUX_PLUGIN_FILE' ) && ! $fs->file_exists( trailingslashit( dirname( REDUX_PLUGIN_FILE ) ) . 'local_developer.txt' ) ) {
 					$args['permission_callback'] = function () {
-						return current_user_can( 'edit_posts' );
+						return current_user_can( 'install_plugins' );
 					};
 				} else {
 					$args['permission_callback'] = '__return_true';

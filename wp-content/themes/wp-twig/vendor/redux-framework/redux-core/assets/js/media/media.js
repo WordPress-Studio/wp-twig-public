@@ -4,7 +4,10 @@
  * Media Uploader
  * Dependencies        : jquery, wp media uploader
  * Feature added by    : Smartik - http://smartik.ws/
- * Date                  : 05.28.2013
+ * Date                : 05.28.2013
+ *
+ * Modified by         : Kevin Provance (kprovance/svl-studios)
+ * Date                : 07.07.2021
  */
 
 ( function( $ ) {
@@ -39,10 +42,15 @@
 					return;
 				}
 
+				if ( undefined === redux.field_objects.pro && undefined !== redux.field_objects.image_filters ) {
+					redux.field_objects.image_filters.sliderInit( el, 'media' );
+					redux.field_objects.image_filters.checkbox( el, 'media' );
+				}
+
 				isFiltered = false;
 
 				// Remove the image button.
-				el.find( '.remove-image, .remove-file' ).unbind( 'click' ).on(
+				el.find( '.remove-image, .remove-file' ).off( 'click' ).on(
 					'click',
 					function() {
 						redux.field_objects.media.removeFile( $( this ).parents( 'fieldset.redux-field:first' ) );
@@ -50,7 +58,7 @@
 				);
 
 				// Upload media button.
-				el.find( '.media_upload_button' ).unbind().on(
+				el.find( '.media_upload_button' ).off().on(
 					'click',
 					function( event ) {
 						redux.field_objects.media.addFile( event, $( this ).parents( 'fieldset.redux-field:first' ) );
@@ -225,7 +233,7 @@
 		// Hide the screenshot.
 		screenshot.slideUp();
 
-		selector.find( '.remove-file' ).unbind();
+		selector.find( '.remove-file' ).off();
 
 		// We don't display the upload button if .upload-notice is present.
 		// This means the user doesn't have the WordPress 3.5 Media Library Support.

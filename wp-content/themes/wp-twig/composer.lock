@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b012e94938b4d801a070230092314f27",
+    "content-hash": "599476b714fae2b8f08bb93b94c8ac7f",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -1090,18 +1090,18 @@
         },
         {
             "name": "wpackagist-plugin/redux-framework",
-            "version": "4.1.24",
+            "version": "4.2.14",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redux-framework/",
-                "reference": "tags/4.1.24"
+                "reference": "tags/4.2.14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redux-framework.4.1.24.zip"
+                "url": "https://downloads.wordpress.org/plugin/redux-framework.4.2.14.zip"
             },
             "require": {
-                "composer/installers": "~1.0"
+                "composer/installers": "~1.0 || ~2.0"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/redux-framework/"

@@ -62,7 +62,7 @@ $sysinfo = Redux_Helpers::compile_system_status( false, true );
 			</a>
 			<a
 					class="skip button-primary"
-					href="//docs.redux.io/core/support/understanding-the-redux-framework-system-status-report/"
+					href="https://devs.redux.io/core/support/understanding-the-redux-framework-system-status-report/"
 					target="_blank">
 				<?php esc_html_e( 'Understanding the Status Report', 'redux-framework' ); ?>
 			</a>
@@ -944,13 +944,15 @@ $sysinfo = Redux_Helpers::compile_system_status( false, true );
 		</tbody>
 	</table>
 	<script type="text/javascript">
-		jQuery( 'a.redux-hint-qtip' ).click(
+		jQuery( 'a.redux-hint-qtip' ).on(
+			'click',
 			function() {
 				return false;
 			}
 		);
 
-		jQuery( 'a.debug-report' ).click(
+		jQuery( 'a.debug-report' ).on(
+			'click',
 			function() {
 				var report = '';
 
@@ -992,7 +994,7 @@ $sysinfo = Redux_Helpers::compile_system_status( false, true );
 
 				try {
 					jQuery( "#debug-report" ).slideDown();
-					jQuery( "#debug-report textarea" ).val( report ).focus().select();
+					jQuery( "#debug-report textarea" ).val( report ).trigger( 'focus' ).trigger( 'select' );
 					jQuery( this ).fadeOut();
 
 					return false;

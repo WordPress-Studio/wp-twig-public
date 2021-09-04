@@ -85,8 +85,7 @@ if ( ! class_exists( 'Redux_Ace_Editor', false ) ) {
 					'redux-field-ace-editor-css',
 					Redux_Core::$url . 'inc/fields/ace_editor/redux-ace-editor.css',
 					array(),
-					$this->timestamp,
-					'all'
+					$this->timestamp
 				);
 			}
 
@@ -94,9 +93,9 @@ if ( ! class_exists( 'Redux_Ace_Editor', false ) ) {
 				Redux_CDN::enqueue_script(
 					'ace-editor-js',
 					// phpcs:ignore Generic.Strings.UnnecessaryStringConcat
-					'//' . 'cdnjs' . '.cloudflare' . '.com/ajax/libs/ace/1.4.2/ace.js',
+					'//' . 'cdnjs' . '.cloudflare' . '.com/ajax/libs/ace/1.4.12/ace.js',
 					array( 'jquery' ),
-					'1.4.2',
+					'1.4.12',
 					true
 				);
 			}

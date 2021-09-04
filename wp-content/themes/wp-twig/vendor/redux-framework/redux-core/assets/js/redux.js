@@ -17,7 +17,7 @@
 
 		// Add the loading mechanism.
 		$( '.redux-action_bar .spinner' ).addClass( 'is-active' );
-		$( '.redux-action_bar input' ).attr( 'disabled', 'disabled' );
+		$( '.redux-action_bar input' ).prop( 'disabled', true );
 
 		$notification_bar.slideUp();
 
@@ -79,7 +79,7 @@
 					data:       $data
 				},
 				error: function( response ) {
-					$( '.redux-action_bar input' ).removeAttr( 'disabled' );
+					$( '.redux-action_bar input' ).prop( 'disabled', false );
 
 					if ( true === redux.optName.args.dev_mode ) {
 						console.log( response.responseText );
@@ -90,8 +90,8 @@
 					} else {
 						redux.optName.args.ajax_save = false;
 
-						$( button ).click();
-						$( '.redux-action_bar input' ).attr( 'disabled', 'disabled' );
+						$( button ).trigger( 'click' );
+						$( '.redux-action_bar input' ).prop( 'disabled', true );
 					}
 				},
 				success: function( response ) {
@@ -100,7 +100,7 @@
 					if ( response.action && 'reload' === response.action ) {
 						location.reload( true );
 					} else if ( 'success' === response.status ) {
-						$( '.redux-action_bar input' ).removeAttr( 'disabled' );
+						$( '.redux-action_bar input' ).prop( 'disabled', false );
 						overlay.fadeOut( 'fast' );
 						$( '.redux-action_bar .spinner' ).removeClass( 'is-active' );
 						redux.optName.options  = response.options;
@@ -122,7 +122,7 @@
 						$save_notice.slideDown();
 						$save_notice.delay( 4000 ).slideUp();
 					} else {
-						$( '.redux-action_bar input' ).removeAttr( 'disabled' );
+						$( '.redux-action_bar input' ).prop( 'disabled', false );
 						$( '.redux-action_bar .spinner' ).removeClass( 'is-active' );
 						overlay.fadeOut( 'fast' );
 						$( '.wrap h2:first' ).parent().append( '<div class="error redux_ajax_save_error" style="display:none;"><p>' + response.status + '</p></div>' );
@@ -373,7 +373,7 @@ function colorNameToHex( colour ) {
 	};
 })( jQuery );
 
-/* global redux, redux_change */
+/* global redux, redux_change, jQuery */
 
 (function( $ ) {
 	'use strict';
@@ -398,7 +398,8 @@ function colorNameToHex( colour ) {
 			}
 		);
 
-		el.find( '#toplevel_page_' + redux.optName.args.slug + ' .wp-submenu a, #wp-admin-bar-' + redux.optName.args.slug + ' a.ab-item' ).click(
+		el.find( '#toplevel_page_' + redux.optName.args.slug + ' .wp-submenu a, #wp-admin-bar-' + redux.optName.args.slug + ' a.ab-item' ).on(
+			'click',
 			function( e ) {
 				var url;
 
@@ -411,7 +412,7 @@ function colorNameToHex( colour ) {
 
 					e.preventDefault();
 
-					el.find( '#' + url[1] + '_section_group_li_a' ).click();
+					el.find( '#' + url[1] + '_section_group_li_a' ).trigger( 'click' );
 
 					$( this ).parents( 'ul:first' ).find( '.current' ).removeClass( 'current' );
 					$( this ).addClass( 'current' );
@@ -455,7 +456,8 @@ function colorNameToHex( colour ) {
 			}
 		);
 
-		$( '.expand_options' ).click(
+		$( '.expand_options' ).on(
+			'click',
 			function( e ) {
 				var tab;
 
@@ -512,13 +514,15 @@ function colorNameToHex( colour ) {
 		el.find( '#redux-footer-sticky' ).removeClass( 'hide' );
 
 		if ( 0 !== el.find( '#redux-footer' ).length ) {
-			$( window ).scroll(
+			$( window ).on(
+				'scroll',
 				function() {
 					$.redux.stickyInfo();
 				}
 			);
 
-			$( window ).resize(
+			$( window ).on(
+				'resize',
 				function() {
 					$.redux.stickyInfo();
 				}
@@ -580,8 +584,6 @@ function colorNameToHex( colour ) {
 	$( document ).ready(
 		function() {
 			var opt_name;
-			var li;
-
 			var tempArr = [];
 
 			$.fn.isOnScreen = function() {
@@ -593,17 +595,17 @@ function colorNameToHex( colour ) {
 					return;
 				}
 
-				win = $( window );
+				win      = $( window );
 				viewport = {
 					top: win.scrollTop()
 				};
 
-				viewport.right = viewport.left + win.width();
+				viewport.right  = viewport.left + win.width();
 				viewport.bottom = viewport.top + win.height();
 
 				bounds = this.offset();
 
-				bounds.right = bounds.left + this.outerWidth();
+				bounds.right  = bounds.left + this.outerWidth();
 				bounds.bottom = bounds.top + this.outerHeight();
 
 				return ( ! ( viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom ) );
@@ -642,9 +644,50 @@ function colorNameToHex( colour ) {
 				$.redux.initQtip();
 				$.redux.tabCheck();
 				$.redux.notices();
+
+				if ( 'undefined' === typeof $.redux.flyoutSubmenus ) {
+					$.redux.flyoutSubmenu();
+				}
 			}
 		}
 	);
+
+	$.redux.flyoutSubmenu = function() {
+
+		// Close flyouts when a new menu item is activated.
+		$( '.redux-group-tab-link-li a' ).on(
+			'click',
+			function() {
+				if ( true === redux.optName.args.flyout_submenus ) {
+					$( '.redux-group-tab-link-li' ).removeClass( 'redux-section-hover' );
+				}
+			}
+		);
+
+		if ( true === redux.optName.args.flyout_submenus ) {
+
+			// Submenus flyout when a main menu item is hovered.
+			$( '.redux-group-tab-link-li.hasSubSections' ).each(
+				function() {
+					$( this ).on(
+						'mouseenter',
+						function() {
+							if ( ! $( this ).hasClass( 'active' ) && ! $( this ).hasClass( 'activeChild' ) ) {
+								$( this ).addClass( 'redux-section-hover' );
+							}
+						}
+					);
+
+					$( this ).on(
+						'mouseleave',
+						function() {
+							$( this ).removeClass( 'redux-section-hover' );
+						}
+					);
+				}
+			);
+		}
+	};
 
 	$.redux.disableSections = function() {
 		$( '.redux-group-tab' ).each(
@@ -1902,7 +1945,8 @@ function redux_hook( object, functionName, callback, before ) {
 		var cookieName;
 		var opt_name;
 
-		$( '.redux-group-tab-link-a' ).click(
+		$( '.redux-group-tab-link-a' ).on(
+			'click',
 			function() {
 				var elements;
 				var index;
@@ -2068,7 +2112,7 @@ function redux_hook( object, functionName, callback, before ) {
 		);
 
 		if ( undefined !== redux.optName.last_tab ) {
-			$( '#' + redux.optName.last_tab + '_section_group_li_a' ).click();
+			$( '#' + redux.optName.last_tab + '_section_group_li_a' ).trigger( 'click' );
 
 			return;
 		}
@@ -2104,7 +2148,7 @@ function redux_hook( object, functionName, callback, before ) {
 					}
 				);
 
-				$( '#' + tab + '_section_group_li' ).click();
+				$( '#' + tab + '_section_group_li' ).trigger( 'click' );
 			}
 		} else if ( '' !== $.cookie( 'redux_current_tab_get' ) ) {
 			$.removeCookie( 'redux_current_tab_get' );
@@ -2136,9 +2180,9 @@ function redux_hook( object, functionName, callback, before ) {
 
 				// Tab the first item or the saved one.
 				if ( null === $.cookie( cookieName ) || 'undefined' === typeof ( $.cookie( cookieName ) ) || 0 === sTab.length ) {
-					$( this ).find( '.redux-group-tab-link-a:first' ).click();
+					$( this ).find( '.redux-group-tab-link-a:first' ).trigger( 'click' );
 				} else {
-					sTab.click();
+					sTab.trigger( 'click' );
 				}
 			}
 		);

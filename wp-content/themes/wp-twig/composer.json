@@ -9,7 +9,7 @@
     "cmb2/cmb2": "2.9.0",
     "wpackagist-plugin/lazy-blocks": "^2.3.1",
     "matthiasmullie/minify": "1.3.66",
-    "wpackagist-plugin/redux-framework": "4.1.24",
+    "wpackagist-plugin/redux-framework": "4.2.14",
     "djboris88/timber-commented-include": "1.1.0",
     "rosell-dk/webp-convert": "^2.6"
   },
