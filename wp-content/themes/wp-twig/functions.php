@@ -130,8 +130,8 @@ class WpTwigStartSite extends Timber\Site {
     if (is_css_optimized()) {
       $this->global_styles = array(
         $WP_INCLUDE_DIR . '/css/dist/block-library/style.min.css',
-        get_stylesheet_directory() .'/css/vendor/bootstrap.css',
-        get_stylesheet_directory() .'/css/main.css',
+        get_template_directory() .'/css/vendor/bootstrap.css',
+        get_template_directory() .'/css/main.css',
       );
 
       if ( ! function_exists( 'is_woocommerce_activated' ) ) {
@@ -144,8 +144,8 @@ class WpTwigStartSite extends Timber\Site {
       }
     } else {
       $this->global_styles = array(
-        get_stylesheet_directory_uri() .'/css/vendor/bootstrap.css',
-        get_stylesheet_directory_uri() .'/css/main.css',
+        get_template_directory_uri() .'/css/vendor/bootstrap.css',
+        get_template_directory_uri() .'/css/main.css',
       );
     }
 
@@ -266,6 +266,7 @@ public function wp_twig_widgets_init() {
 	 * @param string $context context['this'] Being the Twig's {{ this }}.
 	 */
 	public function add_to_context( $context ) {
+    $context['theme_link'] = get_template_directory_uri();
 		$context['menu']  = new Timber\Menu('header_menu');
 		$context['sidebar'] = Timber::get_widgets('blog_sidebar');
 		$context['site_wrapper_class'] = ' container p-0 ';
@@ -400,7 +401,7 @@ public function wp_twig_widgets_init() {
 		if ($js_optimized && $global_js) {
 			$global_page_minifier = new Minify\JS();
 			foreach ($global_js as $js) {
-				$global_page_minifier->add(get_stylesheet_directory() . $js);
+				$global_page_minifier->add(get_template_directory() . $js);
 			}
 
 			$jsPath = '/wp_twig_minify/js/global.js';
@@ -431,8 +432,8 @@ function minifyCSS($stylesheets, $file_name) {
   $minifier = new Minify\CSS();
   if ($stylesheets) {
     foreach ($stylesheets as $sheet) {
-      if (file_exists(get_stylesheet_directory() . $sheet)) {
-        $minifier->add(get_stylesheet_directory() . $sheet);
+      if (file_exists(get_template_directory() . $sheet)) {
+        $minifier->add(get_template_directory() . $sheet);
       }
     }
 
@@ -450,7 +451,7 @@ function minifyJS($scripts, $file_name) {
 
   $js_page_minifier = new Minify\JS();
   foreach ($scripts as $js) {
-    $js_page_minifier->add(get_stylesheet_directory() . $js);
+    $js_page_minifier->add(get_template_directory() . $js);
   }
 
   $jsPath = '/wp_twig_minify/js/' . $file_name . '.js';

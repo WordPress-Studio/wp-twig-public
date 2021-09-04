@@ -33,7 +33,7 @@
     {% else %}
 
     {% for item in global_js_list %}
-        <script src="{{site.theme.link}}{{item}}"></script>
+        <script src="{{theme_link}}{{item}}"></script>
     {% endfor %}
   {% endif %}
 
@@ -45,7 +45,7 @@
       {% endfor %}
     {% else %}
       {% for item in page_specific_scripts %}
-          <script src="{{site.theme.link}}{{item}}"></script>
+          <script src="{{theme_link}}{{item}}"></script>
       {% endfor %}
     {% endif %}
     <!-- //  page_specific_scripts  -->
