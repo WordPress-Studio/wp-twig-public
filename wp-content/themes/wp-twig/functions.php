@@ -139,7 +139,7 @@ class WpTwigStartSite extends Timber\Site {
           array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/assets/css/woocommerce.css');
           array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/assets/css/woocommerce-layout.css');
           array_push($this->global_styles, get_template_directory() . '/css/vendor/woocommerce-smallscreen.css');
-          array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/packages/woocommerce-blocks/build/style.css');
+          array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css');
         }
       }
     } else {
@@ -147,6 +147,15 @@ class WpTwigStartSite extends Timber\Site {
         get_template_directory_uri() .'/css/vendor/bootstrap.css',
         get_template_directory_uri() .'/css/main.css',
       );
+
+      if ( ! function_exists( 'is_woocommerce_activated' ) ) {
+        if ( class_exists( 'woocommerce' ) ) {
+          array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/assets/css/woocommerce.css');
+          array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/assets/css/woocommerce-layout.css');
+          array_push($this->global_styles, get_template_directory_uri() . '/css/vendor/woocommerce-smallscreen.css');
+          array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css');
+        }
+      }
     }
 
 
