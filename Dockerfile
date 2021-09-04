@@ -19,6 +19,12 @@ RUN apt-get install -y mysql-client
 
 # Default appache config
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY ./default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+
+
+RUN apt install nano -y
+RUN a2enmod ssl
+RUN a2ensite default-ssl.conf
 
 # Composer install
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -29,6 +35,8 @@ RUN mv composer.phar /usr/local/bin/composer
 
 RUN apt install imagemagick  php-imagick -y
 RUN apt-get install -y webp
+
+
 
 
 # Enter in docker image
