@@ -12,13 +12,6 @@
  * Case-sensitive is important on some systems.)
  */
 
-
-
-/**
- * If you are installing Timber as a Composer dependency in your theme, you'll need this block
- * to load your dependencies and initialize Timber. If you are using Timber via the WordPress.org
- * plug-in, you can safely delete this block.
- */
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
 
 // Minify library added
@@ -56,7 +49,7 @@ if ( file_exists( $composer_autoload ) ) {
   require_once ( $admin_path . '/includes/class-wp-filesystem-direct.php' );
 
 	// Define path and URL to the LZB plugin.
-	define( 'WP_TWIG_LZB_PATH', get_stylesheet_directory() . '/vendor/lazy-blocks/' );
+	define( 'WP_TWIG_LZB_PATH', get_template_directory() . '/vendor/lazy-blocks/' );
 	define( 'WP_TWIG_LZB_URL', get_stylesheet_directory_uri() . '/vendor/lazy-blocks/' );
 
 	// Include the LZB plugin.
