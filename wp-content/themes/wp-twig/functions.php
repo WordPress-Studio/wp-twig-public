@@ -140,6 +140,7 @@ class WpTwigStartSite extends Timber\Site {
           array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/assets/css/woocommerce-layout.css');
           array_push($this->global_styles, get_template_directory() . '/css/vendor/woocommerce-smallscreen.css');
           array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css');
+          array_push($this->global_styles, get_template_directory() .'/css/modules/woocommerce.css');
         }
       }
     } else {
@@ -154,6 +155,7 @@ class WpTwigStartSite extends Timber\Site {
           array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/assets/css/woocommerce-layout.css');
           array_push($this->global_styles, get_template_directory_uri() . '/css/vendor/woocommerce-smallscreen.css');
           array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css');
+          array_push($this->global_styles, get_template_directory_uri() .'/css/modules/woocommerce.css');
         }
       }
     }

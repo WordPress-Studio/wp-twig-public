@@ -1,0 +1,24 @@
+.woocommerce form .form-row .input-text,
+.woocommerce-page form .form-row .input-text {
+  padding: 10px;
+}
+
+.select2-container .select2-selection--single {
+  padding: 5px;
+  height: auto;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 50%;
+  margin-top: -13px;
+}
+
+/* Single Page */
+.single-product form.cart {
+  display: flex;
+}
+.single-product .quantity .qty {
+  padding: 5px;
+}
+.woocommerce #content table.cart td.actions .input-text, .woocommerce table.cart td.actions .input-text, .woocommerce-page #content table.cart td.actions .input-text, .woocommerce-page table.cart td.actions .input-text {
+  width: auto;
+}
