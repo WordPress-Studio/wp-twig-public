@@ -203,6 +203,7 @@ Redux::setSection($opt_name, array(
       'id'       => 'image_debug_mode',
       'type'     => 'checkbox',
       'title'    => esc_html__('Image optimization debug mode', 'redux-framework-demo'),
+      'desc' => esc_html__('Always create new image and replace existing on the fly. If this is enabled', 'redux-framework-demo'),
       'default' => false
     ),
 
