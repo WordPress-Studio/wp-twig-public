@@ -1,9 +1,9 @@
 <?php
 
 /**
-* ReduxFramework Config for WP TWIG
-* For full documentation, please visit: https://devs.redux.io/
-*/
+ * ReduxFramework Config for WP TWIG
+ * For full documentation, please visit: https://devs.redux.io/
+ */
 
 
 // This is your option name where all the Redux data is stored.
@@ -14,10 +14,10 @@ $opt_name = apply_filters('theme_option/opt_name', $opt_name);
 
 
 /**
-* ---> SET ARGUMENTS
-* All the possible arguments for Redux.
-* For full documentation on arguments, please refer to: https://devs.redux.io/configuration/
-* */
+ * ---> SET ARGUMENTS
+ * All the possible arguments for Redux.
+ * For full documentation on arguments, please refer to: https://devs.redux.io/configuration/
+ * */
 
 $theme = wp_get_theme(); // For use with some settings. Not necessary.
 
@@ -57,7 +57,7 @@ $args = array(
   'update_notice'        => false,
   // If dev_mode is enabled, will notify developer of updated versions available in the GitHub Repo
   'customizer'           => true,
-  
+
   // OPTIONAL -> Give you extra features
   'page_priority'        => null,
   // Order where the menu appears in the admin area. If there is any conflict, something will not show. Warning.
@@ -81,20 +81,20 @@ $args = array(
   // What to print by the field's title if the value shown is default. Suggested: *
   'show_import_export'   => true,
   // Shows the Import/Export panel when not used as a field.
-  
+
   // CAREFUL -> These options are for advanced use only
   'transient_time'       => 60 * MINUTE_IN_SECONDS,
   'output'               => true,
   // Global shut-off for dynamic CSS output by the framework. Will also disable google fonts output
   'output_tag'           => true,
   'footer_credit'     => '',
-  
+
   // FUTURE -> Not in use yet, but reserved or partially implemented. Use at your own risk.
   'database'             => '',
   // possible: options, theme_mods, theme_mods_expanded, transient. Not fully functional, warning!
   'use_cdn'              => true,
   // If you prefer not to use the CDN for Select2, Ace Editor, and others, you may download the Redux Vendor Support plugin yourself and run locally or embed it in your code.
-  
+
 );
 
 
@@ -127,128 +127,118 @@ Redux::setSection($opt_name, array(
       'title'    => esc_html__('Site Favicon', 'redux-framework-demo'),
       'default' => esc_html__('' . get_stylesheet_directory_uri() . '/static/images/favicon.png', 'redux-framework-demo'),
     ),
+  )
+));
+
+
+
+Redux::setSection($opt_name, array(
+  'title'  => esc_html__('Footer', 'redux-framework-demo'),
+  'id'     => 'footer-section',
+  'icon'   => 'el el-adjust-alt',
+  'fields' => array(
     array(
-      'id' => 'global_stylesheet_list',
-      'type' => 'multi_text',
-      'title' => __('Global styles', 'redux-framework-demo'),
-      'desc' => __('Example: <code>/css/main.css</code>', 'redux-framework-demo'),
-      'default' => array(
-        '/css/vendor/bootstrap.css',
-        '/css/main.css',
-        )
+      'id'       => 'footer-copyright-text',
+      'type'     => 'text',
+      'title'    => esc_html__('Footer copyright text', 'redux-framework-demo'),
+      'default' => esc_html__('© ' . date("Y") . ' Itobuz Technologies All Rights Reserved', 'redux-framework-demo'),
+    )
+  )
+));
+
+Redux::setSection($opt_name, array(
+  'title'  => esc_html__('Optimization', 'redux-framework-demo'),
+  'id'     => 'optimization-section',
+  'icon'   => 'el el-adjust-alt',
+  'fields' => array(
+    array(
+      'id'       => 'css-optimize',
+      'type'     => 'checkbox',
+      'title'    => esc_html__('CSS Optimization', 'redux-framework-demo'),
+      'default' => false,
+    ),
+    array(
+      'id'       => 'js-optimize',
+      'type'     => 'checkbox',
+      'title'    => esc_html__('JS Optimization', 'redux-framework-demo'),
+      'default' => false,
+    ),
+
+    array(
+      'id'   => 'info_normal',
+      'type' => 'info',
+      'desc' => __('Image Optimization', 'redux-framework-demo')
+    ),
+
+    array(
+      'id'       => 'image_jpeg_max_quality',
+      'type'     => 'text',
+      'title'    => esc_html__('JPEG max quality', 'redux-framework-demo'),
+      'default' => 85,
+      'validate' => array('numeric', 'not_empty')
+    ),
+    array(
+      'id'       => 'image_jpeg_default_quality',
+      'type'     => 'text',
+      'title'    => esc_html__('JPEG Default quality', 'redux-framework-demo'),
+      'default' => 75,
+      'validate' => array('numeric', 'not_empty')
+    ),
+
+    array(
+      'id'       => 'image_png_max_quality',
+      'type'     => 'text',
+      'title'    => esc_html__('PNG max quality', 'redux-framework-demo'),
+      'default' => 85,
+      'validate' => array('numeric', 'not_empty')
+    ),
+    array(
+      'id'       => 'image_png_default_quality',
+      'type'     => 'text',
+      'title'    => esc_html__('PNG Default quality', 'redux-framework-demo'),
+      'default' => 75,
+      'validate' => array('numeric', 'not_empty')
+    ),
+    array(
+      'id'       => 'image_debug_mode',
+      'type'     => 'checkbox',
+      'title'    => esc_html__('Image optimization debug mode', 'redux-framework-demo'),
+      'default' => false
+    ),
+
+    // array(
+    //     'id'       => 'rocket-loader',
+    //     'type'     => 'checkbox',
+    //     'title'    => esc_html__( 'Rocket loader', 'redux-framework-demo' ),
+    //     'default' => false,
+    // ),
+    array(
+      'id'       => 'clear_cache',
+      'type'     => 'clear_cache',
+      'title'    => esc_html__('Clear Cache', 'redux-framework-demo'),
+      'default' => false,
+    ),
+  )
+));
+
+
+
+if (file_exists(dirname(__FILE__) . '/../README.md')) {
+  $section = array(
+    'icon'   => 'el el-list-alt',
+    'title'  => __('Documentation', 'redux-framework-demo'),
+    'fields' => array(
+      array(
+        'id'       => '17',
+        'type'     => 'raw',
+        'markdown' => true,
+        'content_path' => dirname(__FILE__) . '/../README.md', // FULL PATH, not relative please
+        //'content' => 'Raw content here',
       ),
-      )
-    ));
-    
-    
-    
-    Redux::setSection($opt_name, array(
-      'title'  => esc_html__('Footer', 'redux-framework-demo'),
-      'id'     => 'footer-section',
-      'icon'   => 'el el-adjust-alt',
-      'fields' => array(
-        array(
-          'id'       => 'footer-copyright-text',
-          'type'     => 'text',
-          'title'    => esc_html__('Footer copyright text', 'redux-framework-demo'),
-          'default' => esc_html__('© ' . date("Y") . ' Itobuz Technologies All Rights Reserved', 'redux-framework-demo'),
-          )
-          )
-        ));
-        
-        Redux::setSection($opt_name, array(
-          'title'  => esc_html__('Optimization', 'redux-framework-demo'),
-          'id'     => 'optimization-section',
-          'icon'   => 'el el-adjust-alt',
-          'fields' => array(
-            array(
-              'id'       => 'css-optimize',
-              'type'     => 'checkbox',
-              'title'    => esc_html__('CSS Optimization', 'redux-framework-demo'),
-              'default' => false,
-            ),
-            array(
-              'id'       => 'js-optimize',
-              'type'     => 'checkbox',
-              'title'    => esc_html__('JS Optimization', 'redux-framework-demo'),
-              'default' => false,
-            ),
-            
-            array(
-              'id'   => 'info_normal',
-              'type' => 'info',
-              'desc' => __('Image Optimization', 'redux-framework-demo')
-            ),
-            
-            array(
-              'id'       => 'image_jpeg_max_quality',
-              'type'     => 'text',
-              'title'    => esc_html__('JPEG max quality', 'redux-framework-demo'),
-              'default' => 85,
-              'validate' => array('numeric', 'not_empty')
-            ),
-            array(
-              'id'       => 'image_jpeg_default_quality',
-              'type'     => 'text',
-              'title'    => esc_html__('JPEG Default quality', 'redux-framework-demo'),
-              'default' => 75,
-              'validate' => array('numeric', 'not_empty')
-            ),
-            
-            array(
-              'id'       => 'image_png_max_quality',
-              'type'     => 'text',
-              'title'    => esc_html__('PNG max quality', 'redux-framework-demo'),
-              'default' => 85,
-              'validate' => array('numeric', 'not_empty')
-            ),
-            array(
-              'id'       => 'image_png_default_quality',
-              'type'     => 'text',
-              'title'    => esc_html__('PNG Default quality', 'redux-framework-demo'),
-              'default' => 75,
-              'validate' => array('numeric', 'not_empty')
-            ),
-            array(
-              'id'       => 'image_debug_mode',
-              'type'     => 'checkbox',
-              'title'    => esc_html__('Image optimization debug mode', 'redux-framework-demo'),
-              'default' => false
-            ),
-            
-            // array(
-              //     'id'       => 'rocket-loader',
-              //     'type'     => 'checkbox',
-              //     'title'    => esc_html__( 'Rocket loader', 'redux-framework-demo' ),
-              //     'default' => false,
-              // ),
-              array(
-                'id'       => 'clear_cache',
-                'type'     => 'clear_cache',
-                'title'    => esc_html__('Clear Cache', 'redux-framework-demo'),
-                'default' => false,
-              ),
-              )
-            ));
-            
-            
-            
-            if (file_exists(dirname(__FILE__) . '/../README.md')) {
-              $section = array(
-                'icon'   => 'el el-list-alt',
-                'title'  => __('Documentation', 'redux-framework-demo'),
-                'fields' => array(
-                  array(
-                    'id'       => '17',
-                    'type'     => 'raw',
-                    'markdown' => true,
-                    'content_path' => dirname(__FILE__) . '/../README.md', // FULL PATH, not relative please
-                    //'content' => 'Raw content here',
-                  ),
-                ),
-              );
-              Redux::setSection($opt_name, $section);
-            }
+    ),
+  );
+  Redux::setSection($opt_name, $section);
+}
             /*
             * <--- END SECTIONS
             */
