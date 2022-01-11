@@ -1,3 +1,3 @@
 # WP theme development workflow with timber and twig
 
-Wiki: https://github.com/prosenjit-manna/wp-twig-public/wiki
+GitBook URL: https://wordpress-studio.gitbook.io/wp-twig-wordpress-starter-theme/getting-started
