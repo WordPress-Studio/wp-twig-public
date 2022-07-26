@@ -2,7 +2,7 @@ FROM ubuntu/apache2
 LABEL maintainer="prosenjit@itobuz.com"
 RUN apt-get update
 RUN a2enmod rewrite && a2enmod headers && a2enmod expires
-RUN apt-get install -y  unzip curl ca-certificates nano imagemagick webp
+RUN apt-get install -y  unzip curl ca-certificates nano imagemagick webp wget
 
 RUN apt-get install -y software-properties-common 
 RUN add-apt-repository ppa:ondrej/php
@@ -27,3 +27,10 @@ RUN a2ensite default-ssl.conf
 
 # Composer install
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
+
+# Install php scanner
+RUN wget https://raw.githubusercontent.com/marcocesarato/PHP-Antimalware-Scanner/master/dist/scanner --no-check-certificate -O /usr/bin/awscan.phar && \
+printf "#!/bin/bash\nphp /usr/bin/awscan.phar \$@" > /usr/bin/awscan && \
+chmod u+x,g+x /usr/bin/awscan.phar && \
+chmod u+x,g+x /usr/bin/awscan && \
+export PATH=$PATH":/usr/bin"
