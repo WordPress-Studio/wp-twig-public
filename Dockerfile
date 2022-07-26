@@ -8,11 +8,8 @@ RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update
 
-# Install php version 5.6
-# RUN apt install -y php5.6 php5.6-mysql php5.6-curl php5.6-dom php5.6-mbstring php5.6-zip php5.6-imagick libapache2-mod-php5.6
-
 # Install php version 7.4
-RUN apt install -y php7.4 php7.4-mysql php7.4-curl php7.4-dom php7.4-mbstring php7.4-zip php7.4-imagick libapache2-mod-php7.4
+RUN apt install -y php7.4 php7.4-mysql php7.4-curl php7.4-dom php7.4-mbstring php7.4-zip php7.4-imagick libapache2-mod-php7.4 php7.4-intl
 
 # Install WP CLI
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
