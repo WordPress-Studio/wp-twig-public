@@ -1,7 +1,7 @@
 FROM ubuntu/apache2
 LABEL maintainer="prosenjit@itobuz.com"
 RUN apt-get update
-RUN a2enmod rewrite && a2enmod headers && a2enmod expires
+RUN a2enmod rewrite && a2enmod headers && a2enmod expires 
 RUN apt-get install -y  unzip curl ca-certificates nano imagemagick webp wget
 
 RUN apt-get install -y software-properties-common 
@@ -34,3 +34,7 @@ printf "#!/bin/bash\nphp /usr/bin/awscan.phar \$@" > /usr/bin/awscan && \
 chmod u+x,g+x /usr/bin/awscan.phar && \
 chmod u+x,g+x /usr/bin/awscan && \
 export PATH=$PATH":/usr/bin"
+
+RUN apt-get install -y  zsh
+RUN apt-get install -y  git
+RUN sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
