@@ -28,7 +28,7 @@ services:
         links:
             - 'db:db'
         ports:
-            - 8081:80            
+            - 8081:80
 
 volumes:
     db-volume:   

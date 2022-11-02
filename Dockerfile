@@ -1,10 +1,11 @@
-FROM ubuntu/apache2
+FROM ubuntu:20.04
 LABEL maintainer="prosenjit@itobuz.com"
 RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt install apache2 apache2-utils  -y
 RUN a2enmod rewrite && a2enmod headers && a2enmod expires 
 RUN apt-get install -y  unzip curl ca-certificates nano imagemagick webp wget
 
-RUN apt-get install -y software-properties-common 
+RUN apt-get install -y software-properties-common apt-transport-https -y
 RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update
 
@@ -38,3 +39,6 @@ export PATH=$PATH":/usr/bin"
 RUN apt-get install -y  zsh
 RUN apt-get install -y  git
 RUN sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+RUN apt clean 
+EXPOSE 80
+ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]
