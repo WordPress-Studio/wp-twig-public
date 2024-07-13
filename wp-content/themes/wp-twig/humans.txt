@@ -1,5 +1,5 @@
 /* TEAM */
 Built by:
-SR Frontend Developer: Prosenjit Manna
+Development Lead @itobuz: Prosenjit Manna
 Site: https://itobuz.com
 
