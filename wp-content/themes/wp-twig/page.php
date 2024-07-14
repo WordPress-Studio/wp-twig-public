@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages.
  *
@@ -28,5 +29,4 @@ $context['post'] = $timber_post;
 
 $context = getScriptsAndStyles($timber_post, $context);
 
-
-Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );
+Timber::render(array('page-' . $timber_post->post_name . '.twig', 'page.twig'), $context);

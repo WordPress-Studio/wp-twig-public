@@ -2,16 +2,18 @@
   "name": "itobuz/wp-twig",
   "description": "WordPress site",
   "config": {
-      "vendor-dir": "vendor"
+      "vendor-dir": "vendor",
+    "allow-plugins": {
+      "composer/installers": true
+    }
    },
   "require": {
     "timber/timber": "1.18.2",
     "cmb2/cmb2": "2.9.0",
-    "wpackagist-plugin/lazy-blocks": "^2.3.1",
-    "matthiasmullie/minify": "1.3.66",
+    "wpackagist-plugin/lazy-blocks": "2.3.1",
     "wpackagist-plugin/redux-framework": "4.2.14",
     "djboris88/timber-commented-include": "1.1.0",
-    "rosell-dk/webp-convert": "^2.6"
+    "rosell-dk/webp-convert": "2.6"
   },
   "repositories":[
         {
@@ -27,12 +29,6 @@
   "autoload": {
 	  "files": [
       "vendor/cmb2/init.php",
-      "vendor/matthiasmullie/minify/src/Minify.php",
-      "vendor/matthiasmullie/minify/src/CSS.php",
-      "vendor/matthiasmullie/minify/src/JS.php",
-      "vendor/matthiasmullie/minify/src/Exceptions/BasicException.php",
-      "vendor/matthiasmullie/minify/src/Exceptions/FileImportException.php",
-      "vendor/matthiasmullie/minify/src/Exceptions/IOException.php",
       "vendor/matthiasmullie/path-converter/src/ConverterInterface.php",
       "vendor/matthiasmullie/path-converter/src/Converter.php"
     ]

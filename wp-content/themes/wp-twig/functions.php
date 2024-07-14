@@ -1,37 +1,17 @@
 <?php
 /**
  * Wp Twig Starter theme
- * @package  WordPress
- * @subpackage  Timber
- * @since   Timber 0.1
  */
 
-/**
- * Get the bootstrap!
- * (Update path to use cmb2 or CMB2, depending on the name of the folder.
- * Case-sensitive is important on some systems.)
- */
 
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
-
-// Minify library added
-use MatthiasMullie\Minify;
-
 
 
 if (file_exists($composer_autoload)) {
   require_once $composer_autoload;
   $timber = new Timber\Timber([
-    'debug' => true,
+    'debug' => WP_DEBUG,
   ]);
-
-
-  // TODO: Set redux URL
-  // wp-content/themes/wp-twig/vendor/redux-framework/redux-core/class-redux-core.php
-  // 235 , 243
-
-  // wp-twig/vendor/redux-framework/redux-core/inc/extensions/import_export/import_export/class-redux-import-export.php
-
 
   require_once __DIR__ . '/vendor/redux-framework/redux-core/framework.php';
 
@@ -41,11 +21,8 @@ if (file_exists($composer_autoload)) {
   require_once __DIR__ . '/inc/post-type/project-post-taxonomy.php';
   require_once __DIR__ . '/inc/render-assets.php';
   require_once __DIR__ . '/inc/image-resize.php';
+  require_once __DIR__ . '/inc/get-scripts-and-styles.php';
 
-
-  $admin_path = str_replace(get_bloginfo('url') . '/', ABSPATH, get_admin_url());
-  require_once ($admin_path . '/includes/class-wp-filesystem-base.php');
-  require_once ($admin_path . '/includes/class-wp-filesystem-direct.php');
 
   // Define path and URL to the LZB plugin.
   define('WP_TWIG_LZB_PATH', get_template_directory() . '/vendor/lazy-blocks/');
@@ -54,7 +31,6 @@ if (file_exists($composer_autoload)) {
 
   // Include the LZB plugin.
   require_once WP_TWIG_LZB_PATH . 'lazy-blocks.php';
-
   require_once __DIR__ . '/inc/blocks.php';
 
 
@@ -66,22 +42,6 @@ if (file_exists($composer_autoload)) {
   }
 }
 
-
-
-
-
-function wp_twig_block_category($categories, $post)
-{
-  return array_merge(
-    $categories,
-    array(
-      array(
-        'slug' => 'wp_twig_blocks',
-        'title' => __('Wp Twig Blocks', 'wp_twig_blocks'),
-      ),
-    )
-  );
-}
 
 
 /**
@@ -118,55 +78,28 @@ class WpTwigStartSite extends Timber\Site
   {
     add_action('after_setup_theme', array($this, 'theme_supports'));
     add_filter('timber/context', array($this, 'add_to_context'));
-    add_action('init', array($this, 'create_optimize_dir'));
     add_action('wp_enqueue_scripts', 'twig_scripts');
     add_action('widgets_init', array($this, 'wp_twig_widgets_init'));
     add_filter('block_categories_all', 'wp_twig_block_category', 10, 2);
     add_action('admin_enqueue_scripts', array($this, 'admin_style'));
     add_action('init', array($this, 'register_menus'));
-    add_action('template_redirect', array($this, 'minify_global_js'));
-    add_action('template_redirect', array($this, 'minify_global_css'));
-    add_action('admin_footer', array($this, 'set_nonce'));
-    add_action('wp_ajax_clear_cache', array($this, 'clear_cache_callback'));
 
     add_filter('woocommerce_enqueue_styles', array($this, 'woocommerce_dequeue_styles'));
     add_action('wp_enqueue_scripts', array($this, 'blocks_dequeue_styles'));
 
-    $WP_INCLUDE_DIR = preg_replace('/wp-content$/', 'wp-includes', WP_CONTENT_DIR);
-    if (is_css_optimized()) {
-      $this->global_styles = array(
-        $WP_INCLUDE_DIR . '/css/dist/block-library/style.min.css',
-        get_template_directory() . '/css/vendor/bootstrap.css',
-        get_template_directory() . '/css/main.css',
-      );
+    $this->global_styles = array(
+      get_template_directory_uri() . '/css/vendor/bootstrap.css',
+      get_template_directory_uri() . '/css/main.css',
+    );
 
-      if (!function_exists('is_woocommerce_activated')) {
-        if (class_exists('woocommerce')) {
-          array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/assets/css/woocommerce.css');
-          array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/assets/css/woocommerce-layout.css');
-          array_push($this->global_styles, get_template_directory() . '/css/vendor/woocommerce-smallscreen.css');
-          array_push($this->global_styles, WP_CONTENT_DIR . '/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css');
-          array_push($this->global_styles, get_template_directory() . '/css/modules/woocommerce.css');
-        }
-      }
-    } else {
-      $this->global_styles = array(
-        get_template_directory_uri() . '/css/vendor/bootstrap.css',
-        get_template_directory_uri() . '/css/main.css',
-      );
-
-      if (!function_exists('is_woocommerce_activated')) {
-        if (class_exists('woocommerce')) {
-          array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/assets/css/woocommerce.css');
-          array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/assets/css/woocommerce-layout.css');
-          array_push($this->global_styles, get_template_directory_uri() . '/css/vendor/woocommerce-smallscreen.css');
-          array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/packages/woocommerce-blocks/build/wc-blocks-style.css');
-          array_push($this->global_styles, get_template_directory_uri() . '/css/modules/woocommerce.css');
-        }
+    if (!function_exists('is_woocommerce_activated')) {
+      if (class_exists('woocommerce')) {
+        array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/assets/css/woocommerce.css');
+        array_push($this->global_styles, WP_CONTENT_URL . '/plugins/woocommerce/assets/css/woocommerce-layout.css');
+        array_push($this->global_styles, get_template_directory_uri() . '/css/vendor/woocommerce-smallscreen.css');
+        array_push($this->global_styles, get_template_directory_uri() . '/css/modules/woocommerce.css');
       }
     }
-
-
 
 
     // echo '<pre>';
@@ -177,38 +110,20 @@ class WpTwigStartSite extends Timber\Site
 
   public function woocommerce_dequeue_styles($enqueue_styles)
   {
-    unset($enqueue_styles['woocommerce-general']); // woocommerce/assets/css/woocommerce.css
-    unset($enqueue_styles['woocommerce-layout']); // woocommerce/assets/css/woocommerce-layout.css
+    unset($enqueue_styles['woocommerce-general']);
+    unset($enqueue_styles['woocommerce-layout']);
     unset($enqueue_styles['woocommerce-smallscreen']);
     return $enqueue_styles;
   }
 
   public function blocks_dequeue_styles()
   {
-    wp_dequeue_style('wc-block-style'); // woocommerce/packages/woocommerce-blocks/build/style.css
-    wp_dequeue_style('wp-block-library'); // wp-includes/css/dist/block-library/style.min.css
+    wp_dequeue_style('wc-block-style');
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wc-blocks-style-css');
   }
 
-  public function clear_cache_callback()
-  {
-    try {
-      check_ajax_referer(NONCE_SALT, 'security');
-      $fileSystemDirect = new WP_Filesystem_Direct(false);
-      $base_dir = WP_CONTENT_DIR . '/wp_twig_minify';
-      $fileSystemDirect->rmdir($base_dir, true);
-      echo 'Cache clear successfully';
-    } catch (Exception $e) {
-      echo 'Message: ' . $e->getMessage();
-    }
-    die();
-  }
-
-  public function set_nonce()
-  {
-    $ajax_nonce = wp_create_nonce(NONCE_SALT);
-    echo '<script>var wp_ajax_nonce="' . $ajax_nonce . '"</script>';
-  }
-
+  
   // Update CSS within in Admin
   public function admin_style()
   {
@@ -216,21 +131,6 @@ class WpTwigStartSite extends Timber\Site
   }
 
 
-
-  public function create_optimize_dir()
-  {
-
-    $base_dir = WP_CONTENT_DIR . '/wp_twig_minify';
-    $css_dir = WP_CONTENT_DIR . '/wp_twig_minify/css';
-    $js_dir = WP_CONTENT_DIR . '/wp_twig_minify/js';
-
-    if (!is_dir($css_dir)) {
-      mkdir($base_dir, 0700);
-      mkdir($css_dir, 0700);
-      mkdir($js_dir, 0700);
-    }
-
-  }
 
   public function register_menus()
   {
@@ -240,12 +140,6 @@ class WpTwigStartSite extends Timber\Site
     register_nav_menus($locations);
   }
 
-
-  /**
-   * Register widget area.
-   *
-   * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
-   */
   public function wp_twig_widgets_init()
   {
 
@@ -289,10 +183,6 @@ class WpTwigStartSite extends Timber\Site
 
 
 
-  /** This is where you add some context
-   *
-   * @param string $context context['this'] Being the Twig's {{ this }}.
-   */
   public function add_to_context($context)
   {
     $context['theme_link'] = get_template_directory_uri();
@@ -300,15 +190,12 @@ class WpTwigStartSite extends Timber\Site
     $context['sidebar'] = Timber::get_widgets('blog_sidebar');
     $context['site_wrapper_class'] = ' container p-0 ';
     $context['site_favicon'] = get_theme_opt('site_favicon');
-    $context['site_global_stylesheet_list'] = $this->getGlobalStyle();
+    $context['site_global_stylesheet_list'] = $this->global_styles;
     $context['footer_copyright_text'] = get_theme_opt('footer-copyright-text');
-    $context['rocket_loader'] = get_theme_opt('rocket-loader');
 
     $context['global_css'] = WP_CONTENT_URL . '/wp_twig_minify/css/global.css';
     $context['global_js'] = WP_CONTENT_URL . '/wp_twig_minify/js/global.js';
     $context['global_js_list'] = $this->getGlobalJS();
-    $context['css_optimize'] = is_css_optimized('css-optimize');
-    $context['js_optimize'] = is_js_optimized();
     $context['comment_depth'] = get_option('thread_comments_depth');
 
     // Page or post meta
@@ -328,8 +215,6 @@ class WpTwigStartSite extends Timber\Site
     $context['site'] = $this;
     return $context;
   }
-
-
 
   public function theme_supports()
   {
@@ -389,66 +274,6 @@ class WpTwigStartSite extends Timber\Site
 
   }
 
-  public function getGlobalStyle()
-  {
-    return $this->global_styles;
-  }
-
-  public function getGlobalJS()
-  {
-    return array(
-      '/static/scripts/load-js.js',
-      '/static/scripts/vendor/svgxuse.min.js',
-      '/static/scripts/vendor/webfont.js',
-      '/static/scripts/site.js',
-    );
-  }
-
-  public function minify_global_css()
-  {
-    $css_optimized = is_css_optimized();
-    $stylesheets = $this->getGlobalStyle();
-
-
-    if ($css_optimized) {
-      $minifier = new Minify\CSS();
-      if ($stylesheets) {
-        foreach ($stylesheets as $sheet) {
-          $minifier->add($sheet);
-        }
-
-        $cssPath = '/wp_twig_minify/css/global.css';
-        $minifiedPath = WP_CONTENT_DIR . $cssPath;
-
-        if (isDebugModeEnabled() || !file_exists($minifiedPath)) {
-          $minifier->minify($minifiedPath);
-        }
-      }
-    }
-  }
-
-  public function minify_global_js()
-  {
-    $js_optimized = get_theme_opt('js-optimize');
-    $global_js = $this->getGlobalJS();
-
-    if ($js_optimized && $global_js) {
-      $global_page_minifier = new Minify\JS();
-      foreach ($global_js as $js) {
-        $global_page_minifier->add(get_template_directory() . $js);
-      }
-
-      $jsPath = '/wp_twig_minify/js/global.js';
-      $cssURL = WP_CONTENT_URL . $jsPath;
-      $minifiedPath = WP_CONTENT_DIR . $jsPath;
-      if (isDebugModeEnabled() || !file_exists($minifiedPath)) {
-        $global_page_minifier->minify($minifiedPath);
-      }
-    }
-  }
-
-
-
 }
 
 new WpTwigStartSite();
@@ -463,107 +288,8 @@ function timber_set_product($post)
 }
 
 
-function minifyCSS($stylesheets, $file_name)
-{
-  $minifier = new Minify\CSS();
-  if ($stylesheets) {
-    foreach ($stylesheets as $sheet) {
-      if (file_exists(get_template_directory() . $sheet)) {
-        $minifier->add(get_template_directory() . $sheet);
-      }
-    }
-
-    $cssPath = '/wp_twig_minify/css/' . $file_name . '.css';
-    $cssURL = WP_CONTENT_URL . $cssPath;
-    $minifiedPath = WP_CONTENT_DIR . $cssPath;
-    if (isDebugModeEnabled() || !file_exists($minifiedPath)) {
-      $minifier->minify($minifiedPath);
-    }
-    return $cssURL;
-  }
-}
-
-function minifyJS($scripts, $file_name)
-{
-
-  $js_page_minifier = new Minify\JS();
-  foreach ($scripts as $js) {
-    $js_page_minifier->add(get_template_directory() . $js);
-  }
-
-  $jsPath = '/wp_twig_minify/js/' . $file_name . '.js';
-  $jsURL = WP_CONTENT_URL . $jsPath;
-  $minifiedPath = WP_CONTENT_DIR . $jsPath;
-  if (isDebugModeEnabled() || !file_exists($minifiedPath)) {
-    $js_page_minifier->minify($minifiedPath);
-  }
-  return $jsURL;
-}
-
-function is_js_optimized()
-{
-  if (get_theme_opt('js-optimize')) {
-    return true;
-  }
-
-  return false;
-}
-
-function is_css_optimized()
-{
-  if (get_theme_opt('css-optimize')) {
-    return true;
-  }
-
-  return false;
-}
 
 function isDebugModeEnabled()
 {
   return WP_DEBUG;
-}
-
-
-function getScriptsAndStyles($timber_post, $context)
-{
-
-  $post_id = get_the_ID();
-
-  $js_optimized = is_js_optimized();
-  $css_optimized = is_css_optimized();
-
-  $sheets = renderStyleSheets($timber_post);
-
-  if (isset($sheets['block_style_sheets'])) {
-    $context['block_style_sheets'] = $sheets['block_style_sheets'];
-  }
-  if ($css_optimized && isset($sheets['page_specific_style_sheets'])) {
-    $context['page_specific_style_sheets'] = $sheets['page_specific_style_sheets'];
-  }
-
-  $scripts = renderScripts($timber_post);
-
-  if (isset($scripts['block_scripts'])) {
-    $context['block_scripts'] = $scripts['block_scripts'];
-  }
-
-  if ($js_optimized) {
-    $context['page_specific_scripts'] = $scripts['page_specific_scripts'];
-  } else {
-    $scripts = get_post_meta($post_id, 'page_meta_scripts', true);
-    if (!$scripts) {
-      $scripts = array();
-    }
-
-
-    if (get_post_meta($post_id, 'animation_support', true) === 'on') {
-      array_push($scripts, '/static/scripts/vendor/gsap.min.js');
-      array_push($scripts, '/static/scripts/vendor/scroll-trigger.min.js');
-      array_push($scripts, '/static/scripts/anim-lib.js');
-    }
-    $context['page_specific_scripts'] = $scripts;
-  }
-
-  return $context;
-
 }

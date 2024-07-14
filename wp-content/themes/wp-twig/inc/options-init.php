@@ -151,18 +151,6 @@ Redux::setSection($opt_name, array(
   'id'     => 'optimization-section',
   'icon'   => 'el el-adjust-alt',
   'fields' => array(
-    array(
-      'id'       => 'css-optimize',
-      'type'     => 'checkbox',
-      'title'    => esc_html__('CSS Optimization', 'redux-framework-demo'),
-      'default' => false,
-    ),
-    array(
-      'id'       => 'js-optimize',
-      'type'     => 'checkbox',
-      'title'    => esc_html__('JS Optimization', 'redux-framework-demo'),
-      'default' => false,
-    ),
 
     array(
       'id'   => 'info_normal',
@@ -207,12 +195,6 @@ Redux::setSection($opt_name, array(
       'default' => false
     ),
 
-    // array(
-    //     'id'       => 'rocket-loader',
-    //     'type'     => 'checkbox',
-    //     'title'    => esc_html__( 'Rocket loader', 'redux-framework-demo' ),
-    //     'default' => false,
-    // ),
     array(
       'id'       => 'clear_cache',
       'type'     => 'clear_cache',

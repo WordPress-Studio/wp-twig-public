@@ -39,3 +39,9 @@ wp db create --allow-root
 
 ```
 
+## Development System setup for mac 
+- Install Php 
+` brew install php@7.4 or brew install php `
+
+- Install Docker https://www.docker.com/products/docker-desktop/
+

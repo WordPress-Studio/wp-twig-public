@@ -3,6 +3,8 @@
     "bmewburn.vscode-intelephense-client",
     "devsense.phptools-vscode",
     "devsense.composer-php-vscode",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "whatwedo.twig",
+    "mblode.twig-language-2"
   ]
 }

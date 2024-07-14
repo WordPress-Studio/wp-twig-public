@@ -79,7 +79,7 @@ function wp_twig_image($options)
       'jpeg' => [
         'encoding' => 'auto',
         'quality' => 'auto',
-        'max-quality' => get_theme_opt('image_jpeg_max_quality') + 0, 
+        'max-quality' => get_theme_opt('image_jpeg_max_quality') + 0,
         'default-quality' => get_theme_opt('image_jpeg_default_quality') + 0, 
         'sharp-yuv' => true,
       ]
@@ -124,4 +124,23 @@ function add_to_twig($twig)
   $twig->addFunction(new Timber\Twig_Function('jsonDecode', 'jsonDecode'));
 
   return $twig;
+}
+
+/**
+ * Summary of wp_twig_block_category
+ * @param mixed $categories
+ * @param mixed $post
+ * @return mixed
+ */
+function wp_twig_block_category($categories, $post)
+{
+  return array_merge(
+    $categories,
+    array(
+      array(
+        'slug' => 'wp_twig_blocks',
+        'title' => __('Wp Twig Blocks', 'wp_twig_blocks'),
+      ),
+    )
+  );
 }
