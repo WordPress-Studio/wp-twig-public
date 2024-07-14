@@ -73,6 +73,8 @@ if ('caches' in window) {
     console.log('Cache names:', cacheNames);
 
     // Access the current cache and list its contents
+    // Use git commit Id as cache name to identify the version
+    // git rev-parse --short HEAD
     const currentCacheName = 'my-cache-v6'; // Update to match your current cache version
     if (cacheNames.includes(currentCacheName)) {
       caches.open(currentCacheName).then(cache => {

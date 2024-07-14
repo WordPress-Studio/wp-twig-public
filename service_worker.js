@@ -1,5 +1,6 @@
 
 // Define the cache name
+// Use Git commit id: git rev-parse --short HEAD
 const CACHE_NAME = 'my-cache-v6';
 
 // Define the files to cache
