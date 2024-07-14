@@ -19,6 +19,7 @@ docker exec -it {id} bash
 
 
 ## WP CLI commands 
+```
 wp core download --allow-root
 wp config create --dbname=testdb --dbuser=testuser --dbpass=testpassword --dbhost=db --dbprefix=wp_  --allow-root <<PHP
 define( 'WP_DEBUG', true );
@@ -36,4 +37,5 @@ wp plugin delete akismet hello  --allow-root
 wp db drop --allow-root
 wp db create --allow-root
 
+```
 
