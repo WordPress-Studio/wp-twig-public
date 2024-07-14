@@ -87,6 +87,12 @@ class WpTwigStartSite extends Timber\Site
     add_filter('woocommerce_enqueue_styles', array($this, 'woocommerce_dequeue_styles'));
     add_action('wp_enqueue_scripts', array($this, 'blocks_dequeue_styles'));
 
+    $this->globalJavascriptList = array(
+      '/static/scripts/load-js.js',
+      '/static/scripts/site.js',
+    );
+
+
     $this->global_styles = array(
       get_template_directory_uri() . '/css/vendor/bootstrap.css',
       get_template_directory_uri() . '/css/main.css',
@@ -193,9 +199,7 @@ class WpTwigStartSite extends Timber\Site
     $context['site_global_stylesheet_list'] = $this->global_styles;
     $context['footer_copyright_text'] = get_theme_opt('footer-copyright-text');
 
-    $context['global_css'] = WP_CONTENT_URL . '/wp_twig_minify/css/global.css';
-    $context['global_js'] = WP_CONTENT_URL . '/wp_twig_minify/js/global.js';
-    $context['global_js_list'] = $this->getGlobalJS();
+    $context['global_js_list'] = $this->globalJavascriptList;
     $context['comment_depth'] = get_option('thread_comments_depth');
 
     // Page or post meta

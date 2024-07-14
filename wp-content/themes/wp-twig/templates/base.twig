@@ -28,26 +28,15 @@
 		{% include './components/footer/footer.twig' %}
 	</footer>
 
-	{% if js_optimize %}
-      <script src="{{ global_js }}"></script>
-    {% else %}
-
-    {% for item in global_js_list %}
-        <script src="{{theme_link}}{{item}}"></script>
-    {% endfor %}
-  {% endif %}
+	{% for item in global_js_list %}
+    <script src="{{theme_link}}{{item}}"></script>
+  {% endfor %}
 
 
     <!--  page_specific_scripts  -->
-    {% if js_optimize %}
-      {% for item in page_specific_scripts %}
-        <script src="{{item}}"></script>
+    {% for item in page_specific_scripts %}
+        <script src="{{theme_link}}{{item}}"></script>
       {% endfor %}
-    {% else %}
-      {% for item in page_specific_scripts %}
-          <script src="{{theme_link}}{{item}}"></script>
-      {% endfor %}
-    {% endif %}
     <!-- //  page_specific_scripts  -->
 
     <!--  block_scripts  -->
