@@ -159,6 +159,14 @@ Redux::setSection($opt_name, array(
     ),
 
     array(
+      'id'       => 'service_worker',
+      'type'     => 'checkbox',
+      'title'    => esc_html__('Service Worker Activate', 'redux-framework-demo'),
+      'desc' => esc_html__('Service Worker Can speed up loading speed for end User', 'redux-framework-demo'),
+      'default' => false
+    ),
+
+    array(
       'id'       => 'image_jpeg_max_quality',
       'type'     => 'text',
       'title'    => esc_html__('JPEG max quality', 'redux-framework-demo'),
