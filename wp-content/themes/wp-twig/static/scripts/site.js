@@ -42,7 +42,7 @@ jQuery(window).load(function () {
 });
 
 if ("serviceWorker" in navigator) {
-  if (serviceWorkerEnabled) {
+  if (serviceWorkerEnabled === 'activate') {
     navigator.serviceWorker
       .register("/service_worker.js")
       .then((registration) => {
@@ -92,6 +92,8 @@ if ("serviceWorker" in navigator) {
 }
 
 if ("caches" in window) {
+  const CACHE_NAME = "857d63b";
+
   caches
     .keys()
     .then((cacheNames) => {
@@ -100,7 +102,7 @@ if ("caches" in window) {
       // Access the current cache and list its contents
       // Use git commit Id as cache name to identify the version
       // git rev-parse --short HEAD
-      const currentCacheName = "my-cache-v7"; // Update to match your current cache version
+      const currentCacheName = CACHE_NAME; // Update to match your current cache version
       // if (cacheNames.includes(currentCacheName)) {
       //   caches.open(currentCacheName).then(cache => {
       //     cache.keys().then(requests => {

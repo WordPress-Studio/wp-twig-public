@@ -199,7 +199,6 @@ class WpTwigStartSite extends Timber\Site
     $context['site_global_stylesheet_list'] = $this->global_styles;
     $context['footer_copyright_text'] = get_theme_opt('footer-copyright-text');
     $context['service_worker'] = get_theme_opt('service_worker');
-
     $context['global_js_list'] = $this->globalJavascriptList;
     $context['comment_depth'] = get_option('thread_comments_depth');
 

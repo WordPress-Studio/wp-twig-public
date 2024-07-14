@@ -159,12 +159,16 @@ Redux::setSection($opt_name, array(
     ),
 
     array(
-      'id'       => 'service_worker',
-      'type'     => 'checkbox',
-      'title'    => esc_html__('Service Worker Activate', 'redux-framework-demo'),
-      'desc' => esc_html__('Service Worker Can speed up loading speed for end User', 'redux-framework-demo'),
-      'default' => false
-    ),
+      'title'           => __( 'Service Worker', 'your-text-domain' ),
+      'id'              => 'service_worker',
+      'type'            => 'select',
+      'options'         => array(
+          'activate' => __( 'Activate', 'your-text-domain' ),
+          'deactivate' => __( 'Deactivate', 'your-text-domain' ),
+      ),
+      'default'         => 'activate',
+  ),
+
 
     array(
       'id'       => 'image_jpeg_max_quality',
