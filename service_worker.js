@@ -19,6 +19,7 @@ const EXCLUDED_FILES = ["/wp-content/themes/wp-twig/static/scripts/site.js"];
 // Define files to preload
 const FILES_TO_PRELOAD = [
   "/wp-content/themes/wp-twig/static/images/favicon.png",
+  '/wp-content/uploads/2024/07/SampleVideo_640x360_30mb.mp4'
 ];
 
 // Function to determine if a URL should be cached
