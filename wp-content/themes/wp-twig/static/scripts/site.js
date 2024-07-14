@@ -75,16 +75,16 @@ if ('caches' in window) {
     // Access the current cache and list its contents
     // Use git commit Id as cache name to identify the version
     // git rev-parse --short HEAD
-    const currentCacheName = 'my-cache-v6'; // Update to match your current cache version
-    if (cacheNames.includes(currentCacheName)) {
-      caches.open(currentCacheName).then(cache => {
-        cache.keys().then(requests => {
-          console.log('Cached files in current cache:', requests.map(req => req.url));
-        });
-      });
-    } else {
-      console.log('Not Matched Cache List', currentCacheName);
-    }
+    const currentCacheName = 'my-cache-v7'; // Update to match your current cache version
+    // if (cacheNames.includes(currentCacheName)) {
+    //   caches.open(currentCacheName).then(cache => {
+    //     cache.keys().then(requests => {
+    //        console.log('Cached files in current cache:', requests.map(req => req.url));
+    //     });
+    //   });
+    // } else {
+    //   console.log('Not Matched Cache List', currentCacheName);
+    // }
 
     // Not matched caches delete 
     cacheNames.forEach(cacheName => {
