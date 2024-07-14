@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "bmewburn.vscode-intelephense-client",
+    "devsense.phptools-vscode",
+    "devsense.composer-php-vscode",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}
