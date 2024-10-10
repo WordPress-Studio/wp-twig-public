@@ -1,3 +1,4 @@
+
 node_modules
 
 #Wordpress
@@ -24,6 +25,7 @@ wp-content/*/*
 
 # Include plugins
 #!wp-content/plugins/wp_twig_lazy_blocks
+!wp-content/plugins/advanced-custom-fields-pro
 
 ## Wocoomerce
 wp-content/uploads
