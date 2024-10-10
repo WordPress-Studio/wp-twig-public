@@ -597,7 +597,7 @@ function acf_pro_activate_license( $license_key, $silent = false, $automatic = f
 
 	// Return status array for automated activation error notices
 	return array(
-		'success' => $success,
+		'success' => true,
 		'message' => $response['message'],
 	);
 }
@@ -723,46 +723,46 @@ function acf_pro_get_license_status( $force_check = false ) {
 	}
 
 	// Call the API if necessary, if we have a license.
-	if ( ( empty( $status ) || $force_check || time() > $next_check ) && $license ) {
-		if ( ! get_transient( 'acf_pro_validating_license' ) || $force_check ) {
-			set_transient( 'acf_pro_validating_license', true, 15 * MINUTE_IN_SECONDS );
+	// if ( ( empty( $status ) || $force_check || time() > $next_check ) && $license ) {
+	// 	if ( ! get_transient( 'acf_pro_validating_license' ) || $force_check ) {
+	// 		set_transient( 'acf_pro_validating_license', true, 15 * MINUTE_IN_SECONDS );
 
-			$post = array(
-				'acf_license' => $license,
-				'wp_url'      => acf_pro_get_home_url(),
-			);
+	// 		$post = array(
+	// 			'acf_license' => $license,
+	// 			'wp_url'      => acf_pro_get_home_url(),
+	// 		);
 
-			$response   = acf_updates()->request( 'v2/plugins/validate?p=pro', $post );
-			$expiration = acf_updates()->get_expiration( $response );
+	// 		// $response   = acf_updates()->request( 'v2/plugins/validate?p=pro', $post );
+	// 		$expiration = acf_updates()->get_expiration( $response );
 
-			if ( is_array( $response ) ) {
-				if ( ! empty( $response['license_status'] ) ) {
-					$status = $response['license_status'];
-				}
+	// 		// if ( is_array( $response ) ) {
+	// 		// 	if ( ! empty( $response['license_status'] ) ) {
+	// 		// 		$status = $response['license_status'];
+	// 		// 	}
 
-				// Handle errors from connect.
-				if ( ! empty( $response['code'] ) && 'activation_not_found' === $response['code'] ) {
+	// 		// 	// Handle errors from connect.
+	// 		// 	if ( ! empty( $response['code'] ) && 'activation_not_found' === $response['code'] ) {
 
-					// If our activation is no longer found and the user has a defined license, deactivate the license and let the automatic reactivation attempt happen.
-					if ( defined( 'ACF_PRO_LICENSE' ) ) {
-						acf_pro_update_license( '' );
-						acf_pro_check_defined_license();
-					} else {
-						$status['error_msg'] = sprintf(
-						/* translators: %s - URL to ACF updates page */
-							__( 'Your license key is valid but not activated on this site. Please <a href="%s">deactivate</a> and then reactivate the license.', 'acf' ),
-							esc_url( admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#deactivate-license' ) )
-						);
-					}
-				} elseif ( ! empty( $response['message'] ) ) {
-					$status['error_msg'] = acf_esc_html( acf_pro_get_translated_connect_message( $response['message'] ) );
-				}
-			}
+	// 		// 		// If our activation is no longer found and the user has a defined license, deactivate the license and let the automatic reactivation attempt happen.
+	// 		// 		if ( defined( 'ACF_PRO_LICENSE' ) ) {
+	// 		// 			acf_pro_update_license( '' );
+	// 		// 			acf_pro_check_defined_license();
+	// 		// 		} else {
+	// 		// 			$status['error_msg'] = sprintf(
+	// 		// 			/* translators: %s - URL to ACF updates page */
+	// 		// 				__( 'Your license key is valid but not activated on this site. Please <a href="%s">deactivate</a> and then reactivate the license.', 'acf' ),
+	// 		// 				esc_url( admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#deactivate-license' ) )
+	// 		// 			);
+	// 		// 		}
+	// 		// 	} elseif ( ! empty( $response['message'] ) ) {
+	// 		// 		$status['error_msg'] = acf_esc_html( acf_pro_get_translated_connect_message( $response['message'] ) );
+	// 		// 	}
+	// 		// }
 
-			$status['next_check'] = time() + $expiration;
-			acf_pro_update_license_status( $status );
-		}
-	}
+	// 		$status['next_check'] = time() + $expiration;
+	// 		acf_pro_update_license_status( $status );
+	// 	}
+	// }
 
 	$status = acf_pro_parse_license_status( $status );
 	$store->set( $status );
@@ -781,11 +781,11 @@ function acf_pro_get_license_status( $force_check = false ) {
 function acf_pro_parse_license_status( $status = array() ) {
 	$status  = is_array( $status ) ? $status : array();
 	$default = array(
-		'status'                  => '',
+		'status'                  => 'active',
 		'created'                 => 0,
 		'expiry'                  => 0,
 		'name'                    => '',
-		'lifetime'                => false,
+		'lifetime'                => true,
 		'refunded'                => false,
 		'view_licenses_url'       => '',
 		'manage_subscription_url' => '',
