@@ -292,8 +292,3 @@ function timber_set_product($post)
 }
 
 
-
-function isDebugModeEnabled()
-{
-  return WP_DEBUG;
-}
