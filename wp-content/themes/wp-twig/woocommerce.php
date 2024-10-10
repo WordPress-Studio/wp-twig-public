@@ -1,5 +1,5 @@
 <?php
-
+use Timber\Timber;
 $context = Timber::context();
 $context['sidebar'] = Timber::get_widgets( 'shop_sidebar' );
 

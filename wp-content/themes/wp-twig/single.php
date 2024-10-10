@@ -8,9 +8,10 @@
  * @subpackage  Timber
  * @since    Timber 0.1
  */
+use Timber\Timber;
 
 $context         = Timber::context();
-$timber_post     = Timber::query_post();
+$timber_post     = Timber::get_post();
 $context['post'] = $timber_post;
 
 $context = getScriptsAndStyles($timber_post, $context);
