@@ -45,3 +45,6 @@ wp db create --allow-root
 
 - Install Docker https://www.docker.com/products/docker-desktop/
 
+
+## Php version 
+tested with 7.4
