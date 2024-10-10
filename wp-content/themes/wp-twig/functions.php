@@ -2,16 +2,16 @@
 /**
  * Wp Twig Starter theme
  */
-
+use Timber\Timber;
+use Timber\Site;
 
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
 
 
 if (file_exists($composer_autoload)) {
   require_once $composer_autoload;
-  // $timber = new Timber\Timber([
-  //   'debug' => WP_DEBUG,
-  // ]);
+  Timber::init();
+  
 
   require_once __DIR__ . '/vendor/redux-framework/redux-core/framework.php';
 
@@ -25,21 +25,21 @@ if (file_exists($composer_autoload)) {
 
 
   // Define path and URL to the LZB plugin.
-  //define('WP_TWIG_LZB_PATH', get_template_directory() . '/vendor/lazy-blocks/');
-  //define('WP_TWIG_LZB_URL', get_template_directory_uri() . '/vendor/lazy-blocks/');
+  define('WP_TWIG_LZB_PATH', get_template_directory() . '/vendor/lazy-blocks/');
+  define('WP_TWIG_LZB_URL', get_template_directory_uri() . '/vendor/lazy-blocks/');
 
 
   // Include the LZB plugin.
-  // require_once WP_TWIG_LZB_PATH . 'lazy-blocks.php';
-  // require_once __DIR__ . '/inc/blocks.php';
+  require_once WP_TWIG_LZB_PATH . 'lazy-blocks.php';
+  require_once __DIR__ . '/inc/blocks.php';
 
 
   // Customize the url setting to fix incorrect asset URLs.
-  // add_filter('lzb/plugin_url', 'wp_twig_lzb_url');
-  // function wp_twig_lzb_url($url)
-  // {
-  //   return WP_TWIG_LZB_URL;
-  // }
+  add_filter('lzb/plugin_url', 'wp_twig_lzb_url');
+  function wp_twig_lzb_url($url)
+  {
+    return WP_TWIG_LZB_URL;
+  }
 }
 
 
@@ -47,13 +47,7 @@ if (file_exists($composer_autoload)) {
 /**
  * Sets the directories (inside your theme) to find .twig files
  */
-// Timber::$dirname = array('templates', 'views', 'templates/components');
-
-/**
- * By default, Timber does NOT autoescape values. Want to enable Twig's autoescape?
- * No prob! Just set this value to true
- */
-// Timber::$autoescape = false;
+Timber::$dirname = array('templates', 'views', 'templates/components');
 
 
 function twig_scripts()
@@ -71,9 +65,8 @@ function get_theme_opt($keyname)
  * We're going to configure our theme inside of a subclass of Timber\Site
  * You can move this to its own file and include here via php's include("MySite.php")
  */
-class WpTwigStartSite extends Timber\Site
+class WpTwigStartSite extends Site
 {
-  /** Add timber support. */
   public function __construct()
   {
     add_action('after_setup_theme', array($this, 'theme_supports'));
@@ -83,9 +76,10 @@ class WpTwigStartSite extends Timber\Site
     add_filter('block_categories_all', 'wp_twig_block_category', 10, 2);
     add_action('admin_enqueue_scripts', array($this, 'admin_style'));
     add_action('init', array($this, 'register_menus'));
+    add_action('wp_enqueue_scripts', array($this, 'blocks_dequeue_styles'));
+
 
     add_filter('woocommerce_enqueue_styles', array($this, 'woocommerce_dequeue_styles'));
-    add_action('wp_enqueue_scripts', array($this, 'blocks_dequeue_styles'));
 
     $this->globalJavascriptList = array(
       '/static/scripts/load-js.js',
@@ -192,7 +186,7 @@ class WpTwigStartSite extends Timber\Site
   public function add_to_context($context)
   {
     $context['theme_link'] = get_template_directory_uri();
-    $context['menu'] = new Timber\Menu('header_menu');
+    $context['menu'] = Timber::get_menu('header_menu');
     $context['sidebar'] = Timber::get_widgets('blog_sidebar');
     $context['site_wrapper_class'] = ' container p-0 ';
     $context['site_favicon'] = get_theme_opt('site_favicon');
@@ -280,7 +274,7 @@ class WpTwigStartSite extends Timber\Site
 
 }
 
-// new WpTwigStartSite();
+new WpTwigStartSite();
 
 function timber_set_product($post)
 {

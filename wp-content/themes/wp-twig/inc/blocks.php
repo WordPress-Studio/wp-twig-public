@@ -105,26 +105,6 @@ function wp_twig_image($options)
 }
 
 
-add_filter('timber/twig', 'add_to_twig');
-
-function jsonDecode($obj)
-{
-  echo json_encode($obj);
-}
-
-/**
- * My custom Twig functionality.
- *
- * @param \Twig\Environment $twig
- * @return \Twig\Environment
- */
-function add_to_twig($twig)
-{
-  // Adding a function.
-  $twig->addFunction(new Timber\Twig_Function('jsonDecode', 'jsonDecode'));
-
-  return $twig;
-}
 
 /**
  * Summary of wp_twig_block_category
