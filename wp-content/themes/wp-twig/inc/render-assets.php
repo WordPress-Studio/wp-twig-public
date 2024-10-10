@@ -4,7 +4,7 @@ function getBlockStyle($row, $block_stylesheets) {
   $blockName = $row['blockName'];
 
 
-    $blockName = str_replace('lazyblock/', 'lazyblock-', $blockName);
+    $blockName = str_replace('lazyblock/', 'lazyblock-', $blockName ?? '');
     $sheet = '/blocks/' . $blockName . '/block.css';
     $stylesheet = get_stylesheet_directory_uri() . $sheet;
 
@@ -19,7 +19,7 @@ function getBlockJS($row, $block_scripts) {
   $blockName = $row['blockName'];
 
 
-    $blockName = str_replace('lazyblock/', 'lazyblock-', $blockName);
+    $blockName = str_replace('lazyblock/', 'lazyblock-', $blockName ?? '');
     $sheet = '/blocks/' . $blockName . '/block.js';
     $stylesheet = get_stylesheet_directory_uri() . $sheet;
 
