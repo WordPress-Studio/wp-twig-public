@@ -2,9 +2,9 @@
 /**
  * Plugin Name:  Lazy Blocks
  * Description:  Gutenberg blocks visual constructor. Custom meta fields or blocks with output without hard coding.
- * Version:      2.4.1
- * Author:       nK
- * Author URI:   https://nkdev.info/
+ * Version:      3.7.0
+ * Author:       Lazy Blocks Team
+ * Author URI:   https://www.lazyblocks.com/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=byline
  * License:      GPLv2 or later
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:  lazy-blocks
@@ -13,266 +13,394 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
+}
+
+if ( ! defined( 'LAZY_BLOCKS_VERSION' ) ) {
+	define( 'LAZY_BLOCKS_VERSION', '3.7.0' );
 }
 
 if ( ! class_exists( 'LazyBlocks' ) ) :
+	/**
+	 * LazyBlocks Class
+	 */
+	class LazyBlocks {
+		/**
+		 * The single class instance.
+		 *
+		 * @var null
+		 */
+		private static $instance = null;
 
-    /**
-     * LazyBlocks Class
-     */
-    class LazyBlocks {
-        /**
-         * The single class instance.
-         *
-         * @var null
-         */
-        private static $instance = null;
+		/**
+		 * Main Instance
+		 * Ensures only one instance of this class exists in memory at any one time.
+		 */
+		public static function instance() {
+			if ( is_null( self::$instance ) ) {
+				self::$instance = new self();
+				self::$instance->init();
+			}
+			return self::$instance;
+		}
 
-        /**
-         * Main Instance
-         * Ensures only one instance of this class exists in memory at any one time.
-         */
-        public static function instance() {
-            if ( is_null( self::$instance ) ) {
-                self::$instance = new self();
-                self::$instance->init();
-            }
-            return self::$instance;
-        }
+		/**
+		 * The base path to the plugin in the file system.
+		 *
+		 * @var string
+		 */
+		public $plugin_path;
 
-        /**
-         * The base path to the plugin in the file system.
-         *
-         * @var string
-         */
-        public $plugin_path;
+		/**
+		 * URL Link to plugin
+		 *
+		 * @var string
+		 */
+		public $plugin_url;
 
-        /**
-         * URL Link to plugin
-         *
-         * @var string
-         */
-        public $plugin_url;
+		/**
+		 * Plugin basename
+		 *
+		 * @var string
+		 */
+		public $plugin_basename;
 
-        /**
-         * Blocks class object.
-         *
-         * @var object
-         */
-        private $blocks;
+		/**
+		 * Icons class object.
+		 *
+		 * @var LazyBlocks_Icons
+		 */
+		private $icons;
 
-        /**
-         * Templates class object.
-         *
-         * @var object
-         */
-        private $templates;
+		/**
+		 * Controls class object.
+		 *
+		 * @var LazyBlocks_Controls
+		 */
+		private $controls;
 
-        /**
-         * LazyBlocks constructor.
-         */
-        public function __construct() {
-            /* We do nothing here! */
-        }
+		/**
+		 * Blocks class object.
+		 *
+		 * @var LazyBlocks_Blocks
+		 */
+		private $blocks;
 
-        /**
-         * Activation Hook
-         */
-        public function activation_hook() {
-            LazyBlocks_Dummy::add();
-        }
+		/**
+		 * Templates class object.
+		 *
+		 * @var LazyBlocks_Templates
+		 */
+		private $templates;
 
-        /**
-         * Deactivation Hook
-         */
-        public function deactivation_hook() {}
+		/**
+		 * Tools class object.
+		 *
+		 * @var LazyBlocks_Tools
+		 */
+		private $tools;
 
-        /**
-         * Init.
-         */
-        public function init() {
-            $this->plugin_path = plugin_dir_path( __FILE__ );
-            $this->plugin_url  = plugin_dir_url( __FILE__ );
+		/**
+		 * LazyBlocks constructor.
+		 */
+		public function __construct() {
+			/* We do nothing here! */
+		}
 
-            $this->load_text_domain();
-            $this->include_dependencies();
+		/**
+		 * Activation Hook
+		 */
+		public function activation_hook() {
+			LazyBlocks_Dummy::add();
+		}
 
-            $this->icons     = new LazyBlocks_Icons();
-            $this->controls  = new LazyBlocks_Controls();
-            $this->blocks    = new LazyBlocks_Blocks();
-            $this->templates = new LazyBlocks_Templates();
-            $this->tools     = new LazyBlocks_Tools();
-        }
+		/**
+		 * Deactivation Hook
+		 */
+		public function deactivation_hook() {}
 
-        /**
-         * Get plugin_path.
-         */
-        public function plugin_path() {
-            return apply_filters( 'lzb/plugin_path', $this->plugin_path );
-        }
+		/**
+		 * Init.
+		 */
+		public function init() {
+			$this->plugin_path     = plugin_dir_path( __FILE__ );
+			$this->plugin_url      = plugin_dir_url( __FILE__ );
+			$this->plugin_basename = plugin_basename( __FILE__ );
 
-        /**
-         * Get plugin_url.
-         */
-        public function plugin_url() {
-            return apply_filters( 'lzb/plugin_url', $this->plugin_url );
-        }
+			$this->load_text_domain();
+			$this->include_dependencies();
 
-        /**
-         * Sets the text domain with the plugin translated into other languages.
-         */
-        public function load_text_domain() {
-            load_plugin_textdomain( 'lazy-blocks', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-        }
+			$this->icons     = new LazyBlocks_Icons();
+			$this->controls  = new LazyBlocks_Controls();
+			$this->blocks    = new LazyBlocks_Blocks();
+			$this->templates = new LazyBlocks_Templates();
+			$this->tools     = new LazyBlocks_Tools();
 
-        /**
-         * Set plugin Dependencies.
-         */
-        private function include_dependencies() {
-            require_once $this->plugin_path() . '/classes/class-migration.php';
-            require_once $this->plugin_path() . '/classes/class-admin.php';
-            require_once $this->plugin_path() . '/classes/class-icons.php';
-            require_once $this->plugin_path() . '/classes/class-controls.php';
-            require_once $this->plugin_path() . '/classes/class-blocks.php';
-            require_once $this->plugin_path() . '/classes/class-templates.php';
-            require_once $this->plugin_path() . '/classes/class-tools.php';
-            require_once $this->plugin_path() . '/classes/class-rest.php';
-            require_once $this->plugin_path() . '/classes/class-dummy.php';
-            require_once $this->plugin_path() . '/classes/class-force-gutenberg.php';
-        }
+			add_action( 'init', array( $this, 'init_hook' ), 5 );
+		}
 
-        /**
-         * Get lazyblocks icons object.
-         */
-        public function icons() {
-            return $this->icons;
-        }
+		/**
+		 * Init hook should be used to register user blocks and add customizations.
+		 */
+		public function init_hook() {
+			do_action( 'lzb/init' );
+		}
 
-        /**
-         * Get lazyblocks controls object.
-         */
-        public function controls() {
-            return $this->controls;
-        }
+		/**
+		 * Get plugin_path.
+		 */
+		public function plugin_path() {
+			return apply_filters( 'lzb/plugin_path', $this->plugin_path );
+		}
 
-        /**
-         * Get lazyblocks blocks object.
-         */
-        public function blocks() {
-            return $this->blocks;
-        }
+		/**
+		 * Get plugin_url.
+		 */
+		public function plugin_url() {
+			return apply_filters( 'lzb/plugin_url', $this->plugin_url );
+		}
 
-        /**
-         * Get lazyblocks templates object.
-         */
-        public function templates() {
-            return $this->templates;
-        }
+		/**
+		 * Get plugin_basename.
+		 */
+		public function plugin_basename() {
+			return apply_filters( 'lzb/plugin_basename', $this->plugin_basename );
+		}
 
-        /**
-         * Get lazyblocks tools object.
-         */
-        public function tools() {
-            return $this->tools;
-        }
+		/**
+		 * Sets the text domain with the plugin translated into other languages.
+		 */
+		public function load_text_domain() {
+			load_plugin_textdomain( 'lazy-blocks', false, dirname( $this->plugin_basename() ) . '/languages/' );
+		}
 
-        /**
-         * Add lazyblocks block.
-         *
-         * @param array $data - block data.
-         */
-        public function add_block( $data ) {
-            return $this->blocks()->add_block( $data );
-        }
+		/**
+		 * Check if Pro plugin installed.
+		 */
+		public function is_pro() {
+			return defined( 'LAZY_BLOCKS_PRO' ) && LAZY_BLOCKS_PRO;
+		}
 
-        /**
-         * Add lazyblocks template.
-         *
-         * @param array $data - template data.
-         */
-        public function add_template( $data ) {
-            return $this->templates()->add_template( $data );
-        }
-    }
+		/**
+		 * Get URL to main site with UTM tags.
+		 *
+		 * @param array $args - Arguments of link.
+		 * @return string
+		 */
+		public function get_plugin_site_url( $args = array() ) {
+			$args       = array_merge(
+				array(
+					'sub_path'     => 'pro',
+					'utm_source'   => 'plugin',
+					'utm_medium'   => 'admin_menu',
+					'utm_campaign' => 'go_pro',
+					'utm_content'  => LAZY_BLOCKS_VERSION,
+				),
+				$args
+			);
+			$url        = 'https://www.lazyblocks.com/';
+			$first_flag = true;
 
-    /**
-     * The main cycle of the plugin.
-     *
-     * @return null|LazyBlocks
-     */
-    function lazyblocks() {
-        return LazyBlocks::instance();
-    }
+			if ( isset( $args['sub_path'] ) && ! empty( $args['sub_path'] ) ) {
+				$url .= $args['sub_path'] . '/';
+			}
 
-    // Initialize.
-    lazyblocks();
+			foreach ( $args as $key => $value ) {
+				if ( 'sub_path' !== $key && ! empty( $value ) ) {
+					$url       .= ( $first_flag ? '?' : '&' );
+					$url       .= $key . '=' . $value;
+					$first_flag = false;
+				}
+			}
 
-    // Activation / Deactivation hooks.
-    register_activation_hook( __FILE__, array( lazyblocks(), 'activation_hook' ) );
-    register_deactivation_hook( __FILE__, array( lazyblocks(), 'deactivation_hook' ) );
+			return $url;
+		}
 
-    /**
-     * Function to get meta value with some improvements for Lazyblocks metas.
-     *
-     * @param string   $name - metabox name.
-     * @param int|null $id - post id.
-     *
-     * @return array|mixed|object
-     */
-    // phpcs:ignore
-    function get_lzb_meta( $name, $id = null ) {
-        // global variable used to fix `get_lzb_meta` call inside block preview in editor.
-        global $lzb_preview_block_data;
+		/**
+		 * Set plugin Dependencies.
+		 */
+		private function include_dependencies() {
+			// Deprecations run before all features.
+			require_once $this->plugin_path() . 'classes/class-deprecated.php';
 
-        $control_data = null;
+			require_once $this->plugin_path() . '/classes/class-assets.php';
+			require_once $this->plugin_path() . '/classes/class-migration.php';
+			require_once $this->plugin_path() . '/classes/class-admin.php';
+			require_once $this->plugin_path() . '/classes/class-icons.php';
+			require_once $this->plugin_path() . '/classes/class-controls.php';
+			require_once $this->plugin_path() . '/classes/class-blocks.php';
+			require_once $this->plugin_path() . '/classes/class-templates.php';
+			require_once $this->plugin_path() . '/classes/class-tools.php';
+			require_once $this->plugin_path() . '/classes/class-rest.php';
+			require_once $this->plugin_path() . '/classes/class-dummy.php';
+			require_once $this->plugin_path() . '/classes/class-force-gutenberg.php';
+			require_once $this->plugin_path() . '/classes/class-deactivate-duplicate-plugin.php';
+			require_once $this->plugin_path() . '/classes/class-wpml.php';
 
-        if ( null === $id ) {
-            global $post;
+			require_once $this->plugin_path() . '/classes/3rd/class-astra.php';
+		}
 
-            if ( isset( $post->ID ) ) {
-                $id = $post->ID;
-            }
-        }
+		/**
+		 * Get lazyblocks icons object.
+		 */
+		public function icons() {
+			return $this->icons;
+		}
 
-        // Find control data by meta name.
-        $blocks = lazyblocks()->blocks()->get_blocks();
-        foreach ( $blocks as $block ) {
-            if ( isset( $block['controls'] ) && is_array( $block['controls'] ) ) {
-                foreach ( $block['controls'] as $control ) {
-                    if ( $control_data || 'true' !== $control['save_in_meta'] ) {
-                        continue;
-                    }
+		/**
+		 * Get lazyblocks controls object.
+		 */
+		public function controls() {
+			return $this->controls;
+		}
 
-                    $meta_name = false;
+		/**
+		 * Get lazyblocks blocks object.
+		 */
+		public function blocks() {
+			return $this->blocks;
+		}
 
-                    if ( isset( $control['save_in_meta_name'] ) && $control['save_in_meta_name'] ) {
-                        $meta_name = $control['save_in_meta_name'];
-                    } elseif ( $control['name'] ) {
-                        $meta_name = $control['name'];
-                    }
+		/**
+		 * Get lazyblocks templates object.
+		 */
+		public function templates() {
+			return $this->templates;
+		}
 
-                    if ( $meta_name && $meta_name === $name ) {
-                        $control_data = $control;
-                    }
-                }
-            }
-        }
+		/**
+		 * Get lazyblocks tools object.
+		 */
+		public function tools() {
+			return $this->tools;
+		}
 
-        $result = null;
+		/**
+		 * Add lazyblocks block.
+		 *
+		 * @param array $data - block data.
+		 */
+		public function add_block( $data ) {
+			return $this->blocks()->add_block( $data );
+		}
 
-        if (
-            isset( $lzb_preview_block_data ) &&
-            is_array( $lzb_preview_block_data ) &&
-            isset( $control_data['name'] ) &&
-            isset( $lzb_preview_block_data['block_attributes'][ $control_data['name'] ] )
-        ) {
-            $result = $lzb_preview_block_data['block_attributes'][ $control_data['name'] ];
-        } elseif ( $id ) {
-            $result = get_post_meta( $id, $name, true );
-        }
+		/**
+		 * Add lazyblocks template.
+		 *
+		 * @param array $data - template data.
+		 */
+		public function add_template( $data ) {
+			return $this->templates()->add_template( $data );
+		}
 
-        return apply_filters( 'lzb/get_meta', $result, $name, $id, $control_data );
-    }
+		/**
+		 * Include plugin with theme or plugin.
+		 *
+		 * @link https://www.lazyblocks.com/docs/examples/include-lazy-blocks-within-theme-or-plugin/
+		 *
+		 * @param string $url  - url for the new root of the Lazy Blocks.
+		 */
+		public function include_within( $url ) {
+			// Customize the url setting to fix incorrect asset URLs.
+			add_filter(
+				'lzb/plugin_url',
+				function() use ( $url ) {
+					return $url . ( lazyblocks()->is_pro() ? 'core-plugin/' : '' );
+				}
+			);
+
+			add_filter(
+				'lzb_pro/plugin_url',
+				function() use ( $url ) {
+					return $url;
+				}
+			);
+		}
+	}
+
+	/**
+	 * The main cycle of the plugin.
+	 *
+	 * @return null|LazyBlocks
+	 */
+	function lazyblocks() {
+		return LazyBlocks::instance();
+	}
+
+	// Initialize.
+	lazyblocks();
+
+	// Activation / Deactivation hooks.
+	register_activation_hook( __FILE__, array( lazyblocks(), 'activation_hook' ) );
+	register_deactivation_hook( __FILE__, array( lazyblocks(), 'deactivation_hook' ) );
+
+	/**
+	 * Function to get meta value with some improvements for Lazyblocks metas.
+	 *
+	 * @param string   $name - metabox name.
+	 * @param int|null $id - post id.
+	 *
+	 * @return array|mixed|object
+	 */
+	// phpcs:ignore
+	function get_lzb_meta( $name, $id = null ) {
+		// global variable used to fix `get_lzb_meta` call inside block preview in editor.
+		global $lzb_preview_block_data;
+
+		$block_data   = null;
+		$control_data = null;
+
+		if ( null === $id ) {
+			global $post;
+
+			if ( isset( $post->ID ) ) {
+				$id = $post->ID;
+			}
+		}
+
+		// Find control data by meta name.
+		$blocks = lazyblocks()->blocks()->get_blocks();
+		foreach ( $blocks as $block ) {
+			if ( isset( $block['controls'] ) && is_array( $block['controls'] ) ) {
+				foreach ( $block['controls'] as $control ) {
+					if ( $control_data || 'true' !== $control['save_in_meta'] ) {
+						continue;
+					}
+
+					$meta_name = false;
+
+					if ( isset( $control['save_in_meta_name'] ) && $control['save_in_meta_name'] ) {
+						$meta_name = $control['save_in_meta_name'];
+					} elseif ( $control['name'] ) {
+						$meta_name = $control['name'];
+					}
+
+					if ( $meta_name && $meta_name === $name ) {
+						$block_data   = $block;
+						$control_data = $control;
+					}
+				}
+			}
+		}
+
+		$result  = null;
+		$context = isset( $lzb_preview_block_data ) ? 'editor' : 'frontend';
+
+		if (
+			isset( $lzb_preview_block_data ) &&
+			is_array( $lzb_preview_block_data ) &&
+			isset( $control_data['name'] ) &&
+			isset( $lzb_preview_block_data['block_attributes'][ $control_data['name'] ] )
+		) {
+			$result = $lzb_preview_block_data['block_attributes'][ $control_data['name'] ];
+		} elseif ( $id ) {
+			$result = get_post_meta( $id, $name, true );
+		}
+
+		// apply filters for control values.
+		$result = lazyblocks()->controls()->filter_control_value( $result, $control_data, $block_data, $context );
+
+		return apply_filters( 'lzb/get_meta', $result, $name, $id, $control_data );
+	}
 
 endif;

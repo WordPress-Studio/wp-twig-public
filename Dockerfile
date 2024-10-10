@@ -9,8 +9,11 @@ RUN apt-get install -y software-properties-common apt-transport-https -y
 RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update
 
+# php 8.3
+RUN apt install -y php8.3 php8.3-mysql php8.3-curl php8.3-dom php8.3-mbstring php8.3-zip php8.3-imagick libapache2-mod-php8.3 php8.3-intl
+
 # Install php version 7.4
-RUN apt install -y php7.4 php7.4-mysql php7.4-curl php7.4-dom php7.4-mbstring php7.4-zip php7.4-imagick libapache2-mod-php7.4 php7.4-intl
+# RUN apt install -y php7.4 php7.4-mysql php7.4-curl php7.4-dom php7.4-mbstring php7.4-zip php7.4-imagick libapache2-mod-php7.4 php7.4-intl
 
 # Install php version 5.6.40
 # RUN apt install -y php5.6 php5.6-mysql php5.6-curl php5.6-dom php5.6-mbstring php5.6-zip php5.6-imagick libapache2-mod-php5.6 php5.6-intl
@@ -39,9 +42,7 @@ chmod u+x,g+x /usr/bin/awscan.phar && \
 chmod u+x,g+x /usr/bin/awscan && \
 export PATH=$PATH":/usr/bin"
 
-RUN apt-get install -y  zsh
 RUN apt-get install -y  git
-RUN sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 RUN apt clean 
 EXPOSE 80
 ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND"]

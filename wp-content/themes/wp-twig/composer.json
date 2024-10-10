@@ -8,12 +8,12 @@
     }
    },
   "require": {
-    "timber/timber": "1.18.2",
-    "cmb2/cmb2": "2.9.0",
-    "wpackagist-plugin/lazy-blocks": "2.3.1",
-    "wpackagist-plugin/redux-framework": "4.2.14",
-    "djboris88/timber-commented-include": "1.1.0",
-    "rosell-dk/webp-convert": "2.6"
+    "timber/timber": "2.2.0",
+    "cmb2/cmb2": "2.10.1",
+    "wpackagist-plugin/lazy-blocks": "3.7.0",
+    "wpackagist-plugin/redux-framework": "4.4.18",
+    "djboris88/timber-commented-include": "2.0.0",
+    "rosell-dk/webp-convert": "2.9.3"
   },
   "repositories":[
         {
@@ -28,9 +28,7 @@
    },
   "autoload": {
 	  "files": [
-      "vendor/cmb2/init.php",
-      "vendor/matthiasmullie/path-converter/src/ConverterInterface.php",
-      "vendor/matthiasmullie/path-converter/src/Converter.php"
+      "vendor/cmb2/init.php"
     ]
   }
 }

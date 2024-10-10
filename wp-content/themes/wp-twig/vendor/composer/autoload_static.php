@@ -4,21 +4,19 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
+class ComposerStaticInita76ad73c533b16aec769e742b99049ef
 {
     public static $files = array (
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
+        '89efb1254ef2d1c5d80096acd12c4098' => __DIR__ . '/..' . '/twig/twig/src/Resources/core.php',
+        'ffecb95d45175fd40f75be8a23b34f90' => __DIR__ . '/..' . '/twig/twig/src/Resources/debug.php',
+        'c7baa00073ee9c61edf148c51917cfb4' => __DIR__ . '/..' . '/twig/twig/src/Resources/escaper.php',
+        'f844ccf1d25df8663951193c3fc307c8' => __DIR__ . '/..' . '/twig/twig/src/Resources/string_loader.php',
         'ff5909ed44ffdc0201cdcda4cb07d702' => __DIR__ . '/..' . '/djboris88/timber-commented-include/functions.php',
         'bb1236b11a3fdef821ef68d2884617ee' => __DIR__ . '/..' . '/cmb2/init.php',
-        '0ebae987fe8c1accebbe3bd4db2e8072' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Minify.php',
-        'f05d2fa455a75cb35c8eac9a552cd5f3' => __DIR__ . '/..' . '/matthiasmullie/minify/src/CSS.php',
-        '09df3eecf84ef6ad3adde4b7e9a0a850' => __DIR__ . '/..' . '/matthiasmullie/minify/src/JS.php',
-        'a9b28f02925ee60ad857f2545f00d9f0' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exceptions/BasicException.php',
-        '9aef47c7313eb326cde4bcad50670469' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exceptions/FileImportException.php',
-        '978209f7816040c6f08707887ab3d9be' => __DIR__ . '/..' . '/matthiasmullie/minify/src/Exceptions/IOException.php',
-        '625479deb6f1fbc93899bbbfbfe6ba15' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/ConverterInterface.php',
-        'ecc2c781d034b47c3dc426c342cf9a26' => __DIR__ . '/..' . '/matthiasmullie/path-converter/src/Converter.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -33,17 +31,26 @@ class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
-        'M' => 
+        'L' => 
         array (
-            'MatthiasMullie\\PathConverter\\' => 29,
-            'MatthiasMullie\\Minify\\' => 22,
+            'LocateBinaries\\' => 15,
         ),
         'I' => 
         array (
+            'ImageMimeTypeSniffer\\' => 21,
             'ImageMimeTypeGuesser\\' => 21,
+        ),
+        'F' => 
+        array (
+            'FileUtil\\' => 9,
+        ),
+        'E' => 
+        array (
+            'ExecWithFallback\\' => 17,
         ),
         'D' => 
         array (
@@ -67,7 +74,11 @@ class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
         ),
         'Timber\\' => 
         array (
-            0 => __DIR__ . '/..' . '/timber/timber/lib',
+            0 => __DIR__ . '/..' . '/timber/timber/src',
+        ),
+        'Symfony\\Polyfill\\Php81\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
@@ -77,17 +88,25 @@ class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'MatthiasMullie\\PathConverter\\' => 
+        'LocateBinaries\\' => 
         array (
-            0 => __DIR__ . '/..' . '/matthiasmullie/path-converter/src',
+            0 => __DIR__ . '/..' . '/rosell-dk/locate-binaries/src',
         ),
-        'MatthiasMullie\\Minify\\' => 
+        'ImageMimeTypeSniffer\\' => 
         array (
-            0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
+            0 => __DIR__ . '/..' . '/rosell-dk/image-mime-type-sniffer/src',
         ),
         'ImageMimeTypeGuesser\\' => 
         array (
             0 => __DIR__ . '/..' . '/rosell-dk/image-mime-type-guesser/src',
+        ),
+        'FileUtil\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/file-util/src',
+        ),
+        'ExecWithFallback\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rosell-dk/exec-with-fallback/src',
         ),
         'Djboris88\\Twig\\' => 
         array (
@@ -103,39 +122,18 @@ class ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e
         ),
     );
 
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/asm89/twig-cache-extension/lib',
-    );
-
-    public static $prefixesPsr0 = array (
-        'T' => 
-        array (
-            'Twig_' => 
-            array (
-                0 => __DIR__ . '/..' . '/twig/twig/lib',
-            ),
-        ),
-        'R' => 
-        array (
-            'Routes' => 
-            array (
-                0 => __DIR__ . '/..' . '/upstatement/routes',
-            ),
-        ),
-    );
-
     public static $classMap = array (
-        'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
+        'CURLStringFile' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit8d11b7678ec08f6b2ebcf20f4c3e8e0e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita76ad73c533b16aec769e742b99049ef::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita76ad73c533b16aec769e742b99049ef::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita76ad73c533b16aec769e742b99049ef::$classMap;
 
         }, null, ClassLoader::class);
     }

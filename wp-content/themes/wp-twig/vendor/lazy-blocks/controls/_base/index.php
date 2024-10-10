@@ -6,7 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 
@@ -14,184 +14,234 @@ if ( ! defined( 'ABSPATH' ) ) {
  * LazyBlocks_Control class.
  */
 class LazyBlocks_Control {
-    /**
-     * Control unique name.
-     *
-     * @var string
-     */
-    public $name;
+	/**
+	 * Control unique name.
+	 *
+	 * @var string
+	 */
+	public $name;
 
-    /**
-     * Control icon SVG.
-     * You may use these icons https://material.io/resources/icons/?icon=accessibility&style=outline .
-     *
-     * @var string
-     */
-    public $icon = '';
+	/**
+	 * Control icon SVG.
+	 * You may use these icons https://material.io/resources/icons/?icon=accessibility&style=outline .
+	 *
+	 * @var string
+	 */
+	public $icon = '';
 
-    /**
-     * Control value type [string, number, boolean, array].
-     *
-     * @var string
-     */
-    public $type = 'string';
+	/**
+	 * Control value type [string, number, boolean, array].
+	 *
+	 * @var string
+	 */
+	public $type = 'string';
 
-    /**
-     * Control label.
-     *
-     * @var string
-     */
-    public $label;
+	/**
+	 * Control label.
+	 *
+	 * @var string
+	 */
+	public $label;
 
-    /**
-     * Category name.
-     *
-     * @var string
-     */
-    public $category = 'basic';
+	/**
+	 * Category name.
+	 *
+	 * @var string
+	 */
+	public $category = 'basic';
 
-    /**
-     * Default Restrictions.
-     *
-     * @var array
-     */
-    public $default_restrictions = array(
-        'once'                          => false,
-        'as_child'                      => true,
-        'name_settings'                 => true,
-        'label_settings'                => true,
-        'default_settings'              => true,
-        'help_settings'                 => true,
-        'placement_settings'            => array( 'content', 'inspector' ),
-        'width_settings'                => true,
-        'required_settings'             => true,
-        'hide_if_not_selected_settings' => true,
-        'save_in_meta_settings'         => true,
-    );
+	/**
+	 * Default Restrictions.
+	 *
+	 * @var array
+	 */
+	public $default_restrictions = array(
+		'once'                          => false,
+		'as_child'                      => true,
+		'hidden_from_select'            => false,
 
-    /**
-     * Restrictions.
-     *
-     * @var array
-     */
-    public $restrictions;
+		// Display Settings.
+		'name_settings'                 => true,
+		'label_settings'                => true,
+		'default_settings'              => true,
+		'help_settings'                 => true,
+		'placement_settings'            => array( 'content', 'inspector' ),
+		'width_settings'                => true,
+		'required_settings'             => true,
+		'hide_if_not_selected_settings' => true,
+		'translate_settings'            => false,
+		'save_in_meta_settings'         => true,
+	);
 
-    /**
-     * Default Attributes used in all controls.
-     *
-     * @var array
-     */
-    public $default_attributes = array(
-        'type'                 => 'text',
-        'name'                 => '',
-        'default'              => '',
-        'label'                => '',
-        'help'                 => '',
-        'child_of'             => '',
-        'placement'            => 'content',
-        'width'                => '100',
-        'hide_if_not_selected' => 'false',
-        'save_in_meta'         => 'false',
-        'save_in_meta_name'    => '',
-        'required'             => 'false',
-    );
+	/**
+	 * Restrictions.
+	 *
+	 * @var array
+	 */
+	public $restrictions;
 
-    /**
-     * Attributes.
-     *
-     * @var array
-     */
-    public $attributes;
+	/**
+	 * Default Attributes used in all controls.
+	 *
+	 * @var array
+	 */
+	public $default_attributes = array(
+		'type'                 => 'text',
+		'name'                 => '',
+		'default'              => '',
+		'label'                => '',
+		'help'                 => '',
+		'child_of'             => '',
+		'placement'            => 'content',
+		'width'                => '100',
+		'hide_if_not_selected' => 'false',
+		'required'             => 'false',
+		'translate'            => 'false',
+		'save_in_meta'         => 'false',
+		'save_in_meta_name'    => '',
+	);
 
-    /**
-     * Constructor
-     */
-    public function __construct() {
-        // Merge default restrictions with custom.
-        $this->restrictions = array_merge(
-            $this->default_restrictions,
-            (array) $this->restrictions
-        );
+	/**
+	 * Attributes.
+	 *
+	 * @var array
+	 */
+	public $attributes;
 
-        // Merge default attributes with custom.
-        $this->attributes = array_merge(
-            $this->default_attributes,
-            (array) $this->attributes
-        );
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		// Merge default restrictions with custom.
+		$this->restrictions = array_merge(
+			$this->default_restrictions,
+			(array) $this->restrictions
+		);
 
-        // Filters.
-        add_filter( 'lzb/controls/all', array( $this, 'get_control_data' ) );
+		// Merge default attributes with custom.
+		$this->attributes = array_merge(
+			$this->default_attributes,
+			(array) $this->attributes
+		);
 
-        // Actions.
-        add_action( 'enqueue_block_editor_assets', array( $this, 'register_assets' ) );
-        add_action( 'enqueue_block_editor_assets', array( $this, 'action_script_depends' ), 11 );
-        add_action( 'enqueue_block_editor_assets', array( $this, 'action_style_depends' ), 11 );
-    }
+		// Filters.
+		add_filter( 'lzb/controls/all', array( $this, 'get_control_data' ) );
+		add_filter(
+			'lzb/control_value',
+			function( $value, $control_data, $block_data, $context ) {
+				if ( ! $control_data || $this->name !== $control_data['type'] ) {
+					return $value;
+				}
 
-    /**
-     * Get control data
-     *
-     * @param array $controls available controls.
-     *
-     * @return array
-     */
-    public function get_control_data( $controls ) {
-        return array_merge(
-            $controls,
-            array(
-                $this->name => array(
-                    'name'         => $this->name,
-                    'icon'         => $this->icon,
-                    'type'         => $this->type,
-                    'label'        => $this->label,
-                    'category'     => $this->category,
-                    'restrictions' => $this->restrictions,
-                    'attributes'   => $this->attributes,
-                ),
-            )
-        );
-    }
+				return $this->filter_control_value( $value, $control_data, $block_data, $context );
+			},
+			5,
+			4
+		);
 
-    /**
-     * Register assets action.
-     */
-    public function register_assets() {
-        // nothing here.
-    }
+		// Actions.
+		add_action( 'enqueue_block_editor_assets', array( $this, 'register_assets' ) );
+		add_action(
+			'enqueue_block_editor_assets',
+			function() {
+				$blocks = lazyblocks()->blocks()->get_blocks();
 
-    /**
-     * Action script dependencies
-     */
-    public function action_script_depends() {
-        foreach ( (array) $this->get_script_depends() as $script ) {
-            wp_enqueue_script( $script );
-        }
-    }
+				// Skip assets enqueue if there are no blocks.
+				// Allow on constructor page even if no blocks, since we need control assets here.
+				if ( empty( $blocks ) && 'lazyblocks' !== get_post_type() ) {
+					return;
+				}
 
-    /**
-     * Action style dependencies
-     */
-    public function action_style_depends() {
-        foreach ( (array) $this->get_style_depends() as $style ) {
-            wp_enqueue_style( $style );
-        }
-    }
+				foreach ( (array) $this->get_script_depends() as $script ) {
+					wp_enqueue_script( $script );
+				}
+			},
+			11
+		);
+		add_action(
+			'enqueue_block_assets',
+			function() {
+				if ( ! is_admin() ) {
+					return;
+				}
 
-    /**
-     * Get script dependencies.
-     *
-     * @return array script dependencies.
-     */
-    public function get_script_depends() {
-        return array();
-    }
+				$blocks = lazyblocks()->blocks()->get_blocks();
 
-    /**
-     * Get style dependencies.
-     *
-     * @return array style dependencies.
-     */
-    public function get_style_depends() {
-        return array();
-    }
+				// Skip assets enqueue if there are no blocks.
+				// Allow on constructor page even if no blocks, since we need control assets here.
+				if ( empty( $blocks ) && 'lazyblocks' !== get_post_type() ) {
+					return;
+				}
+
+				foreach ( (array) $this->get_style_depends() as $style ) {
+					wp_enqueue_style( $style );
+				}
+			},
+			11
+		);
+	}
+
+	/**
+	 * Get control data
+	 *
+	 * @param array $controls available controls.
+	 *
+	 * @return array
+	 */
+	public function get_control_data( $controls ) {
+		return array_merge(
+			$controls,
+			array(
+				$this->name => array(
+					'name'         => $this->name,
+					'icon'         => $this->icon,
+					'type'         => $this->type,
+					'label'        => $this->label,
+					'category'     => $this->category,
+					'restrictions' => $this->restrictions,
+					'attributes'   => $this->attributes,
+				),
+			)
+		);
+	}
+
+	/**
+	 * Filter control value.
+	 *
+	 * @param mixed  $value - control value.
+	 * @param array  $control_data - control data.
+	 * @param array  $block_data - block data.
+	 * @param string $context - block render context.
+	 *
+	 * @return mixed
+	 */
+	// phpcs:ignore
+	public function filter_control_value( $value, $control_data, $block_data, $context ) {
+		return $value;
+	}
+
+	/**
+	 * Register assets action.
+	 */
+	public function register_assets() {
+		// nothing here.
+	}
+
+	/**
+	 * Get script dependencies.
+	 *
+	 * @return array script dependencies.
+	 */
+	public function get_script_depends() {
+		return array();
+	}
+
+	/**
+	 * Get style dependencies.
+	 *
+	 * @return array style dependencies.
+	 */
+	public function get_style_depends() {
+		return array();
+	}
 }

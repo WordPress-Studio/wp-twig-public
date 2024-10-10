@@ -1,173 +1,185 @@
-<?php return array (
-  'root' => 
-  array (
-    'pretty_version' => 'dev-master',
-    'version' => 'dev-master',
-    'aliases' => 
-    array (
+<?php return array(
+    'root' => array(
+        'name' => 'itobuz/wp-twig',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'f17ebf7485a2bcbaa8e4a1f5ee5ffc7e1fbfb894',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
     ),
-    'reference' => 'a0805b7f8f7b5ca1f57653f69a2cb76c4205a6c8',
-    'name' => 'itobuz/wp-twig',
-  ),
-  'versions' => 
-  array (
-    'altorouter/altorouter' => 
-    array (
-      'pretty_version' => 'v1.2.0',
-      'version' => '1.2.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '39c50092470128c12284d332bb57f306bb5b58e4',
+    'versions' => array(
+        'cmb2/cmb2' => array(
+            'pretty_version' => 'v2.10.1',
+            'version' => '2.10.1.0',
+            'reference' => '4afc4bb7b92ab6d93aac2247c9a84af773e42532',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../cmb2',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'composer/installers' => array(
+            'pretty_version' => 'v2.3.0',
+            'version' => '2.3.0.0',
+            'reference' => '12fb2dfe5e16183de69e784a7b84046c43d97e8e',
+            'type' => 'composer-plugin',
+            'install_path' => __DIR__ . '/./installers',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'djboris88/timber-commented-include' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => 'c232cc391ef4cf2377302dedd4fa2b1fd70f6933',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../djboris88/timber-commented-include',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'djboris88/twig-commented-include' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => '3becd7a3fa3e9473474623a748e62c0e6015edc3',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../djboris88/twig-commented-include',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'itobuz/wp-twig' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'f17ebf7485a2bcbaa8e4a1f5ee5ffc7e1fbfb894',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rosell-dk/exec-with-fallback' => array(
+            'pretty_version' => '1.2.0',
+            'version' => '1.2.0.0',
+            'reference' => 'f88a6b29abd0b580566056b7c1eb0434eb5db20d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rosell-dk/exec-with-fallback',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rosell-dk/file-util' => array(
+            'pretty_version' => '0.1.1',
+            'version' => '0.1.1.0',
+            'reference' => '2ff895308c37f448b34b031cfbfd8e45f43936fd',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rosell-dk/file-util',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rosell-dk/image-mime-type-guesser' => array(
+            'pretty_version' => '1.1.2',
+            'version' => '1.1.2.0',
+            'reference' => '9cac5a19e799a0ef1f7cffbce36ec33485080b39',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rosell-dk/image-mime-type-guesser',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rosell-dk/image-mime-type-sniffer' => array(
+            'pretty_version' => '1.1.1',
+            'version' => '1.1.1.0',
+            'reference' => '9ed14cc5d2c14c417660a4dd1946b5f056494691',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rosell-dk/image-mime-type-sniffer',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rosell-dk/locate-binaries' => array(
+            'pretty_version' => '1.0',
+            'version' => '1.0.0.0',
+            'reference' => 'bd2f493383ecd55aa519828dd2898e30f3b9cbb0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rosell-dk/locate-binaries',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rosell-dk/webp-convert' => array(
+            'pretty_version' => '2.9.3',
+            'version' => '2.9.3.0',
+            'reference' => 'ea8c20730bd4e7952e99d50e9ae6487c4026354f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rosell-dk/webp-convert',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/deprecation-contracts' => array(
+            'pretty_version' => 'v3.5.0',
+            'version' => '3.5.0.0',
+            'reference' => '0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/deprecation-contracts',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/polyfill-ctype' => array(
+            'pretty_version' => 'v1.31.0',
+            'version' => '1.31.0.0',
+            'reference' => 'a3cc8b044a6ea513310cbd48ef7333b384945638',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/polyfill-mbstring' => array(
+            'pretty_version' => 'v1.31.0',
+            'version' => '1.31.0.0',
+            'reference' => '85181ba99b2345b0ef10ce42ecac37612d9fd341',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/polyfill-php81' => array(
+            'pretty_version' => 'v1.31.0',
+            'version' => '1.31.0.0',
+            'reference' => '4a4cfc2d253c21a5ad0e53071df248ed48c6ce5c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-php81',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'timber/timber' => array(
+            'pretty_version' => 'v2.2.0',
+            'version' => '2.2.0.0',
+            'reference' => '5fc65f235323e8119fddc3cadbfef39ec97a663a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../timber/timber',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'twig/twig' => array(
+            'pretty_version' => 'v3.14.0',
+            'version' => '3.14.0.0',
+            'reference' => '126b2c97818dbff0cdf3fbfc881aedb3d40aae72',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twig/twig',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wpackagist-plugin/lazy-blocks' => array(
+            'pretty_version' => '3.7.0',
+            'version' => '3.7.0.0',
+            'reference' => 'tags/3.7.0',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../lazy-blocks',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wpackagist-plugin/redux-framework' => array(
+            'pretty_version' => '4.4.18',
+            'version' => '4.4.18.0',
+            'reference' => 'tags/4.4.18',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../redux-framework',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
     ),
-    'asm89/twig-cache-extension' => 
-    array (
-      'pretty_version' => '1.4.0',
-      'version' => '1.4.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '13787226956ec766f4770722082288097aebaaf3',
-    ),
-    'cmb2/cmb2' => 
-    array (
-      'pretty_version' => 'v2.9.0',
-      'version' => '2.9.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'cacbc8cedbfdf8ffe0e840858e6860f9333c33f2',
-    ),
-    'composer/installers' => 
-    array (
-      'pretty_version' => 'v1.11.0',
-      'version' => '1.11.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'ae03311f45dfe194412081526be2e003960df74b',
-    ),
-    'djboris88/timber-commented-include' => 
-    array (
-      'pretty_version' => '1.1.0',
-      'version' => '1.1.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '3fb8d7d8b69dd3464c7471ce68daaa5b81f8da86',
-    ),
-    'djboris88/twig-commented-include' => 
-    array (
-      'pretty_version' => '1.2.0',
-      'version' => '1.2.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'a78dcf60100165f0a07c76e97739d744aca9d9db',
-    ),
-    'itobuz/wp-twig' => 
-    array (
-      'pretty_version' => 'dev-master',
-      'version' => 'dev-master',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'a0805b7f8f7b5ca1f57653f69a2cb76c4205a6c8',
-    ),
-    'matthiasmullie/minify' => 
-    array (
-      'pretty_version' => '1.3.66',
-      'version' => '1.3.66.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '45fd3b0f1dfa2c965857c6d4a470bea52adc31a6',
-    ),
-    'matthiasmullie/path-converter' => 
-    array (
-      'pretty_version' => '1.1.3',
-      'version' => '1.1.3.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'e7d13b2c7e2f2268e1424aaed02085518afa02d9',
-    ),
-    'roundcube/plugin-installer' => 
-    array (
-      'replaced' => 
-      array (
-        0 => '*',
-      ),
-    ),
-    'shama/baton' => 
-    array (
-      'replaced' => 
-      array (
-        0 => '*',
-      ),
-    ),
-    'symfony/polyfill-ctype' => 
-    array (
-      'pretty_version' => 'v1.23.0',
-      'version' => '1.23.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '46cd95797e9df938fdd2b03693b5fca5e64b01ce',
-    ),
-    'symfony/polyfill-mbstring' => 
-    array (
-      'pretty_version' => 'v1.23.1',
-      'version' => '1.23.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '9174a3d80210dca8daa7f31fec659150bbeabfc6',
-    ),
-    'timber/timber' => 
-    array (
-      'pretty_version' => '1.18.2',
-      'version' => '1.18.2.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '18766d1af8650ca919534cc497e7f0e8d82423a3',
-    ),
-    'twig/twig' => 
-    array (
-      'pretty_version' => 'v2.14.6',
-      'version' => '2.14.6.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '27e5cf2b05e3744accf39d4c68a3235d9966d260',
-    ),
-    'upstatement/routes' => 
-    array (
-      'pretty_version' => '0.5',
-      'version' => '0.5.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '3267d28be0a73f197087d58384e1a358d85671b6',
-    ),
-    'wpackagist-plugin/lazy-blocks' => 
-    array (
-      'pretty_version' => '2.4.0',
-      'version' => '2.4.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'tags/2.4.0',
-    ),
-    'wpackagist-plugin/redux-framework' => 
-    array (
-      'pretty_version' => '4.1.24',
-      'version' => '4.1.24.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'tags/4.1.24',
-    ),
-  ),
 );

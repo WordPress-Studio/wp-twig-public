@@ -206,13 +206,6 @@ Redux::setSection($opt_name, array(
       'desc' => esc_html__('Always create new image and replace existing on the fly. If this is enabled', 'redux-framework-demo'),
       'default' => false
     ),
-
-    array(
-      'id'       => 'clear_cache',
-      'type'     => 'clear_cache',
-      'title'    => esc_html__('Clear Cache', 'redux-framework-demo'),
-      'default' => false,
-    ),
   )
 ));
 

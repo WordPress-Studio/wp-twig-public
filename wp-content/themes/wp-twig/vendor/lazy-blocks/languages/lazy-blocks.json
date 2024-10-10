@@ -11,16 +11,16 @@
          "Gutenberg blocks visual constructor. Custom meta fields or blocks with output without hard coding.": [
             ""
          ],
-         "nK": [
+         "Lazy Blocks Team": [
             ""
          ],
-         "https://nkdev.info/": [
+         "https://www.lazyblocks.com/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=byline": [
             ""
          ],
          "Documentation": [
             ""
          ],
-         "PRO Survey": [
+         "Go Pro": [
             ""
          ],
          "and": [
@@ -68,6 +68,18 @@
          "Layout": [
             ""
          ],
+         "Deprecated": [
+            ""
+         ],
+         "Lazy Blocks and Lazy Blocks Pro should not be active at the same time. We've automatically deactivated Lazy Blocks.": [
+            ""
+         ],
+         "Lazy Blocks and Lazy Blocks Pro should not be active at the same time. We've automatically deactivated Lazy Blocks Pro.": [
+            ""
+         ],
+         "Hook %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead.": [
+            ""
+         ],
          "Example Block": [
             ""
          ],
@@ -98,6 +110,18 @@
          "Template": [
             ""
          ],
+         "Post Types": [
+            ""
+         ],
+         "Template Lock": [
+            ""
+         ],
+         "All": [
+            ""
+         ],
+         "Insert": [
+            ""
+         ],
          "Export / Import": [
             ""
          ],
@@ -121,7 +145,7 @@
             "",
             "Imported %s templates"
          ],
-         "Template for post type '%s' already exists.": [
+         "Template for these post types '%s' already exists.": [
             ""
          ],
          "Added new block '%s'.": [
@@ -187,10 +211,49 @@
          "Toggle": [
             ""
          ],
+         "Undefined": [
+            ""
+         ],
          "URL": [
             ""
          ],
          "Template file <code>%1$s</code> not found.": [
+            ""
+         ],
+         "None": [
+            ""
+         ],
+         "All - prevents all operations": [
+            ""
+         ],
+         "Insert - prevents inserting new blocks, but allows moving existing ones": [
+            ""
+         ],
+         "Content Only - prevents all operations, except the content editing.": [
+            ""
+         ],
+         "Template Settings": [
+            ""
+         ],
+         "Select all": [
+            ""
+         ],
+         "Copy to Clipboard": [
+            ""
+         ],
+         "Export JSON": [
+            ""
+         ],
+         "Generate PHP": [
+            ""
+         ],
+         "Export Blocks": [
+            ""
+         ],
+         "Export Templates": [
+            ""
+         ],
+         "Import": [
             ""
          ],
          "Copied!": [
@@ -202,7 +265,7 @@
          "Search Icon": [
             ""
          ],
-         "Type to Search...": [
+         "Type to Search…": [
             ""
          ],
          "No icons found.": [
@@ -211,13 +274,127 @@
          "Icon Picker": [
             ""
          ],
+         "Error: Could not generate the preview.": [
+            ""
+         ],
+         "Error loading block preview: %s": [
+            ""
+         ],
+         "Only a single <InnerBlocks /> component can be used per block. Multiple <InnerBlocks /> found inside block \"%s\".": [
+            ""
+         ],
+         "Lazy Blocks Pro": [
+            ""
+         ],
+         "Upgrade Now": [
+            ""
+         ],
+         "Controls Conditional Logic": [
+            ""
+         ],
+         "Panels and Dividers": [
+            ""
+         ],
+         "Posts, Taxonomy, User Controls": [
+            ""
+         ],
+         "Blocks Preloading": [
+            ""
+         ],
+         "SEO Enhancements": [
+            ""
+         ],
+         "And much more…": [
+            ""
+         ],
+         "Styles": [
+            ""
+         ],
+         "Supports": [
+            ""
+         ],
+         "Supports Ghost Kit": [
+            ""
+         ],
+         "Condition": [
+            ""
+         ],
+         "Blocks Constructor": [
+            ""
+         ],
+         "Preview": [
+            ""
+         ],
+         "Control \"%1$s\"": [
+            ""
+         ],
+         "Frontend": [
+            ""
+         ],
+         "Editor": [
+            ""
+         ],
+         "Output Method": [
+            ""
+         ],
+         "HTML + Handlebars": [
+            ""
+         ],
+         "PHP": [
+            ""
+         ],
+         "Theme Template": [
+            ""
+         ],
+         "How to use?": [
+            ""
+         ],
+         "Simple text field example see here:": [
+            ""
+         ],
+         "Note 1: if you use blocks as Metaboxes, you may leave this code editor blank.": [
+            ""
+         ],
+         "Note 2: supported custom PHP callback to output block": [
+            ""
+         ],
+         "Single output code for Frontend and Editor": [
+            ""
+         ],
+         "To output block code, Lazy Blocks will look for template file in your theme directory:": [
+            ""
+         ],
+         "Read more:": [
+            ""
+         ],
+         "How to use theme template": [
+            ""
+         ],
+         "Code Output in Editor": [
+            ""
+         ],
+         "Display Always": [
+            ""
+         ],
+         "Display within `selected` block only": [
+            ""
+         ],
+         "Display within `unselected` block only": [
+            ""
+         ],
+         "Never Display": [
+            ""
+         ],
+         "Code": [
+            ""
+         ],
          "Show in posts": [
             ""
          ],
          "In all posts by default": [
             ""
          ],
-         "Loading...": [
+         "Loading…": [
             ""
          ],
          "(no label)": [
@@ -259,7 +436,10 @@
          "Keywords": [
             ""
          ],
-         "Enter up to 3 keywords": [
+         "Make it easier to discover a block with keyword aliases": [
+            ""
+         ],
+         "Type keyword and push Enter": [
             ""
          ],
          "Select control to see settings.": [
@@ -292,7 +472,7 @@
          "Name": [
             ""
          ],
-         "Unique control name, no spaces. Underscores and dashes allowed": [
+         "Control name must include only alphanumeric characters, dashes or underscores. Example: my-control-name": [
             ""
          ],
          "Placement": [
@@ -304,19 +484,19 @@
          "Required": [
             ""
          ],
-         "Experimental feature, may not work as expected.": [
-            ""
-         ],
          "Save in Meta": [
-            ""
-         ],
-         "How to use?": [
             ""
          ],
          "Meta custom name (optional)": [
             ""
          ],
          "Unique metabox name": [
+            ""
+         ],
+         "WPML Translation": [
+            ""
+         ],
+         "Experimental feature, may not work as expected.": [
             ""
          ],
          "Type": [
@@ -338,6 +518,69 @@
             ""
          ],
          "Width": [
+            ""
+         ],
+         "+ Add Style": [
+            ""
+         ],
+         "Add the style name, which will be used as class name on your block. For example, if you add the style with name `outline`, when user select this style, on the block will be added class name `is-style-outline`": [
+            ""
+         ],
+         "To see these settings in your block, you have to install Ghost Kit plugin.": [
+            ""
+         ],
+         "Read More": [
+            ""
+         ],
+         "\"Class Name\" support is required to use the following settings.": [
+            ""
+         ],
+         "Effects": [
+            ""
+         ],
+         "Add visual effects, reveal, scroll animations, etc.": [
+            ""
+         ],
+         "Position": [
+            ""
+         ],
+         "Change block position to either absolute or fixed.": [
+            ""
+         ],
+         "Spacings": [
+            ""
+         ],
+         "Change block margins and paddings.": [
+            ""
+         ],
+         "Frame": [
+            ""
+         ],
+         "Add border and box shadow to block.": [
+            ""
+         ],
+         "Transform": [
+            ""
+         ],
+         "Add CSS transformations to block.": [
+            ""
+         ],
+         "Custom CSS": [
+            ""
+         ],
+         "Write custom CSS on each inserted blocks.": [
+            ""
+         ],
+         "Display": [
+            ""
+         ],
+         "Display / Hide blocks on different screen sizes.": [
+            ""
+         ],
+         "Attributes": [
+            ""
+         ],
+         "Insert custom HTML attributes with custom content.": [
             ""
          ],
          "Multiple": [
@@ -364,112 +607,25 @@
          "Show block in blocks inserter.": [
             ""
          ],
+         "Reusable": [
+            ""
+         ],
+         "Allow converting block into reusable block.": [
+            ""
+         ],
+         "Lock": [
+            ""
+         ],
+         "Allow block locking/unlocking by a user.": [
+            ""
+         ],
          "Align": [
             ""
          ],
          "Select align options": [
             ""
          ],
-         "Ghost Kit Extensions": [
-            ""
-         ],
-         "Install Ghost Kit plugin to use the following settings.": [
-            ""
-         ],
-         "Install": [
-            ""
-         ],
-         "To use these extensions required \"Class Name\" support.": [
-            ""
-         ],
-         "Spacings": [
-            ""
-         ],
-         "Change block margins and paddings.": [
-            ""
-         ],
-         "Display": [
-            ""
-         ],
-         "Display / Hide blocks on different screen sizes.": [
-            ""
-         ],
-         "Animate on Scroll": [
-            ""
-         ],
-         "Display block with animation on scroll.": [
-            ""
-         ],
-         "Frame": [
-            ""
-         ],
-         "Add border and box shadow to block.": [
-            ""
-         ],
-         "Custom CSS": [
-            ""
-         ],
-         "Write custom CSS on each inserted blocks.": [
-            ""
-         ],
          "Block Name": [
-            ""
-         ],
-         "Supports": [
-            ""
-         ],
-         "Condition": [
-            ""
-         ],
-         "Blocks Constructor": [
-            ""
-         ],
-         "Undefined Block": [
-            ""
-         ],
-         "None": [
-            ""
-         ],
-         "Prevent all operations": [
-            ""
-         ],
-         "Prevent inserting new blocks, but allows moving existing ones": [
-            ""
-         ],
-         "Select post type:": [
-            ""
-         ],
-         "+ Add Block": [
-            ""
-         ],
-         "Template Lock": [
-            ""
-         ],
-         "Save Template": [
-            ""
-         ],
-         "Do you really want to remove template for \"%s\"?": [
-            ""
-         ],
-         "Select all": [
-            ""
-         ],
-         "Copy to Clipboard": [
-            ""
-         ],
-         "Export JSON": [
-            ""
-         ],
-         "Generate PHP": [
-            ""
-         ],
-         "Export Blocks": [
-            ""
-         ],
-         "Export Templates": [
-            ""
-         ],
-         "Import": [
             ""
          ],
          "Free Content": [
@@ -478,13 +634,7 @@
          "Block used for adding blocks inside it in cases when template locked from adding blocks.": [
             ""
          ],
-         "Error loading block preview: %s": [
-            ""
-         ],
-         "This field is required": [
-            ""
-         ],
-         "Edit Block": [
+         "This field is required.": [
             ""
          ],
          "Alongside Text": [
@@ -496,31 +646,40 @@
          "Checked": [
             ""
          ],
-         "Insert Media": [
+         "Open Editor": [
             ""
          ],
-         "Classic": [
+         "Cancel": [
             ""
          ],
-         "Custom color picker": [
+         "Save": [
             ""
          ],
-         "Color code: %s": [
-            ""
-         ],
-         "Color: %s": [
-            ""
-         ],
-         "Custom Color": [
-            ""
-         ],
-         "Clear": [
+         "Displays text alongside the color indicator": [
             ""
          ],
          "Alpha Channel": [
             ""
          ],
-         "Will be added option that allow you to set semi-transparent colors with rgba": [
+         "Allow set semi-transparent colors": [
+            ""
+         ],
+         "Color Palette": [
+            ""
+         ],
+         "Display color palette with predefined colors": [
+            ""
+         ],
+         "Output Format": [
+            ""
+         ],
+         "Allows you to change attribute output format": [
+            ""
+         ],
+         "Color": [
+            ""
+         ],
+         "Array (Color + Slug)": [
             ""
          ],
          "Select Date": [
@@ -565,16 +724,25 @@
          "Edit Gallery": [
             ""
          ],
-         "Preview Size": [
+         "Medium": [
             ""
          ],
-         "Medium": [
+         "Preview Size": [
             ""
          ],
          "image": [
             ""
          ],
          "Remove Image": [
+            ""
+         ],
+         "Allow insert from URL": [
+            ""
+         ],
+         "Will be added option that allow you to use custom URL to insert image": [
+            ""
+         ],
+         "The Inner Blocks control deprecated since v3.4.0, you should migrate to the <InnerBlocks /> component as this control will be removed in future plugin updates.": [
             ""
          ],
          "Minimum Value": [
@@ -592,12 +760,6 @@
          "Allows you to reset selected option value to null": [
             ""
          ],
-         "Output Format": [
-            ""
-         ],
-         "Allows you to change attribute output format": [
-            ""
-         ],
          "Value": [
             ""
          ],
@@ -610,7 +772,7 @@
          "+ Add Row": [
             ""
          ],
-         "Toggle all rows": [
+         "Toggle all": [
             ""
          ],
          "Show Child Controls": [
@@ -640,9 +802,6 @@
          "Collapsed by Default": [
             ""
          ],
-         "Multiline": [
-            ""
-         ],
          "Choices": [
             ""
          ],
@@ -658,7 +817,7 @@
          "Displays text alongside the toggle": [
             ""
          ],
-         "Reset": [
+         "Looks like this control does not exists.": [
             ""
          ]
       }

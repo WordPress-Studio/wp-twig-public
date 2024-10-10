@@ -29,8 +29,8 @@ This also runs tests on the builds.
 
 Individual test files can be executed like this:
 ```
-composer phpunit tests/Convert/Converters/WPCTest
-composer phpunit tests/Serve/ServeConvertedTest
+composer phpunit tests/Convert/Converters/WPCTest.php
+composer phpunit tests/Serve/ServeConvertedTest.php
 ```
 
 
@@ -72,7 +72,7 @@ Before committing, first make sure to:
 ## Releasing
 Before releasing:
 - Update the version number in `Converters/AbstractConverter.php` (search for "WebP Convert")
-- Make sure that travis build is successful
+- Make sure that ci build is successful
 
 When releasing:
 - update the [webp-convert-concat](https://github.com/rosell-dk/webp-convert-concat) library

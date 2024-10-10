@@ -9,9 +9,9 @@ $composer_autoload = __DIR__ . '/vendor/autoload.php';
 
 if (file_exists($composer_autoload)) {
   require_once $composer_autoload;
-  $timber = new Timber\Timber([
-    'debug' => WP_DEBUG,
-  ]);
+  // $timber = new Timber\Timber([
+  //   'debug' => WP_DEBUG,
+  // ]);
 
   require_once __DIR__ . '/vendor/redux-framework/redux-core/framework.php';
 
@@ -25,21 +25,21 @@ if (file_exists($composer_autoload)) {
 
 
   // Define path and URL to the LZB plugin.
-  define('WP_TWIG_LZB_PATH', get_template_directory() . '/vendor/lazy-blocks/');
-  define('WP_TWIG_LZB_URL', get_template_directory_uri() . '/vendor/lazy-blocks/');
+  //define('WP_TWIG_LZB_PATH', get_template_directory() . '/vendor/lazy-blocks/');
+  //define('WP_TWIG_LZB_URL', get_template_directory_uri() . '/vendor/lazy-blocks/');
 
 
   // Include the LZB plugin.
-  require_once WP_TWIG_LZB_PATH . 'lazy-blocks.php';
-  require_once __DIR__ . '/inc/blocks.php';
+  // require_once WP_TWIG_LZB_PATH . 'lazy-blocks.php';
+  // require_once __DIR__ . '/inc/blocks.php';
 
 
   // Customize the url setting to fix incorrect asset URLs.
-  add_filter('lzb/plugin_url', 'wp_twig_lzb_url');
-  function wp_twig_lzb_url($url)
-  {
-    return WP_TWIG_LZB_URL;
-  }
+  // add_filter('lzb/plugin_url', 'wp_twig_lzb_url');
+  // function wp_twig_lzb_url($url)
+  // {
+  //   return WP_TWIG_LZB_URL;
+  // }
 }
 
 
@@ -47,13 +47,13 @@ if (file_exists($composer_autoload)) {
 /**
  * Sets the directories (inside your theme) to find .twig files
  */
-Timber::$dirname = array('templates', 'views', 'templates/components');
+// Timber::$dirname = array('templates', 'views', 'templates/components');
 
 /**
  * By default, Timber does NOT autoescape values. Want to enable Twig's autoescape?
  * No prob! Just set this value to true
  */
-Timber::$autoescape = false;
+// Timber::$autoescape = false;
 
 
 function twig_scripts()
@@ -280,7 +280,7 @@ class WpTwigStartSite extends Timber\Site
 
 }
 
-new WpTwigStartSite();
+// new WpTwigStartSite();
 
 function timber_set_product($post)
 {
